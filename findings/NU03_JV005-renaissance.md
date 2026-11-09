@@ -69,6 +69,35 @@ with gas-side Other Capex. Question for the build team: which is intended?
 The block's own equity row (88) is 0, so the 55.1% in SAC did not come from this block. To trace:
 where `PART_*` / `AMT_90` is populated for NU03_JV005 (the v1 file deliberately excludes `AMT_90`).
 
+## 8. Errors in the source workbook (Renaissance calc block, `NUIMS` rows 2195–2436)
+
+Columns: P–R = 2022–2024, S = 2025 Jan–Aug, T = 2025 Sep–Dec, U = 2025 YEO, **V/W = "2026 SOURCE"
+(N'M / $'M, blank for this block)**, X–AB = 2026–2030. Several formulas use "the column to the left"
+as *previous year*; inserting V/W (and S/T) broke them.
+
+| Row | Line | Formula (2026, col X) | Problem | Effect on 2026 |
+|---|---|---|---|---|
+| 2312 | HCDT Fund Payable – Oil (3% of **prior-year** Opex) | `=W2311*$G2310` | Should be `U2311` (2025 YEO). 2025 YEO col U uses `T2311` (Sep–Dec only) instead of 2024 (R). | 2026 HCDT = 0 instead of 3% × 1,769 = 53.07 |
+| 2324 | HCDT Fund Payable – Gas | `=W2323*$G2322` | Same | 0 |
+| 2350 | Amortised Oil Capex (20/20/20/20/19 over 5 yrs) | `X*Y1 + W*Y2 + V*Y3 + S*Y4 + R*Y5` | Should be X, U, R, Q, P. Uses blank 2026-source cols and 2025 Jan–Aug only. Col Y (2027) still points at W/V/S. | 334.21 (understated) |
+| 2351 | Amortised Other Capex | rates `$G2344…$G2348` | Rate rows shifted by one; G2348 is blank. Col Z reverts to G2343… | inconsistent by year |
+| 2352 | Amortised Gas Capex | rates `$G2345…$G2349` | Shifted by two; G2348/G2349 blank | inconsistent by year |
+| 90 / 2216 | No. of producing fields | input = 0 | PIA production-based royalty multiplies by field count | PIA oil royalty = 0 (not used while regime = PPT) |
+| 88 / 2430 | NNPC Crude Oil Equity | input = 0 | NNPC share of profit oil = 0 | see §6 |
+
+The Renaissance Capex/Opex inputs (rows 70–85) are typed values — there is no formula trail inside the
+workbook back to a project list or to an NU03 allocation, so the split between JV direct capex and any
+NU03 overhead allocation cannot be derived from this sheet. **Open with Noel:** which line(s) carry the
+NU03 allocation and where its source is.
+
+### Question this raises for SAC
+
+`PPP_Upstream_Tax` step 5/6 computes HCDT on **same-year** Opex (`TAX015_15 = AMT_220`). The Excel intent
+(and PIA s.240) is 3% of the **preceding** year's operating expenditure. If prior-year is the rule,
+SAC needs a `PREVIOUS(1)` / prior-year lookup; if same-year is the agreed simplification, it should be
+recorded as a deliberate difference. The amortisation schedule should be checked against the same
+prior-year logic.
+
 ## 7. Still needed
 
 - `PPP_EntryNr` and `WPLn` member hierarchy (`Test data - Master data.xlsx`) — confirms §4 and §5.
