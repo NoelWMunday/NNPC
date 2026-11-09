@@ -1,0 +1,36 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #RR_RATE OF [d/WPLn]
+DATA([d/WPLn] = #RR_RATE) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_005_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_010_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_015_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_020_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_025_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR01_030_00",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+
+
+DATA([d/WPLn]="RC30_05") = RESULTLOOKUP([d/WPLn] = #RR_RATE) * RESULTLOOKUP([d/WPLn]="REV_10") * RESULTLOOKUP([d/WPLn]="SET10_05", [d/Date] = "000000", [d/PPP_Currency]="USD")
+
+DATA([d/WPLn]="RC30_10") = RESULTLOOKUP([d/WPLn] = "RC30_05") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100

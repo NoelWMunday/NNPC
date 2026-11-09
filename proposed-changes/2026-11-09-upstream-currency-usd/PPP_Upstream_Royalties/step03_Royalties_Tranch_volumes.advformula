@@ -1,0 +1,101 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #TRANCH1 OF [d/WPLn]
+VARIABLEMEMBER #TRANCH2 OF [d/WPLn]
+VARIABLEMEMBER #TRANCH3 OF [d/WPLn]
+VARIABLEMEMBER #TRANCH4 OF [d/WPLn]
+VARIABLEMEMBER #AVEPROD OF [d/WPLn]
+
+// Find the tranch value and royalty rate % for tranch 1 by using the ASSET TERRAIN flag (which is set to 1) to expose it
+DATA([d/WPLn] = #TRANCH1) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_005_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_010_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_015_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_020_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_025_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_030_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+
+DATA([d/WPLn] = #TRANCH2) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_005_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_010_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_015_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_020_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_025_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_030_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+							
+DATA([d/WPLn] = #TRANCH3) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_005_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_010_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_015_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_020_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_025_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_030_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+														
+DATA([d/WPLn] = #TRANCH4) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_005_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_010_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_015_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_020_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_025_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="TranchValue",[d/WPLn]="RR01_030_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))				
+							
+DATA([d/WPLn] = #AVEPROD) = RESULTLOOKUP([d/WPLn]="AMT_82") * 1000000
+
+IF (RESULTLOOKUP([d/WPLn] = #AVEPROD) >  RESULTLOOKUP([d/WPLn] = #TRANCH1)) THEN
+	DATA([d/WPLn] = "RC05_05") = RESULTLOOKUP([d/WPLn] = #TRANCH1)
+	IF ((RESULTLOOKUP([d/WPLn] = #AVEPROD) - RESULTLOOKUP([d/WPLn] = #TRANCH1)) > RESULTLOOKUP([d/WPLn] = #TRANCH2)) THEN
+		DATA([d/WPLn] = "RC05_10") = RESULTLOOKUP([d/WPLn] = #TRANCH2)
+		IF ((RESULTLOOKUP([d/WPLn] = #AVEPROD) - RESULTLOOKUP([d/WPLn] = #TRANCH1) - RESULTLOOKUP([d/WPLn] = #TRANCH2)) > RESULTLOOKUP([d/WPLn] = #TRANCH3)) THEN
+			DATA([d/WPLn] = "RC05_15") = RESULTLOOKUP([d/WPLn] = #TRANCH3)
+			DATA([d/WPLn] = "RC05_20") = RESULTLOOKUP([d/WPLn] = #AVEPROD) - RESULTLOOKUP([d/WPLn] = #TRANCH1) - RESULTLOOKUP([d/WPLn] = #TRANCH2) - RESULTLOOKUP([d/WPLn] = #TRANCH3)
+		ELSE
+			DATA([d/WPLn] = "RC05_15") = RESULTLOOKUP([d/WPLn] = #AVEPROD) - RESULTLOOKUP([d/WPLn] = #TRANCH1) - RESULTLOOKUP([d/WPLn] = #TRANCH2)
+			DATA([d/WPLn] = "RC05_20") = 0			
+		ENDIF
+	ELSE
+		DATA([d/WPLn] = "RC05_10") = RESULTLOOKUP([d/WPLn] = #AVEPROD) - RESULTLOOKUP([d/WPLn] = #TRANCH1)
+		DATA([d/WPLn] = "RC05_15") = 0
+		DATA([d/WPLn] = "RC05_20") = 0
+	ENDIF
+ELSE
+	DATA([d/WPLn] = "RC05_05") = RESULTLOOKUP([d/WPLn] = #AVEPROD)
+	DATA([d/WPLn] = "RC05_10") = 0
+	DATA([d/WPLn] = "RC05_15") = 0
+	DATA([d/WPLn] = "RC05_20") = 0
+ENDIF

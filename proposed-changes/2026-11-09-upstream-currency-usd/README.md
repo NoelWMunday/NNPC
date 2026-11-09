@@ -1,0 +1,98 @@
+# Change proposal — Upstream data actions read inputs from PPP_Currency = USD
+
+- **Trello:** #19 https://trello.com/c/VYeHuGjg — *DEFECT: Upstream data actions read PPP_Currency = # — must read USD*
+- **Decision (Noel, 9 Nov):** inputs stay on `PPP_Currency = USD`; the data actions change.
+- **Status:** PROPOSED — not applied in SAC
+- **Scripts:** one file per changed step in the sub-folders; full before/after in [DIFF.md](DIFF.md)
+- **Generator:** `tools/propose_currency_usd.py` (re-run against a fresh export if SAC changes first)
+
+## Root cause
+
+The work-program upload writes inputs (`AMT_*`, `UOM_*`, `SET*`) with `PPP_Currency = USD`. The Upstream
+scripts scope or default every read to `PPP_Currency = "#"`, so they pick up only the stale `#` leaves from
+the August load (Capex Oil 50.18 instead of 957.46, Opex Oil 4,465.56 instead of 1,488.52).
+
+`PPP_Upstream_CostAlloc` already follows the target convention — it reads NU03 costs with
+`[d/PPP_Currency]="USD"` and writes `[d/PPP_Currency]="#"`. This change applies the same convention to
+the other three.
+
+## Rules applied
+
+| # | Rule | Where |
+|---|---|---|
+| R1 | Calculated lines stay on `PPP_Currency = "#"` (story, GL steps and CostAlloc expect them there) | all |
+| R2 | Every `RESULTLOOKUP` of an upload input gets `[d/PPP_Currency]="USD"` | Revenue 2; Royalties 3–21; Tax 2–21 |
+| R3 | Royalties steps 2–21 had no currency scope; they get `MEMBERSET [d/PPP_Currency] = "#"` | Royalties |
+| R4 | Royalties cost loops iterate USD input leaves and append to `#` | Royalties 14–17 |
+| R5 | Tax GL entries read COS Depreciation / Depletion inputs (`UAP_5800_15/16`) from USD | Tax 21 |
+
+Not changed: central assumptions (`GA_*`, `RR*`, `TL*`, `TA*`, read with `PPP_Entity="#"`, `Lock="Central"`),
+the gas flare penalty (`AMT_230 × UAP_GFP`, calculated by Royalties 13 on `#`), all GL-entry write scopes,
+`PPP_Upstream_CostAlloc`, `PPP_Upstream_All_Calculations`.
+
+Inputs treated as USD: `AMT_46, AMT_80, AMT_85, AMT_90, AMT_97, AMT_200, AMT_210, AMT_220, AMT_230,
+UOM_*, SET*`.
+
+### R4 — cost loop (Royalties 14, same shape in 15–17)
+
+```
+MEMBERSET [d/PPP_Currency] = ("#","USD")
+...
+IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
+	DATA.APPEND([d/WPLn] = "CST05_15", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_200")
+ENDIF
+```
+
+## Confirm before applying
+
+1. **`AMT_90` (NNPC equity), `AMT_97`, `AMT_46` and the `SET*` flags** — are these on USD too? The v1
+   upload file excludes `AMT_90`; if equity is maintained elsewhere on `#`, those lookups must keep `#`
+   (one-line edit in the generator's `INPUTS` list).
+2. **Central assumptions are on `#`.** If any were loaded on USD they need the same treatment.
+3. **Behaviour change — HCDT Gas** (`TAX020_15 = AMT_230`): previously the gas flare penalty sat in the same
+   currency as Opex and was included; now it is on `#` and excluded. That matches the agreed principle
+   (deduct Opex excluding fines and levies), but it changes the number.
+
+## Data clean-up (Trello #19 item 2) — separate, after the scripts
+
+After this change the scripts no longer read `#` inputs, so the stale leaves stop affecting results. They
+still show up in any story that does not filter on currency. Proposed one-off data action
+(**not created**), run per entity on `Budget 2026 (Reference)`:
+
+```
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+MEMBERSET [d/PPP_Entity]   = BASEMEMBER([d/PPP_Entity], %Entity%)
+MEMBERSET [d/Measures]     = "Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/WPLn] = ("AMT_46","AMT_80","AMT_85","AMT_90","AMT_97","AMT_200","AMT_210","AMT_220","AMT_230",
+                      BASEMEMBER([d/WPLn],"Units"), BASEMEMBER([d/WPLn],"Settings"))   // confirm node IDs
+DELETE()
+```
+
+No `PPP_EntryNr` restriction, so every entry number is cleared for those lines on `#`. That includes the
+calculated gas flare penalty (`AMT_230 × UAP_GFP`), which is harmless because Royalties step 13 recalculates
+it on the next run. Run it **after** the script change, then re-run Upstream (Calculations).
+
+## How to apply (manual, in SAC)
+
+1. Copy each data action first (`Save As` → `<name>_bkp_20261109`) so the current version is recoverable.
+2. For each file in the sub-folders, open the step named in the file and replace its script with the file
+   content. Steps not listed are unchanged.
+3. Validate each data action (warnings about decimal places between measures are accepted).
+4. Save. Re-export, run `tools/generate_docs.py`; the resulting `git diff` on `sac-export/` should match
+   [DIFF.md](DIFF.md) exactly — that is the check the change went in as reviewed.
+
+## Test
+
+1. Run **Upstream (Calculations)** for NU03_JV005 RENAISSANCE JV, `Budget 2026 (Reference)`, with
+   `CAPEX_Version` set to the same version.
+2. Financial tab, 2026: CAPEX Oil **957.46**, CAPEX Gas **1,015.16**, OPEX Oil **1,488.52**,
+   OPEX Gas **211.0** (cost base lines CST05_15/20/05/10).
+3. Re-run unchanged → identical results (SIT step 20).
+4. Revenue and royalties should still reconcile as before; tax will move with the corrected inputs.
+5. GL Entries tab: COS Depreciation (4202026) and Depletion (5230003) only show values posted to
+   `UAP_5800_15/16`, not Opex.
+
+## Rollback
+
+Restore from the `_bkp_20261109` copies, or paste the "SAC now" side of [DIFF.md](DIFF.md).

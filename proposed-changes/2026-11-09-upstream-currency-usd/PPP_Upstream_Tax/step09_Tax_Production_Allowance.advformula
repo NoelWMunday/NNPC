@@ -1,0 +1,31 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "AMT_210")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
+
+DATA([d/WPLn]="TAX035_25") = RESULTLOOKUP([d/WPLn]="REV_05")
+DATA([d/WPLn]="TAX035_10") = RESULTLOOKUP([d/WPLn]="TA20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn]="TAX035_15") = RESULTLOOKUP([d/WPLn]="TA20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") 
+DATA([d/WPLn]="TAX035_12") = RESULTLOOKUP([d/WPLn]="GA_015",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn]="TAX035_17") = RESULTLOOKUP([d/WPLn]="TAX035_12") * RESULTLOOKUP([d/WPLn]="TAX035_15") / 100
+
+IF RESULTLOOKUP([d/WPLn]="TAX035_10") < RESULTLOOKUP([d/WPLn]="TAX035_17") THEN
+	DATA([d/WPLn]="TAX035_20") = RESULTLOOKUP([d/WPLn]="TAX035_10")
+ELSE
+	DATA([d/WPLn]="TAX035_20") = RESULTLOOKUP([d/WPLn]="TAX035_17")
+ENDIF
+
+DATA([d/WPLn]="TAX035_05") = RESULTLOOKUP([d/WPLn]="TAX035_25") * RESULTLOOKUP([d/WPLn]="TAX035_20")

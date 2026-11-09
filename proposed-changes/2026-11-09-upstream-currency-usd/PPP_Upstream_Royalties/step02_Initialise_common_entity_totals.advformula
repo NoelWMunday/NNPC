@@ -1,0 +1,29 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/WPLn] = ("REV_32","REV_26",BASEMEMBER([d/WPLn] , "CST14"))
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+// Clear the entity placeholder at the common entity level i.e. not the work program entity level
+// which is cleared in the initialisation step
+
+DATA([d/WPLn]="REV3_05_05",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+
+DATA([d/WPLn]="CST14_05",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_10",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_15",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_20",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_25",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_30",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_35",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0
+DATA([d/WPLn]="CST14_40",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0

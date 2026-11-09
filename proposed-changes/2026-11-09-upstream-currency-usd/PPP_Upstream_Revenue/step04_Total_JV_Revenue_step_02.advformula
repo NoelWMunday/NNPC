@@ -1,0 +1,23 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PCycle] = "#"
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/WPLn] = ("REV_25","REV_32")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
+
+// If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) 
+// on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point
+// to NU03 as the common entity and accumulate the work group total revenue on WPLn = the property on NU03_WP01 i.e. a JV total
+IF [d/PPP_Entity].[p/WPGroup] != "" THEN
+	DATA.APPEND([d/WPLn]=[d/PPP_Entity].[p/Ln],[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = RESULTLOOKUP([d/WPLn]="REV_25")
+ENDIF
