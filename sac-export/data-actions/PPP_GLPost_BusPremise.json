@@ -1,0 +1,3128 @@
+{
+ "id": "E2716605229298231EC8A987439CC522",
+ "name": "PPP_GLPost_BusPremise",
+ "description": "GLPostings from BusPremise",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-10-09T10:06:52.201Z",
+ "defaultCubeId": "Cmjk8h1ha64vea3kk9m4b4vir7g",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "Entity",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     "TOTAL"
+    ],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "Entity_FIN",
+   "displayName": "Entity_FIN",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cmjk8h1ha64vea3kk9m4b4vir7g",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": null,
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "Version_FIN",
+   "displayName": "Version_FIN",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cmjk8h1ha64vea3kk9m4b4vir7g",
+   "cubeType": null,
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "Entity_CAPEX",
+   "displayName": "Entity_CAPEX",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     "TOTAL"
+    ],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "Version_BusPremise",
+   "displayName": "Version_BusPremise",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "Version_CAPEX",
+   "displayName": "Version_CAPEX",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CurrentFY",
+   "displayName": "CurrentFY",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cmjk8h1ha64vea3kk9m4b4vir7g",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2026",
+     "202612"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "65711339-4347-4695-3312-396154100034",
+   "name": "Initialisation",
+   "description": "Initialisation",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// Be careful that the default model in a model-to-model copy data action is the target\n// so that an initialisation step like this clears the destination and not the source\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity_FIN%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (BASEMEMBER([d/PPP_EntryNr] , \"UP\"),\"BP002\",\"BP003\",\"#\",\"Capex\",\"Projects\",\"HR_0005\",\"HR_0010\")\nMEMBERSET [d/Measures] = (\"DR\",\"CR\",\"DR_GC\",\"CR_GC\")\n\n\nDELETE()\n\n",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "Entity_FIN"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "multiVersionEnabled": false,
+    "deleteFactEnabled": true,
+    "multiModelEnabled": false,
+    "generateEmptyReferenceDataEnabled": false,
+    "dimensions": [
+     {
+      "dimensionId": "Version",
+      "usedHierarchy": "",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 300
+      },
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:Version\""
+     },
+     {
+      "dimensionId": "Date",
+      "usedHierarchy": "YQM",
+      "setByUser": true,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "CALMONTH",
+       "sqlType": "VARCHAR",
+       "length": 6
+      },
+      "showTypeOfNotInHierarchy": 0,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:Date\""
+     },
+     {
+      "dimensionId": "PPP_Account",
+      "usedHierarchy": "parentId",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 2,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:PPP_Account\""
+     },
+     {
+      "dimensionId": "PCycle",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PCycle\""
+     },
+     {
+      "dimensionId": "PPP_EntryNr",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_EntryNr\""
+     },
+     {
+      "dimensionId": "PPP_Currency",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Currency\""
+     },
+     {
+      "dimensionId": "PPP_Entity",
+      "usedHierarchy": null,
+      "setByUser": true,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Entity\""
+     }
+    ],
+    "dimensionOfReferenceCubes": [],
+    "memberFilter": {
+     "memberSetFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Entity",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": null,
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "Entity_FIN"
+             ],
+             "inputType": "PARAMETER"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_EntryNr",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "UP"
+             ]
+            }
+           ]
+          },
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "BP002",
+            "BP003",
+            "#",
+            "Capex",
+            "Projects",
+            "HR_0005",
+            "HR_0010"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [],
+       "measureFilters": [
+        {
+         "type": "MEASURE",
+         "names": [
+          "DR",
+          "CR",
+          "DR_GC",
+          "CR_GC"
+         ],
+         "operatorType": "EQ"
+        }
+       ]
+      }
+     ],
+     "additionalFilter": [],
+     "loadCalcMemberFilter": []
+    },
+    "globalOption": {
+     "timeHierarchy": "CALENDAR",
+     "signFlip": true,
+     "timeZoneOffset": {
+      "type": "TIME_ZONE_OFFSET",
+      "value": "0"
+     },
+     "usedKeyword": {
+      "usingTodayFunction": false
+     },
+     "readCalculatedMember": false
+    },
+    "publicVersions": [],
+    "referenceCubes": [],
+    "parameters": [
+     {
+      "displayKey": "Entity_FIN",
+      "skipFormulaMemberValidation": false
+     }
+    ],
+    "attributeFunctions": {},
+    "timeFunctions": [],
+    "measures": [
+     {
+      "name": "DR",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": false,
+      "deleteTypeMeasure": true,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "CR",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": false,
+      "deleteTypeMeasure": true,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "DR_GC",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": false,
+      "deleteTypeMeasure": true,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "CR_GC",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": false,
+      "deleteTypeMeasure": true,
+      "inputType": "MEASURE"
+     }
+    ],
+    "validateAllMeasuresFromCube": false,
+    "aggregationRequired": false,
+    "hasNoDataInstruction": true
+   }
+  },
+  {
+   "id": "63873582-0224-4435-3071-407773689915",
+   "name": "Revenue - GL Posting from Bus Premise",
+   "description": "Revenue - GL Posting from Bus Premise",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002",
+      "HR_0005",
+      "BP003"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      },
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "targetHierarchy": "YM",
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "EQ_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "27451913-1296-4691-3489-211727797125",
+   "name": "Revenue - GL Posting from Bus Premise (Contra)",
+   "description": "Revenue - GL Posting from Bus Premise (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002",
+      "HR_0005",
+      "BP003"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      },
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "targetHierarchy": "YM",
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CA_010",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "39999647-3498-4927-8591-940958838291",
+   "name": "Expenses - GL Posting from Bus Premise",
+   "description": "Expenses - GL Posting from Bus Premise",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "COGS",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002",
+      "BP003"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      },
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "EQ_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "55774860-3321-4440-3956-190561036734",
+   "name": "Expenses - GL Posting from Bus Premise (Contra)",
+   "description": "Expenses - GL Posting from Bus Premise (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "COGS",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002",
+      "BP003"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      },
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "42877718-2413-4426-3121-491700208247",
+   "name": "HR Expenses - GL Posting from Bus Premise",
+   "description": "HR Expenses - GL Posting from Bus Premise",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "HR"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "EQ_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "17234366-6012-4863-3432-840510674352",
+   "name": "Expenses - GL Posting from Bus Premise (Contra)",
+   "description": "Expenses - GL Posting from Bus Premise (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_BusPremise"
+     },
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "HR"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CLO",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "29324613-0344-4605-3546-926582687592",
+   "name": "JV's and PSC's - Cr",
+   "description": "JV's and PSC's - Cr",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    }
+   }
+  },
+  {
+   "id": "17553632-1230-4932-3131-730317015393",
+   "name": "JV's and PSC's - Cr  (Contra)",
+   "description": "JV's and PSC's - Cr  (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP_0005"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CA_010",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "30781006-0520-4701-3100-015421806433",
+   "name": "JV's and PSC's - Cr  (Inter-cpy Contra)",
+   "description": "JV's and PSC's - Cr  (Inter-cpy Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP_0010",
+      "UP_0015"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "LTL_015",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "40932632-8237-4676-3941-122811463973",
+   "name": "JV's and PSC's - Dr",
+   "description": "JV's and PSC's - Dr",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "COGS",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "EQ_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    }
+   }
+  },
+  {
+   "id": "36304582-2128-4238-3713-238583942278",
+   "name": "JV's and PSC's - Dr  (Contra)",
+   "description": "JV's and PSC's - Dr  (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "COGS",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP_0005"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "49379695-3259-4809-3147-108238068236",
+   "name": "JV's and PSC's - Dr  (Inter-cpy Contra)",
+   "description": "JV's and PSC's - Dr  (Inter-cpy Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "COGS",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "UP_0010",
+      "UP_0015"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Objectives": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "ProductServ": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Strategy": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WorkProgram": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "WPLn": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "GC_CR",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "sourceDimensionId": "PPP_EntryNr",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "PCycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "LTL_015",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  },
+  {
+   "id": "40223755-3531-4430-3426-927819073491",
+   "name": "CAPEX Projects",
+   "description": "CAPEX Projects",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_CAPEX"
+     },
+     "hierarchyName": null
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity_CAPEX"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "PC_FUSD"
+     ],
+     "hierarchyName": null
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "USD"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "PC_FUSD",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "FA02_AUC",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Projects",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "defaultMember": {
+      "memberId": "#",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    }
+   }
+  },
+  {
+   "id": "28870670-0338-4789-3120-865161289912",
+   "name": "CAPEX Projects (Contra)",
+   "description": "CAPEX Projects (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_CAPEX"
+     },
+     "hierarchyName": null
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity_CAPEX"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "PC_FUSD"
+     ],
+     "hierarchyName": null
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "USD"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "Plan_Cycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Projects",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    },
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "PC_FUSD",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "16717420-0824-4098-3834-728573990563",
+   "name": "CAPEX Movables",
+   "description": "CAPEX Movables",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_CAPEX"
+     },
+     "hierarchyName": null
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity_CAPEX"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "MovableItems": {
+     "memberIds": [
+      "Total"
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "GL"
+     ],
+     "hierarchyName": "H1"
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "AMT_GL_GC"
+     ],
+     "hierarchyName": null
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "AMT_GL_GC",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "DEFAULT",
+     "completionDefaultMember": {
+      "memberId": "EQ_005",
+      "hierarchyName": "parentId"
+     },
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Capex",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "sourceDimensionId": "Plan_Cycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    }
+   }
+  },
+  {
+   "id": "19570577-5180-4677-3252-323865970538",
+   "name": "CAPEX Movables (Contra)",
+   "description": "CAPEX Movables (Contra)",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "Version_CAPEX"
+     },
+     "hierarchyName": null
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity_CAPEX"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "MovableItems": {
+     "memberIds": [
+      "Total"
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "GL"
+     ],
+     "hierarchyName": "H1"
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "AMT_GL_GC"
+     ],
+     "hierarchyName": null
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PCycle": {
+     "sourceDimensionId": "Plan_Cycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Capex",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "CL_005",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    },
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "AMT_GL_GC",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "30733875-0330-4474-3677-359633930738",
+   "name": "Reverse CR sign",
+   "description": "Reverse CR sign",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity_FIN%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures] = (\"CR\",\"CR_GC\")\nMEMBERSET [d/PPP_Account] = BASEMEMBER([d/PPP_Account] , \"GL\")\nMEMBERSET [d/PPP_EntryNr] = (BASEMEMBER([d/PPP_EntryNr] , \"UP\"),\"BP002\",\"BP003\",\"Capex\",\"Projects\",\"HR_0005\",\"HR_0010\")\n\nIF [d/Version] = %Version_FIN% THEN\n\tDATA() = 0 - RESULTLOOKUP()\nENDIF\n",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "Entity_FIN",
+     "Version_FIN"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "multiVersionEnabled": false,
+    "deleteFactEnabled": false,
+    "multiModelEnabled": false,
+    "generateEmptyReferenceDataEnabled": false,
+    "dimensions": [
+     {
+      "dimensionId": "Version",
+      "usedHierarchy": "",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 300
+      },
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:Version\""
+     },
+     {
+      "dimensionId": "Date",
+      "usedHierarchy": "YQM",
+      "setByUser": true,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "CALMONTH",
+       "sqlType": "VARCHAR",
+       "length": 6
+      },
+      "showTypeOfNotInHierarchy": 0,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:Date\""
+     },
+     {
+      "dimensionId": "PPP_Account",
+      "usedHierarchy": "parentId",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 2,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Cmjk8h1ha64vea3kk9m4b4vir7g:PPP_Account\""
+     },
+     {
+      "dimensionId": "PCycle",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PCycle\""
+     },
+     {
+      "dimensionId": "PPP_EntryNr",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_EntryNr\""
+     },
+     {
+      "dimensionId": "PPP_Currency",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Currency\""
+     },
+     {
+      "dimensionId": "PPP_Entity",
+      "usedHierarchy": null,
+      "setByUser": true,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Entity\""
+     }
+    ],
+    "dimensionOfReferenceCubes": [],
+    "memberFilter": {
+     "memberSetFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Entity",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": null,
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "Entity_FIN"
+             ],
+             "inputType": "PARAMETER"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [],
+       "measureFilters": [
+        {
+         "type": "MEASURE",
+         "names": [
+          "CR",
+          "CR_GC"
+         ],
+         "operatorType": "EQ"
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Account",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "parentId",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "GL"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_EntryNr",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "UP"
+             ]
+            }
+           ]
+          },
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "BP002",
+            "BP003",
+            "Capex",
+            "Projects",
+            "HR_0005",
+            "HR_0010"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "additionalFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "loadCalcMemberFilter": []
+    },
+    "globalOption": {
+     "timeHierarchy": "CALENDAR",
+     "signFlip": true,
+     "timeZoneOffset": {
+      "type": "TIME_ZONE_OFFSET",
+      "value": "0"
+     },
+     "usedKeyword": {
+      "usingTodayFunction": false
+     },
+     "readCalculatedMember": false
+    },
+    "publicVersions": [],
+    "referenceCubes": [],
+    "parameters": [
+     {
+      "displayKey": "Entity_FIN",
+      "skipFormulaMemberValidation": false
+     },
+     {
+      "displayKey": "Version_FIN",
+      "skipFormulaMemberValidation": false
+     }
+    ],
+    "attributeFunctions": {},
+    "timeFunctions": [],
+    "measures": [
+     {
+      "name": "CR",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": true,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "CR_GC",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": true,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     }
+    ],
+    "validateAllMeasuresFromCube": false,
+    "aggregationRequired": false,
+    "hasNoDataInstruction": false
+   }
+  },
+  {
+   "id": "38790464-7040-4446-3397-826050307611",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:4339660522912877CF641BF760FFA59F",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CurrentFY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    }
+   ]
+  },
+  {
+   "id": "15374679-5723-4391-3524-318347325973",
+   "name": "Copy global parameters to FIN",
+   "description": "Copy global parameters to FIN",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:C1A1BC0771E5A68F187AB32B09251E73",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Version_BusPremise"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Version_BusPremise"
+     }
+    }
+   ]
+  },
+  {
+   "id": "90457812-5390-4836-3794-461901118361",
+   "name": "FIN Calculate educational tax ",
+   "description": "FIN Calculate educational tax ",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:B591BC0771E7349F8672BF558A346AF0",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "disabled": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    }
+   ]
+  },
+  {
+   "id": "39620726-8346-4972-3322-200463155642",
+   "name": "Taxation",
+   "description": "Taxation",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:7BC9D40771E66EE8795AF2AB80CB78CF",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    }
+   ]
+  },
+  {
+   "id": "30680568-3215-4382-3480-120352443622",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:4339660522912877CF641BF760FFA59F",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CurrentFY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    }
+   ]
+  },
+  {
+   "id": "42139727-5377-4919-3337-350644891034",
+   "name": "KPI Calculations",
+   "description": "KPI Calculations",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:76D484037947247EF51B241BD45D3674",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity_FIN"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentFY"
+     }
+    }
+   ]
+  }
+ ]
+}

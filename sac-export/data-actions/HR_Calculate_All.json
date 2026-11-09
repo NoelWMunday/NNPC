@@ -1,0 +1,298 @@
+{
+ "id": "F01B0C0771E59D10E3D508616F5352E9",
+ "name": "HR_Calculate_All",
+ "description": "HR_Calculate_All",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-10-14T12:32:00.805Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "#",
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CY",
+   "displayName": "CY",
+   "description": "YYYYMM",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2025",
+     "202512"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "32285255-7220-4887-3095-734192738662",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:E0415E8CBFC039DDEBF73F1F7EC06B34",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    }
+   ]
+  },
+  {
+   "id": "20977247-6142-4039-3975-105681745338",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:C9B8C684BFC20C3314779C5D673EB7B3",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
+     }
+    }
+   ]
+  },
+  {
+   "id": "14097751-1672-4000-3186-223824182437",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:E081B88E2A31CF2B4CB830641D78E1BC",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "DateSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       [
+        "(all)"
+       ]
+      ],
+      "hierarchyName": "YM"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "GradeSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Total",
+       "RS_05"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "ReportingDate"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    }
+   ]
+  },
+  {
+   "id": "38510382-6185-4371-3698-179094480820",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:DA232E84BFC6B8B952F047BACECBBD72",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "DateSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       [
+        "(all)"
+       ]
+      ],
+      "hierarchyName": "YM"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "LIneItem"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "EX_GL",
+       "EX_GL_MN"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "GL_Selection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "HR"
+      ],
+      "hierarchyName": "H1"
+     }
+    }
+   ]
+  }
+ ]
+}

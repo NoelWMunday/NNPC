@@ -1,0 +1,560 @@
+{
+ "id": "896A3C0771E22997F7E74FCF84B78D9B",
+ "name": "HR_Calculate_All_Parameters",
+ "description": "HR_Calculate_All_Parameters",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-10-19T10:09:26.937Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "DateSelection",
+   "displayName": "DateSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "GradeSelection",
+   "displayName": "GradeSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Grade",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "PlanningCycle",
+   "displayName": "PlanningCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "PCycle",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "EntitySelection",
+   "displayName": "Entity Selection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "ForecastPeriod",
+   "displayName": "ForecastPeriod",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CY_Plus_1",
+   "displayName": "CY_Plus_1",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2026",
+     "202612"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "14626289-3638-4130-8150-320352030992",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:D81A5E84BFC73D898D5688B4BA0ABA79",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "GradeSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "M2",
+       "M3",
+       "M4",
+       "M5",
+       "M6"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "N01_HCM"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY_plus_1"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY_Plus_1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "38019964-9020-4113-3476-924569061062",
+   "name": "",
+   "description": "Monetisation of Mangement housing",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:D2425684BFC281BD3A234BC217D66B5F",
+   "isNameSet": false,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "GradeSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Total",
+       "RS_05"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PlanningCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "HR"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "N01_HCM"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetLI"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "CE01306"
+      ],
+      "hierarchyName": "SCH"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "SourceLI"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "MB_005",
+       "MB_007",
+       "MB_010",
+       "MB_015",
+       "MB_020",
+       "MB_025"
+      ],
+      "hierarchyName": "SCH"
+     }
+    }
+   ]
+  },
+  {
+   "id": "12160788-9236-4701-3052-311164189523",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:DA913E84BFC7A56485947732A6652925",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "DateSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       [
+        "(all)"
+       ]
+      ],
+      "hierarchyName": "YM"
+     }
+    }
+   ]
+  },
+  {
+   "id": "35533928-0528-4089-3721-716299000103",
+   "name": "",
+   "description": "Annual bonus",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:D2425684BFC281BD3A234BC217D66B5F",
+   "isNameSet": false,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "GradeSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Total",
+       "RS_05"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PlanningCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "HR"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "N01_HCM"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetLI"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "CE01205"
+      ],
+      "hierarchyName": "SCH"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "SourceLI"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "CE01101"
+      ],
+      "hierarchyName": "SCH"
+     }
+    }
+   ]
+  },
+  {
+   "id": "10740010-5229-4784-3742-782125959710",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:71D20684BFC2357B15D57C62C99840F3",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "N01_HCM"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Parameter"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "SC"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EscallationParam"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "PR_015"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "ParameterMeasureSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Rates"
+      ],
+      "hierarchyName": null
+     }
+    },
+    {
+     "id": {
+      "displayKey": "ParameterCostElement"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "#"
+      ],
+      "hierarchyName": "CalcInputH"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "ParameterGrade"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Total",
+       "RS_05"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "ParameterCurrency"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "NGN"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CurrentYear"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY_Plus_1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "16451105-1376-4709-3439-426191984126",
+   "name": "Calculate_ITF/NSITF Contribution",
+   "description": "",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "MEMBERSET [d/Measures] = (\"Source\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL].[h/H1], \"CALC_05\", \"CALC_10\", \"MI_05\", \"MI_10\"))\nMEMBERSET [d/PPP_Currency] = BASEMEMBER([d/PPP_Currency] , \"Total\")\nMEMBERSET [d/Date] = (BASEMEMBER([d/Date].[h/YM], %DateSelection%))\nMEMBERSET [d/PPP_Entity] = (BASEMEMBER([d/PPP_Entity].[h/H1], %EntitySelection%))\nMEMBERSET [d/Ln] = (\"EX_GL\",\"EX_GL_MN\")\nMEMBERSET [d/Lock] = (\"#\")\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Grade] = (BASEMEMBER([d/Grade].[h/H1], \"Total\"), BASEMEMBER([d/Grade].[h/H1], \"RS_05\"))\n\nDATA([d/GL] = \"5060006\", [d/Ln] = \"EX_GL\", [d/CostElement] = \"CE06001\") = \n\t((RESULTLOOKUP([d/Measures] = \"Qty\", [d/CostElement] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = \"000000\", [d/GL] = \"#\", [d/Grade] = \"#\", [d/Ln] = \"PR_025\", [d/Lock] = \"#\" /*!  ITF  */) + \n\t RESULTLOOKUP([d/Measures] = \"Qty\", [d/CostElement] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = \"000000\", [d/GL] = \"#\", [d/Grade] = \"#\", [d/Ln] = \"PR_030\", [d/Lock] = \"#\" /*!  NSITF  */) ) / 100 ) * \n\t RESULTLOOKUP()",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "DateSelection",
+     "EntitySelection"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "referenceCubes": [],
+    "measures": []
+   },
+   "disabled": true
+  }
+ ]
+}

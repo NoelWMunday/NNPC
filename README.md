@@ -12,10 +12,12 @@ Defects are logged on the Trello board: https://trello.com/b/a85I1Cfx/nnpc
 
 | Folder | Contents |
 |---|---|
-| `data-actions/` | One markdown file per SAC data action: purpose, source/target models, filters, steps and full script |
-| `allocations/` | Allocation steps and their driver/target configuration |
-| `models/` | Model dimensions, key accounts/properties and hierarchies that the data actions depend on |
+| `sac-export/` | Raw SAC definitions (data actions, models, stories, currency table) — the snapshot everything else is generated from |
+| `data-actions/` | One page per data action: parameters, steps, full scripts, call map and index (generated) |
+| `models/` | Dimensions and measures per model (generated) |
+| `stories/` | Models and data actions each story uses (generated) |
 | `import-mappings/` | Import jobs and the column → dimension mapping of upload files |
+| `tools/` | `generate_docs.py` — rebuilds the generated folders from an export |
 | `findings/` | Root-cause analysis per defect, linked to the Trello card |
 | `proposed-changes/` | Change notes for anything to be applied in SAC (see workflow below) |
 
@@ -62,3 +64,9 @@ If SAC is changed outside this process, re-snapshot it before proposing anything
 
 ## Known issues
 ```
+
+## Refreshing the snapshot
+
+1. Export the folder from SAC (read-only; produces `nnpc_sac_export_<date>.json`).
+2. `python3 tools/generate_docs.py nnpc_sac_export_<date>.json .`
+3. Review `git diff` — any change not made through a PR here was made directly in SAC.

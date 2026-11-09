@@ -1,0 +1,141 @@
+{
+ "id": "929F08E2A32E615E4B743B27C3B1098",
+ "name": "CAPEX_Movable_Calcs",
+ "description": "CAPEX_Movable_Calcs",
+ "createdBy": "DPARUMAUL",
+ "changedBy": "DPARUMAUL",
+ "modified": "2026-07-17T08:27:12.558Z",
+ "defaultCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "38929590-2436-4207-3481-127112960443",
+   "name": "FUSD",
+   "description": "FUSD Calculation",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:3C8846052291A0F00AC308BB42C71038",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": true,
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "21192428-1757-4358-3978-248891729310",
+   "name": "YTD",
+   "description": "YTD",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:8BDE68862A313C385149F02D86577CDB",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": true,
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "12657655-6137-4152-3159-119262182633",
+   "name": "GL",
+   "description": "GL",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:72EF70862A31E1E180AC185FD660962B",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "TOTAL"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": true,
+     "value": null
+    }
+   ]
+  }
+ ]
+}

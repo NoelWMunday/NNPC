@@ -1,0 +1,1521 @@
+{
+ "metadata": {
+  "id": {
+   "type": "CUBE",
+   "name": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "package": "t.B.Cbifmh01bklfvf7ijs46d1ano3b"
+  },
+  "description": "CAPEX",
+  "owner": "DPARUMAUL",
+  "changedBy": "NMUNDAY",
+  "version": 76,
+  "active": true,
+  "tmCreated": "2026-06-12T13:29:25.424Z",
+  "tmModified": "2026-09-02T13:05:13.409Z",
+  "parentId": null,
+  "isPrivate": false,
+  "isSample": false,
+  "dataSize": 94097,
+  "createAppVer": "2026.8.6",
+  "changeAppVer": "2026.15.6",
+  "isEmbedded": false,
+  "isTemporary": false,
+  "ownerDisplayName": "Deveshan",
+  "changedByDisplayName": "Noel"
+ },
+ "data": {
+  "id": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Cbifmh01bklfvf7ijs46d1ano3b",
+  "descriptions": {
+   "en": "CAPEX"
+  },
+  "name": "Cbifmh01bklfvf7ijs46d1ano3b",
+  "type": "Planning",
+  "mode": "standalone",
+  "status": "valid",
+  "secured": false,
+  "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+  "enableDataAudit": false,
+  "rate": "t.B:AE2C30802BA44A957EC61F3FA97861ED",
+  "rateSourceType": "LOCAL",
+  "defaultCurrency": "",
+  "description": "CAPEX",
+  "currencyDimension": "",
+  "dataLockingEnabled": true,
+  "dataExportRestricted": false,
+  "dataImportRestricted": false,
+  "accessRestrictedSummary": false,
+  "planningTimeDimension": "Date",
+  "currencyConversionTimeDimension": "Date",
+  "dimensions": [
+   {
+    "dimensionId": "Version",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Version",
+    "description": "Version",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "VersionDim",
+    "idColumnName": "ID",
+    "idColumnLength": 300,
+    "descriptions": {
+     "en": "Version"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_Version",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_Version",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "ID",
+      "descriptions": {
+       "en": "ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 300,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Version",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Version"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Date",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Date",
+    "description": "Date",
+    "isSingleColumnDim": false,
+    "dataTypeName": "VARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "TimeHANA",
+    "idColumnName": "CALMONTH",
+    "idColumnLength": 6,
+    "descriptions": {
+     "en": "Date"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "sap.fpa.services.modeling.dimension::Dimension.TIME",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "YM",
+    "properties": [
+     {
+      "property": "CALMONTH",
+      "propertyType": "ID",
+      "description": "Calendar Month",
+      "descriptions": {
+       "en": "Calendar Month"
+      },
+      "sourceField": "",
+      "semanticType": "DATE_MONTH",
+      "dataTypeName": "VARCHAR",
+      "scale": 0,
+      "length": 6,
+      "isMandatory": false,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": "MONTHDESC",
+      "tableColumnName": "CALMONTH",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Date",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Date"
+      }
+     }
+    ],
+    "granularity": "Month",
+    "toDate": "2041/12/31",
+    "fromDate": "2020/01/01",
+    "minDate": "2020/01/01",
+    "maxDate": "2041/12/01",
+    "isFiscalYear": false,
+    "fiscalConfig": {
+     "enabled": false
+    },
+    "timeConfig": {
+     "enablePattern": false,
+     "pattern": "4-4-5",
+     "firstWeekDay": "Sunday",
+     "periodPrefix": "",
+     "usePrefix": false,
+     "firstYearWeekIndicator": "Wednesday"
+    },
+    "isUserManaged": false,
+    "toYear": "2041",
+    "fromYear": "2020",
+    "unassignedMember": "000000"
+   },
+   {
+    "dimensionId": "PPP_Entity",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "PPP_Entity",
+    "description": "Entity",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "OrgUnit",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "PPP_Entity"
+    },
+    "isLocal": false,
+    "dacEnabled": true,
+    "masterDataTableName": "t.B::MSTR_PPP_Entity",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_PPP_Entity",
+    "dacTableName": "t.B::DAC_PPP_Entity",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "currencyColumn": {
+     "property": "currency",
+     "propertyType": "CURRENCY",
+     "description": "Currency",
+     "descriptions": {
+      "en": "Currency"
+     },
+     "sourceField": "",
+     "semanticType": "TEXT",
+     "dataTypeName": "NVARCHAR",
+     "scale": 0,
+     "length": 127,
+     "isMandatory": false,
+     "valueList": "",
+     "isUnique": false,
+     "descriptionProperty": null,
+     "tableColumnName": "CURRENCY"
+    },
+    "responsibleProperty": "responsible",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:PPP_Entity",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:PPP_Entity"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "PPP_Currency",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "PPP_Currency",
+    "description": "Currency",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Currency"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_PPP_Currency",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_PPP_Currency",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "currencyColumn": {
+     "property": "Cur",
+     "propertyType": "CURRENCY",
+     "description": "Currency",
+     "descriptions": {
+      "en": "Currency"
+     },
+     "sourceField": "",
+     "semanticType": "TEXT",
+     "dataTypeName": "NVARCHAR",
+     "scale": 0,
+     "length": 256,
+     "isMandatory": false,
+     "valueList": "",
+     "isUnique": false,
+     "descriptionProperty": null,
+     "tableColumnName": "CUR"
+    },
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:PPP_Currency",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:PPP_Currency"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Project",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Project",
+    "description": "Project",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Project"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_Project",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_Project",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Project",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Project"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "ProjectClass",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "ProjectClass",
+    "description": "Classification",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Classification"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_ProjectClass",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_ProjectClass",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:ProjectClass",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:ProjectClass"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "MovableItems",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "MovableItems",
+    "description": "Items",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Items"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_MovableItems",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_MovableItems",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:MovableItems",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:MovableItems"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Project_Status",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Project_Status",
+    "description": "Status",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Status"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_Project_Status",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_Project_Status",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Project_Status",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Project_Status"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "ImpStage",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "ImpStage",
+    "description": "Implementation Stage",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Implementation Stage"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_ImpStage",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_ImpStage",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:ImpStage",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:ImpStage"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Lock",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Lock",
+    "description": "Lock Status",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Lock Status"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_Lock",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_Lock",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Lock",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Lock"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Plan_Cycle",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Plan_Cycle",
+    "description": "Planning Cycle",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Planning Cycle"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_PCycle",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_PCycle",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:PCycle",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:cdim.Plan_Cycle"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Strategy",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Strategy",
+    "description": "Strategy",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Strategy"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_Strategy",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_Strategy",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:Strategy",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:Strategy"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Work_Program",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Work_Program",
+    "description": "Work_Program",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Work_Program"
+    },
+    "isLocal": false,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B::MSTR_Work_Program",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B::TEXT_Work_Program",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B:Work_Program",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B:Work_Program"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "Start_Year",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "Start_Year",
+    "description": "Start Year",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "Start Year"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_Start_Year",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_Start_Year",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Start_Year",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:Start_Year"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "End_Year",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "End_Year",
+    "description": "End Year",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "End Year"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_End_Year",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_End_Year",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:End_Year",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:End_Year"
+      }
+     }
+    ]
+   },
+   {
+    "dimensionId": "GL",
+    "packageName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+    "name": "GL",
+    "description": "GL",
+    "isSingleColumnDim": false,
+    "dataTypeName": "NVARCHAR",
+    "schemaName": "TENANT_B",
+    "type": "Generic",
+    "idColumnName": "ID",
+    "idColumnLength": 256,
+    "descriptions": {
+     "en": "GL"
+    },
+    "isLocal": true,
+    "dacEnabled": false,
+    "masterDataTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::MSTR_GL",
+    "translation": {
+     "enabled": false,
+     "status": "NOT_TRANSLATED",
+     "originalLanguage": "en",
+     "languages": []
+    },
+    "textTableName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TEXT_GL",
+    "dacHideParents": false,
+    "multiLangEnabled": false,
+    "defaultHierarchy": "H1",
+    "properties": [
+     {
+      "property": "ID",
+      "propertyType": "ID",
+      "description": "Member ID",
+      "descriptions": {
+       "en": "Member ID"
+      },
+      "sourceField": "",
+      "semanticType": "TEXT",
+      "dataTypeName": "NVARCHAR",
+      "scale": 0,
+      "length": 256,
+      "isMandatory": true,
+      "valueList": "",
+      "isUnique": true,
+      "descriptionProperty": null,
+      "tableColumnName": "ID",
+      "masterDataReference": {
+       "referenceId": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:GL",
+       "joinType": "leftOuter",
+       "publishMismatchedFacts": false,
+       "viewName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b:GL"
+      }
+     }
+    ]
+   }
+  ],
+  "extendedDimensions": [],
+  "measures": [
+   {
+    "measure": "QTY",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": 0,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "QTY",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 0,
+    "unitDimension": "PPP_Currency",
+    "unitDimensionProperty": "Cur",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "GC_Amount",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "USD",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "F'USD 1",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": null,
+    "unitDimensionProperty": null,
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "U_Price",
+    "aggregationType": "",
+    "exceptionAggregationType": "NOPNULL",
+    "aggregationDimensionName": [
+     "MovableItems"
+    ],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Unit Price",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": "PPP_Currency",
+    "unitDimensionProperty": "Cur",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "M_Cost",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Movable Cost",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": "PPP_Currency",
+    "unitDimensionProperty": "Cur",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "Project_Cost",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Total Project Cost",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": "PPP_Currency",
+    "unitDimensionProperty": "Cur",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "YTD_GC",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "USD",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "YTD",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": null,
+    "unitDimensionProperty": null,
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "PC",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Project Cost",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": "PPP_Currency",
+    "unitDimensionProperty": "Cur",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "PC_FUSD",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "USD",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Project Cost F'USD",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": null,
+    "unitDimensionProperty": null,
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "PC_GC",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "USD",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "Project Cost GC",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": null,
+    "unitDimensionProperty": null,
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "PC_YTD",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "USD",
+    "unitType": "CUR",
+    "numericPrecision": 38,
+    "numericScale": null,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "YTD",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": null,
+    "unitDimensionProperty": null,
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   },
+   {
+    "measure": "AMT_GL_GC",
+    "aggregationType": "",
+    "exceptionAggregationType": "",
+    "aggregationDimensionName": [],
+    "measureUnits": "",
+    "unitType": "CUR",
+    "numericPrecision": 36,
+    "numericScale": 0,
+    "numericShift": null,
+    "calculated": false,
+    "extended": false,
+    "formula": "",
+    "jsonFormula": "",
+    "visible": true,
+    "type": "",
+    "refMeasure": "",
+    "filter": "",
+    "refDimensions": null,
+    "minimumDrillstate": [],
+    "description": "F'USD",
+    "dataTypeName": "DECIMAL",
+    "length": 38,
+    "scale": 2,
+    "unitDimension": "PPP_Entity",
+    "unitDimensionProperty": "currency",
+    "rateType": "Average",
+    "solveOrder": 1,
+    "currencyTranslation": null,
+    "unitTranslation": null,
+    "formulaType": "",
+    "technical": false,
+    "defaultValue": null,
+    "excludeNullValues": false
+   }
+  ],
+  "sources": [
+   {
+    "objectName": "t.B.Cbifmh01bklfvf7ijs46d1ano3b::TRNS_Cbifmh01bklfvf7ijs46d1ano3b",
+    "schemaName": "TENANT_B",
+    "objectType": "COLUMNTABLE",
+    "packageName": "",
+    "origin": "generated",
+    "originType": null,
+    "reference": {
+     "type": "LocalVersions"
+    }
+   }
+  ],
+  "variables": [],
+  "displayName": "PPP_CAPEX",
+  "model": "Global",
+  "capability": {
+   "addDimensions": true,
+   "originBPC": false,
+   "ctEnabled": true,
+   "unitTranslationEnabled": false,
+   "preConvertedCurrency": false,
+   "simpleColumnNames": true,
+   "automaticWriteBack": false,
+   "nlqIndexingEnabled": false,
+   "hasDatasetSource": false,
+   "hasUserDefinedMeasures": true,
+   "virtualVersion": false,
+   "hasCustomSolveOrder": false,
+   "useOlapView": true,
+   "exposeCubeDimProperties": true,
+   "legacyExport": false,
+   "expensiveModel": false,
+   "useCubeMasterdataView": false,
+   "detailsDeprecation": true,
+   "useAggregationNode": false,
+   "hasDataImportTechColumns": false,
+   "queryBasedCurrencyConversion": true,
+   "unitConversionSupported": true,
+   "useVersionAppId": false,
+   "auditApplicationUser": true,
+   "hasFullQuerySourceInfo": false,
+   "skipPublishAggr": false,
+   "epmQueryBasedCopyMapping": true,
+   "epmValidateDiscardInput": false,
+   "filterUnchangedTotalValues": true,
+   "separateDataLockingPublishChecks": false
+  },
+  "schemaName": "TENANT_B",
+  "epmModelName": "/t.B.Cbifmh01bklfvf7ijs46d1ano3b/Cbifmh01bklfvf7ijs46d1ano3b",
+  "epmQuerySourceName": "/t.B.Cbifmh01bklfvf7ijs46d1ano3b/Cbifmh01bklfvf7ijs46d1ano3b_qs",
+  "allVersionsFactSourceName": "\"TENANT_B\".\"t.B.Cbifmh01bklfvf7ijs46d1ano3b::TRNS_Cbifmh01bklfvf7ijs46d1ano3b\"",
+  "localVersionsFactTableName": "\"TENANT_B\".\"t.B.Cbifmh01bklfvf7ijs46d1ano3b::TRNS_Cbifmh01bklfvf7ijs46d1ano3b\"",
+  "DataSource": {
+   "Type": "Planning",
+   "SchemaName": "TENANT_B",
+   "ObjectName": "/t.B.Cbifmh01bklfvf7ijs46d1ano3b/Cbifmh01bklfvf7ijs46d1ano3b_qs"
+  },
+  "translation": {
+   "enabled": false,
+   "status": "NOT_TRANSLATED",
+   "originalLanguage": "en",
+   "languages": []
+  },
+  "dimensionValidationRules": true,
+  "leadingStructure": "CustomDimension1",
+  "hints": [
+   {
+    "Key": "mds_plan_use_ce_new",
+    "Value": "true"
+   },
+   {
+    "Key": "mds_correct_time_description_handling",
+    "Value": "true"
+   }
+  ],
+  "repositoryId": null,
+  "hierarchies": [],
+  "isRemote": false,
+  "categories": [
+   {
+    "category": "Actuals"
+   },
+   {
+    "category": "Budget"
+   },
+   {
+    "category": "Planning"
+   },
+   {
+    "category": "Forecast"
+   },
+   {
+    "category": "Rolling Forecast"
+   }
+  ],
+  "cubePrivileges": [],
+  "factTableName": "\"TENANT_B\".\"t.B.Cbifmh01bklfvf7ijs46d1ano3b::TRNS_Cbifmh01bklfvf7ijs46d1ano3b\"",
+  "linkedCubes": {},
+  "dataLockingConfig": {
+   "id": "DATALOCKING:t.B:B493ED1005746FE519000002346EADEF",
+   "metadata": {
+    "modelId": "Cbifmh01bklfvf7ijs46d1ano3b",
+    "drivingDimensionsIds": [
+     {
+      "name": "Version",
+      "package": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+      "isVersionDimension": true,
+      "dataLockingInternalId": 1
+     },
+     {
+      "name": "$$VIRTUAL_MEASURE_DIMENSION$$",
+      "package": "$$VIRTUAL_DIMENSION_PACKAGE$$",
+      "dataLockingInternalId": 4
+     },
+     {
+      "name": "Plan_Cycle",
+      "package": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+      "isAssociationViewNecessary": true,
+      "dataLockingInternalId": 2
+     },
+     {
+      "name": "Lock",
+      "package": "t.B.Cbifmh01bklfvf7ijs46d1ano3b",
+      "dataLockingInternalId": 3
+     }
+    ],
+    "defaultLockState": 2
+   },
+   "auth": {
+    "create": true,
+    "read": true,
+    "update": true,
+    "delete": true,
+    "execute": false,
+    "maintain": true,
+    "assign": false,
+    "createp": false,
+    "share": false
+   }
+  },
+  "isSample": false,
+  "isTemporary": false
+ },
+ "auth": {
+  "create": true,
+  "read": true,
+  "update": true,
+  "delete": true,
+  "execute": true,
+  "maintain": true,
+  "assign": false,
+  "createp": false,
+  "share": false
+ },
+ "dependentObjects": [],
+ "subObjects": [],
+ "refObjects": [],
+ "privateSubItemCount": 0,
+ "privateRefObjCount": 0
+}

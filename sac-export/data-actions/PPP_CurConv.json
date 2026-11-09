@@ -1,0 +1,196 @@
+{
+ "id": "527E18802BA4CE9414A6EC3227AC5B1D",
+ "name": "PPP_CurConv",
+ "description": "PPP Currency conversion",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-10-13T08:10:02.939Z",
+ "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "Entity",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": true,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     "TOTAL"
+    ],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "29461407-4910-4462-8757-572217051132",
+   "name": "",
+   "description": "",
+   "stepType": "DELETE_FACTS",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002"
+     ],
+     "hierarchyName": "H1"
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "GC_CR"
+     ],
+     "hierarchyName": null
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "Revenue",
+      "OTHER_INC",
+      "COS_DPR",
+      "OTHER_DCST",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER",
+      "COGS"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#",
+      "Hist_Open"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "deleteMode": "DELETE",
+   "disabled": false
+  },
+  {
+   "id": "28755557-5110-4926-3421-734660111501",
+   "name": "Currency Conversion",
+   "description": "Currency Conversion",
+   "stepType": "CONVERSION",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "GL": {
+     "memberIds": [
+      "OTHER_INC",
+      "OTHER_DCST",
+      "COS_DPR",
+      "ROYALTIES",
+      "CHOOCA",
+      "TAX_HIST",
+      "NON_CASH",
+      "GEN_ADMIN",
+      "HR",
+      "OTHER",
+      "Revenue",
+      "COGS"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_EntryNr": {
+     "memberIds": [
+      "BP002"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "conversionRules": [
+    {
+     "source": {
+      "hierarchyName": null,
+      "memberId": "CR"
+     },
+     "target": {
+      "hierarchyName": null,
+      "memberId": "GC_CR"
+     },
+     "fixedDate": null,
+     "delta": {
+      "granularity": "MONTH",
+      "shift": 0
+     },
+     "category": "DYNAMIC",
+     "rateVersion": null
+    }
+   ],
+   "writeMode": "OVERWRITE"
+  }
+ ]
+}

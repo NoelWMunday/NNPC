@@ -1,0 +1,67 @@
+{
+ "id": "CE6E1684BFC4A7E0A3A55D71174FE5AC",
+ "name": "PPP_Copy_PCycle_CAPEX",
+ "description": "PPP Copy PCycle - CAPEX model",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-08-04T07:16:27.921Z",
+ "defaultCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "52902923-2229-4115-3505-629603045775",
+   "name": "Planning cycle - Business premise",
+   "description": "Planning cycle - Business premise",
+   "stepType": "COPY",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "aggregatedDimensions": {},
+   "copyRules": [
+    {
+     "dimensionId": "Plan_Cycle",
+     "source": {
+      "hierarchyName": "H1",
+      "memberId": "2026-2030/01"
+     },
+     "target": {
+      "hierarchyName": "H1",
+      "memberIds": [
+       "#"
+      ]
+     }
+    }
+   ],
+   "writeMode": "OVERWRITE",
+   "copyFactor": "1"
+  }
+ ]
+}

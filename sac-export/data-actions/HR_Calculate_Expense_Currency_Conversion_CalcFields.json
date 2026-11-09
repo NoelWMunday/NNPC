@@ -1,0 +1,463 @@
+{
+ "id": "DA232E84BFC6B8B952F047BACECBBD72",
+ "name": "HR_Calculate_Expense_Currency_Conversion_CalcFields",
+ "description": "",
+ "createdBy": "GLORD",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-08-13T13:26:34.052Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "DateSelection",
+   "displayName": "DateSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "PlanningCycle",
+   "displayName": "PlanningCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "PCycle",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "EntitySelection",
+   "displayName": "Entity Selection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "ForecastPeriod",
+   "displayName": "ForecastPeriod",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "LIneItem",
+   "displayName": "LIneItem",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Ln",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "GL_Selection",
+   "displayName": "GL_Selection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "GL",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "SourceCurrency",
+   "displayName": "SourceCurrency",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "PPP_Currency",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "TargetMeasure",
+   "displayName": "TargetMeasure",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "CustomDimension1",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": "DECIMAL",
+   "decimalPlaces": 2,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "GC",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "16686229-1136-4008-3782-919973181001",
+   "name": "",
+   "description": "",
+   "stepType": "CONVERSION",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "GL": {
+     "memberIds": [
+      {
+       "paramRef": "GL_Selection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Date": {
+     "memberIds": [
+      {
+       "paramRef": "DateSelection"
+      }
+     ],
+     "hierarchyName": "YM"
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Ln": {
+     "memberIds": [
+      {
+       "paramRef": "LIneItem"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "EntitySelection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "Total"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "conversionRules": [
+    {
+     "source": {
+      "hierarchyName": null,
+      "memberId": "Source"
+     },
+     "target": {
+      "hierarchyName": null,
+      "memberId": "GC_TOT"
+     },
+     "fixedDate": null,
+     "delta": {
+      "granularity": "MONTH",
+      "shift": 0
+     },
+     "category": "DYNAMIC",
+     "rateVersion": null
+    }
+   ],
+   "writeMode": "OVERWRITE"
+  },
+  {
+   "id": "27238472-8680-4644-3221-406495819441",
+   "name": "",
+   "description": "",
+   "stepType": "COPY",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "GC_TOT"
+     ],
+     "hierarchyName": null
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "NGN"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Date": {
+     "memberIds": [
+      {
+       "paramRef": "DateSelection"
+      }
+     ],
+     "hierarchyName": "YM"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "EntitySelection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Grade": {
+     "memberIds": [
+      "Total",
+      "RS_05"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Ln": {
+     "memberIds": [
+      {
+       "paramRef": "LIneItem"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      {
+       "paramRef": "GL_Selection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "aggregatedDimensions": {},
+   "copyRules": [
+    {
+     "dimensionId": "PPP_Currency",
+     "source": {
+      "hierarchyName": "H1",
+      "memberId": "NGN"
+     },
+     "target": {
+      "hierarchyName": "H1",
+      "memberIds": [
+       "USD"
+      ]
+     }
+    }
+   ],
+   "writeMode": "APPEND",
+   "copyFactor": "1"
+  },
+  {
+   "id": "78540201-3163-4484-3343-389871714246",
+   "name": "Delete",
+   "description": "",
+   "stepType": "DELETE_FACTS",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "GC_TOT"
+     ],
+     "hierarchyName": null
+    },
+    "Date": {
+     "memberIds": [
+      {
+       "paramRef": "DateSelection"
+      }
+     ],
+     "hierarchyName": "YM"
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "NGN"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Ln": {
+     "memberIds": [
+      {
+       "paramRef": "LIneItem"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Grade": {
+     "memberIds": [
+      "Total",
+      "RS_05"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "EntitySelection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      {
+       "paramRef": "GL_Selection"
+      }
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "deleteMode": "DELETE",
+   "disabled": false
+  }
+ ]
+}

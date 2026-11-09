@@ -1,0 +1,111 @@
+{
+ "id": "E0415E8CBFC039DDEBF73F1F7EC06B34",
+ "name": "HR_Read_central_rates",
+ "description": "HR_Read_central_rates",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-08-12T16:04:30.338Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "39729804-7233-4532-3249-228024493674",
+   "name": "",
+   "description": "",
+   "stepType": "COPY",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "Ln": {
+     "memberIds": [
+      "TOTAL",
+      "PB",
+      "SS"
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "aggregatedDimensions": {},
+   "copyRules": [
+    {
+     "dimensionId": "PPP_Entity",
+     "source": {
+      "hierarchyName": "H1",
+      "memberId": "N01_HCM"
+     },
+     "target": {
+      "hierarchyName": "H1",
+      "memberIds": [
+       {
+        "paramRef": "Entity"
+       }
+      ]
+     }
+    },
+    {
+     "dimensionId": "PCycle",
+     "source": {
+      "hierarchyName": "H1",
+      "memberId": "HR"
+     },
+     "target": {
+      "hierarchyName": "H1",
+      "memberIds": [
+       "#"
+      ]
+     }
+    }
+   ],
+   "writeMode": "OVERWRITE",
+   "copyFactor": "1"
+  }
+ ]
+}

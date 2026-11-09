@@ -1,0 +1,1483 @@
+{
+ "id": "C9B8C684BFC20C3314779C5D673EB7B3",
+ "name": "HR_Calculate_Reference_Prod_Overhead_Split",
+ "description": "HR - Production/Overhead Split",
+ "createdBy": "GLORD",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-10-19T11:25:49.924Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "DateSelection",
+   "displayName": "DateSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "EntitySelection",
+   "displayName": "Entity Selection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CY",
+   "displayName": "CY",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2025",
+     "202512"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "30835282-4560-4738-3564-135902365411",
+   "name": "Initialise",
+   "description": "",
+   "stepType": "DELETE_FACTS",
+   "sourceContext": {
+    "Version": {
+     "memberId": {
+      "paramRef": "TargetVersion"
+     },
+     "hierarchyName": null
+    },
+    "CustomDimension1": {
+     "memberIds": [
+      "QtyInt",
+      "WorkSplitAllocation"
+     ],
+     "hierarchyName": null
+    },
+    "PPP_Currency": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "GL": {
+     "memberIds": [
+      "CALC_05",
+      "CALC_10"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "EntitySelection"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "Lock": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "PCycle": {
+     "memberIds": [
+      "#"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Ln": {
+     "memberIds": [
+      "AL"
+     ],
+     "hierarchyName": "H1"
+    },
+    "Date": {
+     "memberIds": [
+      [
+       "(all)",
+       "2020"
+      ],
+      [
+       "(all)",
+       "2021"
+      ],
+      [
+       "(all)",
+       "2022"
+      ],
+      [
+       "(all)",
+       "2023"
+      ],
+      [
+       "(all)",
+       "2024"
+      ],
+      [
+       "(all)",
+       "2025"
+      ],
+      [
+       "(all)",
+       "2026"
+      ],
+      [
+       "(all)",
+       "2027"
+      ],
+      [
+       "(all)",
+       "2028"
+      ],
+      [
+       "(all)",
+       "2029"
+      ],
+      [
+       "(all)",
+       "2030"
+      ],
+      [
+       "(all)",
+       "2031"
+      ],
+      [
+       "(all)",
+       "2032"
+      ],
+      [
+       "(all)",
+       "2033"
+      ],
+      [
+       "(all)",
+       "2034"
+      ],
+      [
+       "(all)",
+       "2035"
+      ],
+      [
+       "(all)",
+       "2036"
+      ],
+      [
+       "(all)",
+       "2037"
+      ],
+      [
+       "(all)",
+       "2038"
+      ],
+      [
+       "(all)",
+       "2039"
+      ],
+      [
+       "(all)",
+       "2040"
+      ],
+      [
+       "(all)",
+       "2041"
+      ]
+     ],
+     "hierarchyName": "YM"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "deleteMode": "DELETE",
+   "disabled": false
+  },
+  {
+   "id": "23480703-9927-4400-3324-442048633802",
+   "name": "AssignCostElement_Production",
+   "description": "",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "MEMBERSET [d/PPP_Currency] = (\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL].[h/H1], \"CALC_10\"))\nMEMBERSET [d/Lock] = (\"#\")\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/PPP_Entity] = (BASEMEMBER([d/PPP_Entity].[h/H1], %EntitySelection%))\nMEMBERSET [d/Ln] = (\"AL_PROD\")\nMEMBERSET [d/Grade] = (BASEMEMBER([d/Grade].[h/H1], \"Total\", \"RS_05\"))\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) TO NEXT(5,\"YEAR\",%CY%)\n\nIF [d/Date].[p/MONTHDESC] = \"Dec\" THEN\n\tDATA([d/CostElement] = [d/GL].[p/CostEelement], [d/Measures] = \"WorkSplitAllocation\") = \n\t\tRESULTLOOKUP([d/GL] = \"#\", [d/PPP_Currency] = \"#\", [d/Lock] = \"#\", [d/Grade] = \"#\", [d/CostElement] = \"#\", [d/Measures] = \"WorkSplitAllocation\", [d/Date] = \"000000\")\n\t\n\tDATA([d/CostElement] = [d/GL].[p/CostEelement], [d/Measures] = \"QtyInt\") = 1\nENDIF\n",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "EntitySelection",
+     "CY"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "multiVersionEnabled": false,
+    "deleteFactEnabled": false,
+    "multiModelEnabled": false,
+    "generateEmptyReferenceDataEnabled": false,
+    "dimensions": [
+     {
+      "dimensionId": "Version",
+      "usedHierarchy": "",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 300
+      },
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Version\""
+     },
+     {
+      "dimensionId": "Date",
+      "usedHierarchy": "YM",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "CALMONTH",
+       "sqlType": "VARCHAR",
+       "length": 6
+      },
+      "showTypeOfNotInHierarchy": 0,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Date\""
+     },
+     {
+      "dimensionId": "PCycle",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:PCycle\""
+     },
+     {
+      "dimensionId": "PPP_Entity",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Entity\""
+     },
+     {
+      "dimensionId": "PPP_Currency",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Currency\""
+     },
+     {
+      "dimensionId": "GL",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:GL\""
+     },
+     {
+      "dimensionId": "Lock",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Lock\""
+     },
+     {
+      "dimensionId": "Grade",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Grade\""
+     },
+     {
+      "dimensionId": "Ln",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Ln\""
+     },
+     {
+      "dimensionId": "CostElement",
+      "usedHierarchy": "default",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:CostElement\""
+     }
+    ],
+    "dimensionOfReferenceCubes": [],
+    "memberFilter": {
+     "memberSetFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Currency",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "GL",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "CALC_10"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Lock",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Entity",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "EntitySelection"
+             ],
+             "inputType": "PARAMETER"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Ln",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "AL_PROD"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Grade",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "Total",
+              "RS_05"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Date",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "FROM_TO",
+           "from": {
+            "type": "MEMBER_EXPRESSION",
+            "subType": "TIME_FUNCTION",
+            "functionName": "NEXT",
+            "offset": "1",
+            "granularity": {
+             "type": "GRANULARITY",
+             "subType": "GRANULARITY_TYPE",
+             "value": "YEAR"
+            },
+            "timePeriod": {
+             "type": "TIME_PERIOD",
+             "subType": "DATE_STRING",
+             "dateString": "CY",
+             "inputType": "PARAMETER"
+            }
+           },
+           "to": {
+            "type": "MEMBER_EXPRESSION",
+            "subType": "TIME_FUNCTION",
+            "functionName": "NEXT",
+            "offset": "5",
+            "granularity": {
+             "type": "GRANULARITY",
+             "subType": "GRANULARITY_TYPE",
+             "value": "YEAR"
+            },
+            "timePeriod": {
+             "type": "TIME_PERIOD",
+             "subType": "DATE_STRING",
+             "dateString": "CY",
+             "inputType": "PARAMETER"
+            }
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "additionalFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "CostElement",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          },
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "DIMENSION_PROPERTY",
+           "dimensionName": "GL",
+           "propertyName": "CostEelement",
+           "propertyValues": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "PPP_Currency",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Lock",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Ln",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "AL_PROD"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "GL",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Grade",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Date",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "000000"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "loadCalcMemberFilter": []
+    },
+    "globalOption": {
+     "timeHierarchy": "CALENDAR",
+     "signFlip": true,
+     "timeZoneOffset": {
+      "type": "TIME_ZONE_OFFSET",
+      "value": "0"
+     },
+     "usedKeyword": {
+      "usingTodayFunction": false
+     },
+     "readCalculatedMember": false
+    },
+    "publicVersions": [],
+    "referenceCubes": [],
+    "parameters": [
+     {
+      "displayKey": "EntitySelection",
+      "skipFormulaMemberValidation": false
+     },
+     {
+      "displayKey": "CY",
+      "skipFormulaMemberValidation": false
+     }
+    ],
+    "attributeFunctions": {},
+    "timeFunctions": [],
+    "measures": [
+     {
+      "name": "WorkSplitAllocation",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": true,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "QtyInt",
+      "dataTypeName": "BIGINT",
+      "length": null,
+      "scale": null,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     }
+    ],
+    "validateAllMeasuresFromCube": false,
+    "aggregationRequired": true,
+    "hasNoDataInstruction": false
+   }
+  },
+  {
+   "id": "62077339-8106-4519-3659-262283109615",
+   "name": "AssignCostElement_Overheads",
+   "description": "",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "MEMBERSET [d/PPP_Currency] = (\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL].[h/H1], \"CALC_05\"))\nMEMBERSET [d/Lock] = (\"#\")\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/PPP_Entity] = (BASEMEMBER([d/PPP_Entity].[h/H1], %EntitySelection%))\nMEMBERSET [d/Ln] = (\"AL_OH\")\nMEMBERSET [d/Grade] = (BASEMEMBER([d/Grade].[h/H1], \"RS_05\", \"Total\"))\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) TO NEXT(5,\"YEAR\",%CY%)\n\nIF [d/Date].[p/MONTHDESC] = \"Dec\" THEN\n\tDATA([d/CostElement] = [d/GL].[p/CostEelement], [d/Measures] = \"WorkSplitAllocation\") = \n\t\tRESULTLOOKUP([d/GL] = \"#\", [d/PPP_Currency] = \"#\", [d/Lock] = \"#\", [d/Grade] = \"#\", [d/CostElement] = \"#\", [d/Measures] = \"WorkSplitAllocation\", [d/Date] = \"000000\")\n\t\n\tDATA([d/CostElement] = [d/GL].[p/CostEelement], [d/Measures] = \"QtyInt\") = 1\nENDIF\n",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "EntitySelection",
+     "CY"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "multiVersionEnabled": false,
+    "deleteFactEnabled": false,
+    "multiModelEnabled": false,
+    "generateEmptyReferenceDataEnabled": false,
+    "dimensions": [
+     {
+      "dimensionId": "Version",
+      "usedHierarchy": "",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 300
+      },
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Version\""
+     },
+     {
+      "dimensionId": "Date",
+      "usedHierarchy": "YM",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "CALMONTH",
+       "sqlType": "VARCHAR",
+       "length": 6
+      },
+      "showTypeOfNotInHierarchy": 0,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Date\""
+     },
+     {
+      "dimensionId": "PCycle",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:PCycle\""
+     },
+     {
+      "dimensionId": "PPP_Entity",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Entity\""
+     },
+     {
+      "dimensionId": "PPP_Currency",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B:PPP_Currency\""
+     },
+     {
+      "dimensionId": "GL",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:GL\""
+     },
+     {
+      "dimensionId": "Lock",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Lock\""
+     },
+     {
+      "dimensionId": "Grade",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Grade\""
+     },
+     {
+      "dimensionId": "Ln",
+      "usedHierarchy": "H1",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:Ln\""
+     },
+     {
+      "dimensionId": "CostElement",
+      "usedHierarchy": "default",
+      "setByUser": false,
+      "includeMembersNotInHierarchy": false,
+      "idColumn": {
+       "idColumnName": "ID",
+       "sqlType": "NVARCHAR",
+       "length": 256
+      },
+      "showTypeOfNotInHierarchy": 1,
+      "dimensionViewName": "\"TENANT_B\".\"t.B.Crj0f13ha6urrkncndbh3nljj6t:CostElement\""
+     }
+    ],
+    "dimensionOfReferenceCubes": [],
+    "memberFilter": {
+     "memberSetFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Currency",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "GL",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "CALC_05"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Lock",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "PPP_Entity",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "EntitySelection"
+             ],
+             "inputType": "PARAMETER"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Ln",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "AL_OH"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Grade",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "BASEMEMBER",
+           "hierarchyName": "H1",
+           "members": [
+            {
+             "type": "MEMBER_EXPRESSION",
+             "subType": "MEMBER",
+             "memberNames": [
+              "RS_05",
+              "Total"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "MEMBERSET",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "operatorType": "EQ",
+         "dimensionName": "Date",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "FROM_TO",
+           "from": {
+            "type": "MEMBER_EXPRESSION",
+            "subType": "TIME_FUNCTION",
+            "functionName": "NEXT",
+            "offset": "1",
+            "granularity": {
+             "type": "GRANULARITY",
+             "subType": "GRANULARITY_TYPE",
+             "value": "YEAR"
+            },
+            "timePeriod": {
+             "type": "TIME_PERIOD",
+             "subType": "DATE_STRING",
+             "dateString": "CY",
+             "inputType": "PARAMETER"
+            }
+           },
+           "to": {
+            "type": "MEMBER_EXPRESSION",
+            "subType": "TIME_FUNCTION",
+            "functionName": "NEXT",
+            "offset": "5",
+            "granularity": {
+             "type": "GRANULARITY",
+             "subType": "GRANULARITY_TYPE",
+             "value": "YEAR"
+            },
+            "timePeriod": {
+             "type": "TIME_PERIOD",
+             "subType": "DATE_STRING",
+             "dateString": "CY",
+             "inputType": "PARAMETER"
+            }
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "additionalFilter": [
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "CostElement",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          },
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "DIMENSION_PROPERTY",
+           "dimensionName": "GL",
+           "propertyName": "CostEelement",
+           "propertyValues": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "PPP_Currency",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Lock",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "PCycle",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Ln",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "AL_OH"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "GL",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Grade",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "#"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "SCOPE_EXPRESSION",
+       "subType": "ADDITIONAL",
+       "dimensionFilters": [
+        {
+         "type": "DIMENSION_FILTER",
+         "dimensionName": "Date",
+         "filterExpressions": [
+          {
+           "type": "FILTER_EXPRESSION",
+           "subType": "MEMBER",
+           "memberNames": [
+            "000000"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "loadCalcMemberFilter": []
+    },
+    "globalOption": {
+     "timeHierarchy": "CALENDAR",
+     "signFlip": true,
+     "timeZoneOffset": {
+      "type": "TIME_ZONE_OFFSET",
+      "value": "0"
+     },
+     "usedKeyword": {
+      "usingTodayFunction": false
+     },
+     "readCalculatedMember": false
+    },
+    "publicVersions": [],
+    "referenceCubes": [],
+    "parameters": [
+     {
+      "displayKey": "EntitySelection",
+      "skipFormulaMemberValidation": false
+     },
+     {
+      "displayKey": "CY",
+      "skipFormulaMemberValidation": false
+     }
+    ],
+    "attributeFunctions": {},
+    "timeFunctions": [],
+    "measures": [
+     {
+      "name": "WorkSplitAllocation",
+      "dataTypeName": "DECIMAL",
+      "length": 38,
+      "scale": 2,
+      "readTypeMeasure": true,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     },
+     {
+      "name": "QtyInt",
+      "dataTypeName": "BIGINT",
+      "length": null,
+      "scale": null,
+      "readTypeMeasure": false,
+      "writeTypeMeasure": true,
+      "deleteTypeMeasure": false,
+      "inputType": "MEASURE"
+     }
+    ],
+    "validateAllMeasuresFromCube": false,
+    "aggregationRequired": true,
+    "hasNoDataInstruction": false
+   }
+  },
+  {
+   "id": "28243040-1434-4033-3180-327037249843",
+   "name": "CostElement_Check",
+   "description": "",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "MEMBERSET [d/PPP_Currency] = (\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL].[h/H1], \"CALC_05\", \"CALC_10\"))\nMEMBERSET [d/Lock] = (\"#\")\nMEMBERSET [d/PCycle] = (BASEMEMBER([d/PCycle].[h/H1], %PlanningCycle%))\nMEMBERSET [d/Date] = (BASEMEMBER([d/Date].[h/YM], %DateSelection%))\nMEMBERSET [d/PPP_Entity] = (BASEMEMBER([d/PPP_Entity].[h/H1], %EntitySelection%))\nMEMBERSET [d/CostElement] = (BASEMEMBER([d/CostElement].[h/CalcInputH], \"Calculated\"))\nMEMBERSET [d/Measures] = (\"WorkSplitAllocation\")\nMEMBERSET [d/Ln] = (\"AL_PROD\", \"AL_OH\")\nMEMBERSET [d/Grade] = (\"#\")\nFLOAT @PCentTot = 0\nINTEGER @OverheadCount = 0\nINTEGER @ProductionCount = 0\nVARIABLEMEMBER #SumGL OF [d/CostElement]\n\n\nFOREACH [d/CostElement], [d/Date].[p/YEAR]\n\t//DATA([d/CostElement]=#SumGL) = RESULTLOOKUP([d/Measures]=\"QtyInt\")\n\t\n\t@OverheadCount = 0\n\t@ProductionCount = 0\n\t@PCentTot = 0\n\t\n\tFOREACH [d/GL]\n\t\t@PCentTot = @PCentTot + RESULTLOOKUP()\n\t\n\t\tIF [d/GL].[p/Prod_Overhead] = \"Overhead\" THEN\n\t\t\t//@OverheadCount = @OverheadCount + 1\n\t\t\t@OverheadCount = RESULTLOOKUP([d/Measures]=\"QtyInt\") + 1\n\t\tENDIF\n\t\tIF [d/GL].[p/Prod_Overhead] = \"Production\" THEN\n\t\t//\t@ProductionCount = @ProductionCount + 1\n\t\t\t@ProductionCount = RESULTLOOKUP([d/Measures]=\"QtyInt\") + 1\n\t\tENDIF\n\tENDFOR\n\tIF @OverheadCount > 0 OR @ProductionCount > 0 THEN\n\t\tFOREACH [d/GL]\n\t\t\tIF @OverheadCount = 0 AND @ProductionCount > 0 THEN\n\t\t\t\tDATA() = 1 / @ProductionCount\n\t\t\tENDIF\n\t\t\tIF @OverheadCount > 0 AND @ProductionCount = 0 THEN\n\t\t\t\tDATA() = 1 / @OverheadCount\n\t\t\tENDIF\n\t\tENDFOR\n\tENDIF\nENDFOR",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "PlanningCycle",
+     "DateSelection",
+     "EntitySelection"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "referenceCubes": [],
+    "measures": []
+   },
+   "disabled": true
+  },
+  {
+   "id": "16004288-3415-4312-3149-442302005138",
+   "name": "CostElement_Check",
+   "description": "",
+   "stepType": "SCRIPT",
+   "panelType": "TEXTUAL",
+   "scriptContent": "MEMBERSET [d/PPP_Currency] = (\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL].[h/H1], \"CALC_05\", \"CALC_10\"))\nMEMBERSET [d/Lock] = (\"#\")\nMEMBERSET [d/PCycle] = (BASEMEMBER([d/PCycle].[h/H1], %PlanningCycle%))\nMEMBERSET [d/Date] = (BASEMEMBER([d/Date].[h/YM], %DateSelection%))\nMEMBERSET [d/PPP_Entity] = (BASEMEMBER([d/PPP_Entity].[h/H1], %EntitySelection%))\nMEMBERSET [d/CostElement] = (BASEMEMBER([d/CostElement].[h/CalcInputH], \"Calculated\"))\nMEMBERSET [d/Measures] = (\"WorkSplitAllocation\")\nMEMBERSET [d/Ln] = (\"AL_PROD\", \"AL_OH\")\nMEMBERSET [d/Grade] = (\"#\")\nFLOAT @PCentTot = 0\nINTEGER @OverheadCount = 0\nINTEGER @ProductionCount = 0\nFOREACH [d/CostElement]\n\t@OverheadCount = 0\n\t@ProductionCount = 0\n\t@PCentTot = 0\n\tDATA() = RESULTLOOKUP()\n\tFOREACH [d/GL]\n\t\t@PCentTot = @PCentTot + RESULTLOOKUP()\n\t\tDATA() = RESULTLOOKUP()\n\t\tIF [d/GL].[p/Prod_Overhead] = \"Overhead\" THEN\n\t\t\t@OverheadCount = @OverheadCount + 1\n\t\tENDIF\n\t\tIF [d/GL].[p/Prod_Overhead] = \"Production\" THEN\n\t\t\t@ProductionCount = @ProductionCount + 1\n\t\tENDIF\n\tENDFOR\n\tIF @OverheadCount > 0 OR @ProductionCount > 0 THEN\n\t\tFOREACH [d/GL]\n\t\t\tIF @OverheadCount = 0 AND @ProductionCount > 0 THEN\n\t\t\t\tDATA() = RESULTLOOKUP()\n\t\t\t\tDATA() = 1 / @ProductionCount\n\t\t\tENDIF\n\t\t\tIF @OverheadCount > 0 AND @ProductionCount = 0 THEN\n\t\t\t\tDATA() = RESULTLOOKUP()\n\t\t\t\tDATA() = 1 / @OverheadCount\n\t\t\tENDIF\n\t\tENDFOR\n\tENDIF\nENDFOR",
+   "memberFilter": {},
+   "isVisualPanel": false,
+   "scriptReferences": {
+    "referenceCubes": [],
+    "usedParameters": [
+     "PlanningCycle",
+     "DateSelection",
+     "EntitySelection"
+    ]
+   },
+   "isConvertedOnce": false,
+   "isTextScriptChanged": true,
+   "runtimeContext": {
+    "referenceCubes": [],
+    "measures": []
+   },
+   "disabled": true
+  }
+ ]
+}

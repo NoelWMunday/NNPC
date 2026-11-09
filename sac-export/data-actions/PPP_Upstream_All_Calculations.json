@@ -1,0 +1,313 @@
+{
+ "id": "C056EE84BFC39D3C4C720972D2EC2980",
+ "name": "PPP_Upstream_All_Calculations",
+ "description": "PPP_Upstream_All_Calculations",
+ "createdBy": "NMUNDAY",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-09-25T12:02:28.772Z",
+ "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget 2026 (Reference)",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     "TOTAL"
+    ],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "PCycle",
+   "displayName": "PCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "PCycle",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "#",
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CAPEX_Version",
+   "displayName": "CAPEX_Version",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Plan 2027-2031 iteration 01",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CAPEX_PCycle",
+   "displayName": "CAPEX_PCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "Plan_Cycle",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "#",
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CAPEX_Entity",
+   "displayName": "CAPEX_Entity",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     "TOTAL"
+    ],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "11313221-4482-4979-3491-287984858346",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:E1751684BFC7BECB4638AFAF2DC6D009",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    }
+   ]
+  },
+  {
+   "id": "39898980-4426-4459-8710-424408895433",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:F4851684BFC29D7E2AE8285F175632F1",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "PCycle"
+     }
+    }
+   ]
+  },
+  {
+   "id": "22363569-1416-4698-3029-426076393821",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:398D1684BFC6147FBA0CF82732D452F6",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "PCycle"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle_CAPEX"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CAPEX_PCycle"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Version_CAPEX"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CAPEX_Version"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity_CAPEX"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CAPEX_Entity"
+     }
+    }
+   ]
+  },
+  {
+   "id": "53559080-7214-4128-3985-361082042447",
+   "name": "",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:AC8D1684BFC501FD9340601FF47A5050",
+   "isNameSet": false,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "PCycle"
+     }
+    }
+   ]
+  }
+ ]
+}

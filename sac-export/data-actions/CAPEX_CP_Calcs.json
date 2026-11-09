@@ -1,0 +1,112 @@
+{
+ "id": "8AC1F08E2A366833AC511E80FFC49AA6",
+ "name": "CAPEX_CP_Calcs",
+ "description": "CAPEX_CP_Calcs",
+ "createdBy": "DPARUMAUL",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-08-06T02:44:24.995Z",
+ "defaultCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "41686567-3219-4501-3983-616970678252",
+   "name": "FUSD",
+   "description": "FUSD",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:E8AD28862A3261484EFBE29868C267BE",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "2026-2030/01"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "TOTAL"
+      ],
+      "hierarchyName": "H1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "21176450-7628-4303-3598-423172713173",
+   "name": "YTD",
+   "description": "YTD",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:934D80862A32D3776EF13BEA7CD9AB98",
+   "isNameSet": true,
+   "isDescriptionSet": true,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "PCycle"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "Entity"
+     },
+     "useDefaultValue": true,
+     "value": null
+    }
+   ]
+  }
+ ]
+}

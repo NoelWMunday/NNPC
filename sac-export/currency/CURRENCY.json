@@ -1,0 +1,306 @@
+{
+ "metadata": {
+  "id": {
+   "type": "RATE",
+   "name": "AE2C30802BA44A957EC61F3FA97861ED",
+   "package": "t.B"
+  },
+  "description": "Currencies",
+  "owner": "NMUNDAY",
+  "changedBy": "NMUNDAY",
+  "version": 9,
+  "active": true,
+  "tmCreated": "2026-06-04T14:01:09.049Z",
+  "tmModified": "2026-10-05T14:01:34.357Z",
+  "parentId": null,
+  "isPrivate": false,
+  "isSample": false,
+  "dataSize": 221,
+  "createAppVer": "2026.8.6",
+  "changeAppVer": "2026.15.12",
+  "isEmbedded": false,
+  "isTemporary": false,
+  "ownerDisplayName": "Noel",
+  "changedByDisplayName": "Noel",
+  "resource": {
+   "access": {
+    "": 906,
+    "AEBRAHIM": 975,
+    "NMUNDAY": 975
+   },
+   "accessExt": {},
+   "sharedToAny": true,
+   "canShare": true,
+   "auth": {
+    "assign": true,
+    "delete": true,
+    "read": true,
+    "update": true,
+    "create_doc": true,
+    "create_folder": true,
+    "copy": true,
+    "comment_view": true,
+    "comment_add": true,
+    "comment_delete": true
+   },
+   "resourceId": "AE2C30802BA44A957EC61F3FA97861ED",
+   "name": "CURRENCY",
+   "description": "Currencies",
+   "ownerId": "PUBLIC",
+   "ownerType": "PUBLIC",
+   "parentResId": "A25380802BA7173B30E4049941EF472A",
+   "resourceType": "RATE",
+   "resourceSubtype": "",
+   "objectId": "RATE:t.B:AE2C30802BA44A957EC61F3FA97861ED",
+   "packageId": "t.B",
+   "spaceId": null
+  }
+ },
+ "data": {
+  "id": "t.B:AE2C30802BA44A957EC61F3FA97861ED",
+  "name": "CURRENCY",
+  "packageName": "t.B",
+  "rateGroup": "t.B:AE2C30802BA44A957EC61F3FA97861ED",
+  "repositoryId": null,
+  "descriptions": {
+   "E": "Currencies"
+  },
+  "description": "Currencies",
+  "dataHeader": [
+   "sourceCurrency",
+   "targetCurrency",
+   "validFrom",
+   "category",
+   "rateType",
+   "rateVersion",
+   "rate"
+  ],
+  "data": [
+   [
+    "USD",
+    "GBP",
+    "20150101",
+    "",
+    "Closing",
+    "",
+    0.766758
+   ],
+   [
+    "NGN",
+    "USD",
+    "20200101",
+    "",
+    "Closing",
+    "",
+    0.00076923
+   ],
+   [
+    "AED",
+    "USD",
+    "20200101",
+    "",
+    "Closing",
+    "",
+    0.27
+   ],
+   [
+    "GBP",
+    "USD",
+    "20200101",
+    "",
+    "Closing",
+    "",
+    1.35
+   ],
+   [
+    "AED",
+    "USD",
+    "20200101",
+    "",
+    "Average",
+    "",
+    0.27
+   ],
+   [
+    "GBP",
+    "USD",
+    "20200101",
+    "",
+    "Average",
+    "",
+    1.35
+   ],
+   [
+    "USD",
+    "NGN",
+    "20230101",
+    "",
+    "Closing",
+    "",
+    1400
+   ],
+   [
+    "USD",
+    "NGN",
+    "20200101",
+    "",
+    "Closing",
+    "",
+    850
+   ],
+   [
+    "USD",
+    "NGN",
+    "20240101",
+    "",
+    "Closing",
+    "",
+    1400
+   ],
+   [
+    "USD",
+    "NGN",
+    "20250101",
+    "",
+    "Closing",
+    "",
+    1700
+   ],
+   [
+    "USD",
+    "NGN",
+    "20260101",
+    "",
+    "Closing",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20270101",
+    "",
+    "Closing",
+    "",
+    1600
+   ],
+   [
+    "USD",
+    "NGN",
+    "20290101",
+    "",
+    "Closing",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20300101",
+    "",
+    "Closing",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20220101",
+    "",
+    "Average",
+    "",
+    850
+   ],
+   [
+    "USD",
+    "NGN",
+    "20230101",
+    "",
+    "Average",
+    "",
+    1400
+   ],
+   [
+    "USD",
+    "NGN",
+    "20240101",
+    "",
+    "Average",
+    "",
+    1400
+   ],
+   [
+    "USD",
+    "NGN",
+    "20250101",
+    "",
+    "Average",
+    "",
+    1700
+   ],
+   [
+    "USD",
+    "NGN",
+    "20260101",
+    "",
+    "Average",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20270101",
+    "",
+    "Average",
+    "",
+    1600
+   ],
+   [
+    "USD",
+    "NGN",
+    "20290101",
+    "",
+    "Average",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20300101",
+    "",
+    "Average",
+    "",
+    1500
+   ],
+   [
+    "USD",
+    "NGN",
+    "20200101",
+    "",
+    "Average",
+    "",
+    850
+   ]
+  ],
+  "isSample": false,
+  "isTemporary": false
+ },
+ "auth": {
+  "create": true,
+  "read": true,
+  "update": true,
+  "delete": true,
+  "execute": true,
+  "maintain": true,
+  "assign": true,
+  "createp": true,
+  "share": true
+ },
+ "dependentObjects": [],
+ "subObjects": [],
+ "refObjects": [],
+ "privateSubItemCount": 0,
+ "privateRefObjCount": 0
+}

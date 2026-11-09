@@ -1,0 +1,397 @@
+{
+ "id": "92A13E84BFC61D8B3076C1154DA09AE0",
+ "name": "HR_Calculate_Expense_Health_Contribution",
+ "description": "HR Health Contribution Expense",
+ "createdBy": "GLORD",
+ "changedBy": "NMUNDAY",
+ "modified": "2026-08-13T09:47:43.103Z",
+ "defaultCubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "DateSelection",
+   "displayName": "DateSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "GradeSelection",
+   "displayName": "GradeSelection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Grade",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "PlanningCycle",
+   "displayName": "PlanningCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "PCycle",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": null,
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "EntitySelection",
+   "displayName": "Entity Selection",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": "H1",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "ForecastPeriod",
+   "displayName": "ForecastPeriod",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CurrentYr",
+   "displayName": "CurrentYr",
+   "description": "YYYY e.g. 2027",
+   "inputType": "PROMPT",
+   "cubeId": "Crj0f13ha6urrkncndbh3nljj6t",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [
+     [
+      "(all)",
+      "2027"
+     ]
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "30172119-8137-4553-3983-339903503301",
+   "name": "Health_Calc_NNPC",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:51F92684BFC2040AC5693C7FA2225918",
+   "isNameSet": true,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetGrade"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "Total"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetGL"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "5020001"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "EntitySelection"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "DateSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "DateSelection"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Parameter"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "PR_005"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EscallationParam"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "PR_010"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CurrencySelection"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "MeasureSelectionCY"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "CurrentYr"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentYr"
+     }
+    }
+   ]
+  },
+  {
+   "id": "26351198-5141-4162-3961-741310552631",
+   "name": "Health_Calc_NRL",
+   "description": "",
+   "stepType": "NESTED_SEQUENCE",
+   "nestedSequenceId": "PLANNINGSEQUENCE:t.B:51F92684BFC2040AC5693C7FA2225918",
+   "isNameSet": true,
+   "isDescriptionSet": false,
+   "parameterValues": [
+    {
+     "id": {
+      "displayKey": "TargetVersion"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "TargetVersion"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetGrade"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "NRL 2a",
+       "NRL 2b",
+       "NRL 3a",
+       "NRL 3b",
+       "NRL 4a",
+       "NRL 4b",
+       "NRL 5a",
+       "NRL 5b",
+       "NRL 6a",
+       "NRL 6b",
+       "NRL 7a",
+       "NRL 7b",
+       "NRL 8a",
+       "NRL 8b",
+       "NRL 9a"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "TargetGL"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "5020002"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EntitySelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "EntitySelection"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "DateSelection"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "DateSelection"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "Parameter"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "PR_040"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "EscallationParam"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "memberIds": [
+       "PR_010"
+      ],
+      "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CurrencySelection"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "MeasureSelectionCY"
+     },
+     "useDefaultValue": true,
+     "value": null
+    },
+    {
+     "id": {
+      "displayKey": "CurrentYr"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CurrentYr"
+     }
+    }
+   ]
+  }
+ ]
+}

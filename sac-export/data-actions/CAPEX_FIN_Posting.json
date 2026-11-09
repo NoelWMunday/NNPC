@@ -1,0 +1,276 @@
+{
+ "id": "9238988E2A33A777B2833072DC4491DA",
+ "name": "CAPEX FIN Posting",
+ "description": "CAPEX FIN Posting",
+ "createdBy": "DPARUMAUL",
+ "changedBy": "DPARUMAUL",
+ "modified": "2026-07-13T14:04:41.249Z",
+ "defaultCubeId": "Cmjk8h1ha64vea3kk9m4b4vir7g",
+ "parameters": [
+  {
+   "displayKey": "TargetVersion",
+   "displayName": "",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Version",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "public.Budget",
+    "hierarchyName": null
+   },
+   "isTargetVersionParameter": true
+  },
+  {
+   "displayKey": "Entity",
+   "displayName": "Entity",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "PPP_Entity",
+   "hierarchyName": null,
+   "hierarchyLevel": "ANY",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "MULTI",
+   "value": {
+    "memberIds": [],
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "PCycle",
+   "displayName": "PCycle",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "cubeType": null,
+   "dimensionId": "Plan_Cycle",
+   "hierarchyName": null,
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": "2026-2030/01",
+    "hierarchyName": "H1"
+   },
+   "isTargetVersionParameter": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "27606612-2101-4115-3563-410448352619",
+   "name": "CAPEX Fin Posting",
+   "description": "CAPEX Fin Posting",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      {
+       "paramRef": "PCycle"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "AMT_GL_GC",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "DR",
+         "DR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "sourceDimensionId": "GL",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Capex",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "sourceDimensionId": "Plan_Cycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    }
+   }
+  },
+  {
+   "id": "22749969-9340-4610-3430-326483036533",
+   "name": "CAPEX Contra Entry",
+   "description": "CAPEX Contra Entry",
+   "stepType": "CROSSMODELCOPY",
+   "sourceCubeId": "Cbifmh01bklfvf7ijs46d1ano3b",
+   "sourceContext": {
+    "Version": {
+     "memberId": "public.Budget",
+     "hierarchyName": null
+    },
+    "Plan_Cycle": {
+     "memberIds": [
+      {
+       "paramRef": "PCycle"
+      }
+     ],
+     "hierarchyName": "H1"
+    },
+    "PPP_Entity": {
+     "memberIds": [
+      {
+       "paramRef": "Entity"
+      }
+     ],
+     "hierarchyName": "H1"
+    }
+   },
+   "sourceContextFilterParamRefs": [],
+   "writeMode": "OVERWRITE",
+   "mappings": {
+    "CustomDimension1": {
+     "sourceDimensionId": "CustomDimension1",
+     "autoMappingStrategy": "NONE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [
+      {
+       "source": {
+        "memberId": "AMT_GL_GC",
+        "hierarchyName": null
+       },
+       "target": {
+        "memberIds": [
+         "CR",
+         "CR_GC"
+        ],
+        "hierarchyName": null
+       }
+      }
+     ]
+    },
+    "Date": {
+     "sourceDimensionId": "Date",
+     "autoMappingStrategy": "START_DATE",
+     "completionMode": "IGNORE",
+     "completionDefaultMember": null,
+     "memberMappings": [],
+     "autoMappingOptions": {
+      "sourceProperty": "DATE",
+      "targetProperty": "DATE"
+     }
+    },
+    "PPP_Currency": {
+     "sourceDimensionId": "PPP_Currency",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Entity": {
+     "sourceDimensionId": "PPP_Entity",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_EntryNr": {
+     "defaultMember": {
+      "memberId": "Capex",
+      "hierarchyName": "H1"
+     },
+     "sourceDimensionId": null
+    },
+    "PCycle": {
+     "sourceDimensionId": "Plan_Cycle",
+     "autoMappingStrategy": "IDENTICAL_NAMES",
+     "completionMode": "MANUAL",
+     "completionDefaultMember": null,
+     "memberMappings": []
+    },
+    "PPP_Account": {
+     "defaultMember": {
+      "memberId": "LIABILITIES",
+      "hierarchyName": "parentId"
+     },
+     "sourceDimensionId": null
+    }
+   }
+  }
+ ]
+}
