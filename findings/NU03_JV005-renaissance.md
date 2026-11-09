@@ -48,21 +48,64 @@ then read them by **exact `PPP_EntryNr` code**:
 So: Seismic Acquisition landing on `UAP_139` (as seen on the card) means it is treated as a facility,
 not seismic, in capital allowance — the calculation is right, the input is on the wrong code.
 
-## 4. Opex appearing three times (Host Community, COS Depreciation, Depletion)
+## 4. Opex appearing three times (Host Community, COS Depreciation, Depletion) — confirmed data issue
 
-Each of those three lines reads `AMT_220` through a different key (`#`, `UAP_5800_15`, `UAP_5800_16`).
-1,488.52 appearing on all three means the loaded Opex sits on a member that all three resolve to —
-most likely posted to a parent or `#` rather than to one `UAP_OPEX_*` base member. Also note the HCDT
-"base" line (TAX015_15) is *meant* to show total Opex Oil; it is a basis, not a cost, so it should not
-be added to the other two when totalling. **Needs the `PPP_EntryNr` hierarchy to confirm** (§7).
+From the `PPP_EntryNr` hierarchy (SAC, 9 Nov):
 
-## 5. Possible script inconsistency (to confirm, not yet a defect)
+| Code | Description | Parent |
+|---|---|---|
+| `UAP_5800_14` | Host Community | `UAP_OPEX_CST` |
+| `UAP_5800_15` | COS Depreciation | `UAP_OPEX_CST` |
+| `UAP_5800_16` | Depletion | `UAP_OPEX_CST` |
 
-`PPP_Upstream_Royalties` step 14 (CAPEX Oil) reads only `UAP_CAPEX_CST`; step 15 (CAPEX Gas) reads
-`UAP_CAPEX_CST` **plus** `UAP_CAPEX_OTH`. If "Other Capex (not attributable to production)" (`UAP_141`)
-sits under `UAP_CAPEX_OTH`, Oil excludes non-production capex and Gas includes it. Renaissance has
-Other Capex on Oil only ($31.12M 2026), so it doesn't move Renaissance today, but it would for a JV
-with gas-side Other Capex. Question for the build team: which is intended?
+All three are **base members of `UAP_OPEX_CST`**, so 1,488.52 on each means the loaded file posted the
+OPEX Oil row to all three entry numbers. Consequences, all from the data not the scripts:
+
+- Royalties cost base CST05_05 sums every `UAP_OPEX_CST` base member → Opex Oil 3× (4,465.56).
+- Tax GL entries post `UAP_5800_15` as COS Depreciation (GL 4202026) and `UAP_5800_16` as Depletion
+  (GL 5230003) → Opex re-labelled as depreciation and depletion.
+
+Fix: post OPEX to a single Opex entry (not 5800_14/15/16). Depreciation and depletion are their own
+inputs and the source block has none.
+
+## 5. Capex entry numbers — what the codes mean
+
+| Code | Description | Parent | Read by Tax capital allowance as |
+|---|---|---|---|
+| `UAP_110` | Acquisition | CAPEX_CST | seismic/exploration |
+| `UAP_120` | Exploration – non drilling | CAPEX_CST | seismic/exploration |
+| `UAP_121` | Exploration & Appraisal drilling | CAPEX_CST | exploration wells |
+| `UAP_124` | Exploration safety loss | CAPEX_CST | exploration wells |
+| `UAP_130` | Production Well Oil | CAPEX_CST | development drilling (÷5) |
+| `UAP_131` | Production Well Gas | CAPEX_CST | — (gas via AMT_210 total) |
+| `UAP_132` / `136` | Capital Construction Oil | CAPEX_CST | facilities |
+| `UAP_133` / `137` | Capital Construction Gas | CAPEX_CST | — |
+| `UAP_138` | IPP Infrastructure | CAPEX_CST | facilities |
+| `UAP_139` | Terminals | CAPEX_CST | facilities |
+| `UAP_141` | Land and Building | CAPEX_CST | — |
+| `UAP_140` | Movable Asset | **CAPEX_OTH** (non-production) | — |
+
+`UAP_CAPEX_OTH` holds only `UAP_140`. On the card, Devt Well_Gas went to Gas `UAP_140 Movable` —
+i.e. gas development wells were loaded as non-production movable assets.
+
+Suggested mapping for the new workbook (**for Noel to confirm**, not applied):
+
+| Source row | Oil (`AMT_200`) | Gas (`AMT_210`) |
+|---|---|---|
+| Seismic Acquisition (70) | `UAP_110` | |
+| Seismic Processing / Reprocessing (71–72) | `UAP_120` | |
+| Exploration / Appraisal Wells (73–74) | `UAP_121` | |
+| Devt / Comptn / W-Over Well Oil (75–77) | `UAP_130` | |
+| CAPEX Facilities Oil (78) | `UAP_132` (or 139 if terminals) | |
+| Other Capex – not attributable to production (79) | `UAP_140`? | |
+| Devt / Comptn / W-Over Well Gas (80–82) | | `UAP_131` |
+| CAPEX Facilities Gas (83) | | `UAP_133` |
+| OPEX Oil / Gas (84–85) | one `UAP_OPEX_CST` base, e.g. `UAP_4110` | same |
+
+"Other Capex (not attributable to production)" by its name belongs in `UAP_CAPEX_OTH` (`UAP_140`), but
+the Royalties Oil cost base (step 14) reads only `UAP_CAPEX_CST`, while the Gas base (step 15) also
+reads `UAP_CAPEX_OTH`. Whether non-production capex should be in the royalty/cost-oil base needs one
+rule applied to both.
 
 ## 6. Equity participation (55.1% in SAC vs 58.7% weighted average)
 
