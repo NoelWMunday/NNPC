@@ -1,0 +1,49 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = "#"
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
+
+// *** DEBUG AREA - CAN LEAVE THESE COMMENT LINES FOR USE WHEN DEBUGGING ***
+//DATA([d/WPLn]="REV_05") = 1
+//DATA([d/WPLn]="REV_05") = RESULTLOOKUP([d/WPLn]="AMT_80")
+//DATA([d/WPLn]="REV_05") = RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")
+
+// Annual oil production
+// from kilo barrels per day to millions barrels per year means (x 365 / 1000) so result is in "mmbbl"
+DATA([d/WPLn]="REV_05") = (RESULTLOOKUP([d/WPLn]="AMT_80") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")) / 1000
+
+// Ave monthly oil production
+DATA([d/WPLn]="AMT_81") = RESULTLOOKUP([d/WPLn]="REV_05") / RESULTLOOKUP([d/WPLn]="UOM_65")
+
+// Ave monthly oil production per field
+DATA([d/WPLn]="AMT_82") = RESULTLOOKUP([d/WPLn]="AMT_81") / RESULTLOOKUP([d/WPLn]="AMT_97")
+
+// Oil revenue
+// from mmbbl to price per barrel and revenue in single dollars means x 1 000 000 to convert to single units
+DATA([d/WPLn]="REV_10") = RESULTLOOKUP([d/WPLn]="REV_05") * RESULTLOOKUP([d/WPLn]="GA_015", [d/PPP_Entity] = "#", [d/Lock]="Central") * 1000000
+
+// Annual gas sales
+DATA([d/WPLn]="REV_15") = RESULTLOOKUP([d/WPLn]="AMT_85") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")
+
+// Gas revenue
+// Price is already per mmscf so no conversion to single dollar units necessary
+DATA([d/WPLn]="REV_20") = RESULTLOOKUP([d/WPLn]="REV_15") * RESULTLOOKUP([d/WPLn]="GA_020", [d/PPP_Entity] = "#", [d/Lock]="Central") * 1000
+
+// Total revenue
+DATA([d/WPLn]="REV_25") = RESULTLOOKUP([d/WPLn]="REV_10") + RESULTLOOKUP([d/WPLn]="REV_20") 
+
+// NNPC Share of revenue
+DATA([d/WPLn]="REV_30") = RESULTLOOKUP([d/WPLn]="REV_25") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+

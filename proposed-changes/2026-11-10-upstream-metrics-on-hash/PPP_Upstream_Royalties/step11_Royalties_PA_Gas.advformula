@@ -1,0 +1,31 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #RR_RATE OF [d/WPLn]
+DATA([d/WPLn] = #RR_RATE) =  (RESULTLOOKUP([d/WPLn]="SET20_20",[d/Date]="000000") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR04_020",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET20_25",[d/Date]="000000") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR04_025",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET20_30",[d/Date]="000000") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR04_030",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+							
+							
+DATA([d/WPLn]="RC40_20") = RESULTLOOKUP([d/WPLn] = #RR_RATE) * RESULTLOOKUP([d/WPLn]="REV_20")
+
+DATA([d/WPLn]="RC40_25") = RESULTLOOKUP([d/WPLn] = "RC40_20") * 
+							RESULTLOOKUP([d/WPLn]="AMT_90") / 100

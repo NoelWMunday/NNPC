@@ -9,10 +9,13 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
 - Model `PPP_BUSPREMISE` (description "Business premise") holds the Upstream work programme. Measure
   `Value_WPLn` ("Metric") is a **unit** measure: `WPLn` rows carry their own UOM, and a "$" UOM row
   simulates currency.
-- **Inputs** (upload and story input columns CY_YTD, CY+1 … CY+5) are on `PPP_Currency = USD`
-  (2026 also has an NGN input column, CY+1 (N)).
-- **Calculated lines** are on `PPP_Currency = "#"`. Scripts read inputs with `[d/PPP_Currency]="USD"` and
-  write to `"#"` (the `PPP_Upstream_CostAlloc` pattern).
+- **Capex/Opex inputs** `AMT_200/210/220/230` (by `UAP_*` entry; upload and the Capex/Opex input
+  tables) are on `PPP_Currency = USD` (2026 also has an NGN input column, CY+1 (N)).
+- **Metrics** `AMT_46/80/85/90/97`, `UOM_*` (Metrics table) and **settings** `SET*` (Settings table)
+  are on `PPP_Currency = "#"`. (Corrected 10 Nov — #19 first assumed all inputs were USD.)
+- **Calculated lines** are on `PPP_Currency = "#"`. Scripts read Capex/Opex inputs with
+  `[d/PPP_Currency]="USD"` and write to `"#"` (the `PPP_Upstream_CostAlloc` pattern).
+- Before changing a lookup's currency, confirm which story table captures that line and what it writes.
 - **Central assumptions** (`GA_*`, `RR*`, `TL*`, `TA*`) are on `PPP_Entity="#"`, `Lock="Central"`,
   `PPP_Currency="#"`.
 - **Messy data is deliberate.** Stale or irrelevant records are left in the model so scripts are proven

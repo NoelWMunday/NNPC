@@ -1,0 +1,155 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Revenue",
+  "step": 2,
+  "stepId": "39554489-8334-4493-3947-341918977611",
+  "name": "Revenue calculation",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Revenue/step02_Revenue_calculation.advformula",
+  "beforeSha256": "9fdc3b453efe37ba06baac1ef9389f8e0145fa03331cb563a342308727dc85a0",
+  "afterSha256": "9e084ff81b9496be78c8a91e7791b1b537c455be74fe7a4d0041635da67282a5"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 3,
+  "stepId": "33359838-4041-4736-3379-620294774792",
+  "name": "Royalties - Tranch volumes",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step03_Royalties_Tranch_volumes.advformula",
+  "beforeSha256": "18ef172ad7fbfd865609f691c3d713ac0df82bab5e21af9cfaca0c1bd9aeb266",
+  "afterSha256": "c1b4482e24af9b966eb69fc0d6333114255883d3f49dd26b46de6b7cd1c0b83e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 4,
+  "stepId": "37952139-8333-4223-3257-719128760945",
+  "name": "Royalties - Values (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step04_Royalties_Values_Oil.advformula",
+  "beforeSha256": "3643aa259585e08c8c24fc98579ce5d0efcda15a66c09b73752183270f6a41c0",
+  "afterSha256": "27a20aa8b130f13e77cbdc1e20c5136c0c1d83be32e64dd4b40044222d4a7a76"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 5,
+  "stepId": "37226163-3438-4818-3915-211233354993",
+  "name": "PIA Royalties - Production based (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step05_PIA_Royalties_Production_based_Oil.advformula",
+  "beforeSha256": "9e9ec5e392b5c6819f8d2bf7c644950ffbccc0c875400d08b52651bed84ae383",
+  "afterSha256": "18ac09ba78ad6d7cd0d682c56bd855a26c5fbcf31df2271f45baf9dcb4dd65db"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 6,
+  "stepId": "10149801-2386-4964-3450-286721252209",
+  "name": "PIA Royalties - Equity production based (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step06_PIA_Royalties_Equity_production_based_Oil.advformula",
+  "beforeSha256": "0be59182e678c15659b5a114b5cd3572119b9c58e86307de500dc1736c942680",
+  "afterSha256": "f0016c8feeac0bf89dffa4d25fdedb6aa4228554b4092e0af072740af31bed08"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 7,
+  "stepId": "41732951-1649-4612-3015-129643642689",
+  "name": "PIA Royalties - Price based (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step07_PIA_Royalties_Price_based_Oil.advformula",
+  "beforeSha256": "f702bdcab0bef29130208e50926f742d51fb14558f0d81cd8ca345b0b875f36c",
+  "afterSha256": "26ca868a2f67de66bf0c732880d2232d07ad0c9cba529415843145333927a4cc"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 8,
+  "stepId": "17980592-1173-4500-3328-336337879922",
+  "name": "PIA Royalties - Gas",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step08_PIA_Royalties_Gas.advformula",
+  "beforeSha256": "bf4a740d739ea553170b0c950ef3c80e10722a4c863709a6daad402a964c43ea",
+  "afterSha256": "2fd849286172e1d4a32d19d776fabd370a272fc9b24d6fef981fe6e08e0c794e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 9,
+  "stepId": "31560633-7229-4952-3731-716931590851",
+  "name": "Royalties - PA Production based (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step09_Royalties_PA_Production_based_Oil.advformula",
+  "beforeSha256": "62fc6817f33fa0def707bf68f1a0cee99034bf4b0172a703865f2ebe55f393c6",
+  "afterSha256": "8bce6efacf17b7be93cf818cc6b854593419fecc869a13cad21b04f65e6d4299"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 10,
+  "stepId": "42186099-4241-4681-3833-196641809618",
+  "name": "Royalties - PA Price based (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step10_Royalties_PA_Price_based_Oil.advformula",
+  "beforeSha256": "cdbef10b583534f393ed7186258dcf0ec2fe7bd57be2a48cc2df52521e644aae",
+  "afterSha256": "ecff7fe32bd83221e5f5824c695733aaba1240fe0bc14941878f4674c1bd5946"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 11,
+  "stepId": "20988865-8825-4221-3513-838973361811",
+  "name": "Royalties - PA Gas",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step11_Royalties_PA_Gas.advformula",
+  "beforeSha256": "68f54263cb318392762c8cb309d4a128822aaaf2bcde088a0a0408708437de3f",
+  "afterSha256": "cd6d499720ca01187b48ce58670d4eefe4a4ada917674b3d5cb81ed247d8ad26"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 13,
+  "stepId": "17045155-9036-4356-3336-225589503441",
+  "name": "Gas flare penalty",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step13_Gas_flare_penalty.advformula",
+  "beforeSha256": "b25cc6b9de8817603d186bf2f32bdcde90ae4e7bfcb8cc9bc901532da277fe1a",
+  "afterSha256": "c07d178947f9dc06109a45a646e93968c2b1a4f48778f5578088cbef768cf75b"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 18,
+  "stepId": "49110097-4714-4537-8673-883877670407",
+  "name": "Total CAPEX / OPEX Equity",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step18_Total_CAPEX_OPEX_Equity.advformula",
+  "beforeSha256": "47a57d919f24100a1fc9694d109dc560698d79dc41298760f866a502796d8b24",
+  "afterSha256": "92796602b7ddf13f92ceb458f6b281a4bda90914a6240a929c33ce25e6668620"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 21,
+  "stepId": "38725138-6166-4445-3414-241368257437",
+  "name": "Development cost",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Royalties/step21_Development_cost.advformula",
+  "beforeSha256": "e0596f13a98fd80b6b8f22cb5b21f93adde64b5b477b21fd78feb637d7dcc844",
+  "afterSha256": "3719602f0b6a68cadb04054c3351767e55bce149127e9f1a73c5c45ed9aa2491"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 2,
+  "stepId": "38725138-6166-4445-3414-241368257437",
+  "name": "Development cost",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Tax/step02_Development_cost.advformula",
+  "beforeSha256": "97051da00013366f9ef9667ac54da88ace21e52827631f92518e79326d0c0f6f",
+  "afterSha256": "0bd6f545bd7d59cae19a02b4f19d959cd8e3d8462ab69fa3702ed983d079c38a"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 16,
+  "stepId": "36244057-6940-4028-3612-312528377653",
+  "name": "Tax - Hydrocarbon Tax (CPR Limit & HT Payable)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Tax/step16_Tax_Hydrocarbon_Tax_CPR_Limit_HT_Payable.advformula",
+  "beforeSha256": "37f0ba23f3b030c38188da158cc8cb9153961ae1bbbd8fa207220556bd121b79",
+  "afterSha256": "6ca054fc764e62ba7985d923bfd90a895139654d3bff3fcecbc3e66a71fda86d"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 19,
+  "stepId": "63935334-7079-4055-3760-822667742926",
+  "name": "Tax - PPT Tax (Oil)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Tax/step19_Tax_PPT_Tax_Oil.advformula",
+  "beforeSha256": "fa60f8c05ae9da8df0313f22211f807ef893ccbc2e3625a0ee65b28de8f521e4",
+  "afterSha256": "a7f58c502aa56f2e8c9624fac23461f7e04f08493bfc0af9b99947b61e2c0f3e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 20,
+  "stepId": "24593923-5417-4771-3686-524684309252",
+  "name": "Tax - CITA (Oil & Gas)",
+  "file": "proposed-changes/2026-11-10-upstream-metrics-on-hash/PPP_Upstream_Tax/step20_Tax_CITA_Oil_Gas.advformula",
+  "beforeSha256": "3f955ff5503633de7154fab38a9671d0383919400f7b0687b5afa4a5b5bcf1dd",
+  "afterSha256": "8cc4610a3e6530e8bdbffcc76f7f1b2fad6477da44e6308f801995867a58a620"
+ }
+]

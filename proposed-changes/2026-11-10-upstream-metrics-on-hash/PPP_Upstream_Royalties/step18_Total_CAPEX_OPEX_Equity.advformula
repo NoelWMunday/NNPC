@@ -1,0 +1,34 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "AMT_210")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+
+
+DATA([d/WPLn]="CST10_05") = 
+		RESULTLOOKUP([d/WPLn]="CST05_05")  * 
+		RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+
+DATA([d/WPLn]="CST10_10") = 
+		RESULTLOOKUP([d/WPLn]="CST05_10") * 
+		RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+
+DATA([d/WPLn]="CST10_15") = 
+		RESULTLOOKUP([d/WPLn]="CST05_15") * 
+		RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+
+DATA([d/WPLn]="CST10_20") = 
+		RESULTLOOKUP([d/WPLn]="CST05_20") * 
+		RESULTLOOKUP([d/WPLn]="AMT_90") / 100
