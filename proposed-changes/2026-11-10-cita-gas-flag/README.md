@@ -2,7 +2,7 @@
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
 - **Decision (Noel, 10 Nov 14:05):** approved. Take the PIA flag out of the gas CITA line.
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 14:13 SAST (commit `9e9bd12`, `PPP_Upstream_Tax` v12) — see `DEPLOYMENTS.md`. Awaiting retest.
 - **Where:** `PPP_Upstream_Tax` › 20 "Tax - CITA (Oil & Gas)" › line 25 (now lines 25–26) — [DIFF.md](DIFF.md)
 
 `TAX090_20` (JV CITA – Gas) = CITA rate × chargeable profit gas (`TAX080_10`) / 100, without `× SET10_10`. That matches NUIMS row
