@@ -2,7 +2,7 @@
 
 - **Trello:** #19 https://trello.com/c/VYeHuGjg — *DEFECT: Upstream data actions read PPP_Currency = # — must read USD*
 - **Decision (Noel, 9 Nov):** inputs stay on `PPP_Currency = USD`; the data actions change.
-- **Status:** PROPOSED — not applied in SAC
+- **Status:** APPROVED 10 Nov — applying
 - **Scripts:** one file per changed step in the sub-folders; full before/after in [DIFF.md](DIFF.md)
 - **Generator:** `tools/propose_currency_usd.py` (re-run against a fresh export if SAC changes first)
 
@@ -43,15 +43,15 @@ IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 ENDIF
 ```
 
-## Confirm before applying
+## Decisions (Noel, 10 Nov)
 
-1. **`AMT_90` (NNPC equity), `AMT_97`, `AMT_46` and the `SET*` flags** — are these on USD too? The v1
-   upload file excludes `AMT_90`; if equity is maintained elsewhere on `#`, those lookups must keep `#`
-   (one-line edit in the generator's `INPUTS` list).
-2. **Central assumptions are on `#`.** If any were loaded on USD they need the same treatment.
-3. **Behaviour change — HCDT Gas** (`TAX020_15 = AMT_230`): previously the gas flare penalty sat in the same
-   currency as Opex and was included; now it is on `#` and excluded. That matches the agreed principle
-   (deduct Opex excluding fines and levies), but it changes the number.
+1. Inputs entered in the story input table and via upload are on `PPP_Currency = USD` (story columns
+   CY_YTD, CY+1 … CY+5 are restricted to USD). Treated as USD: `AMT_46/80/85/90/97/200/210/220/230`,
+   `UOM_*`, `SET*`.
+2. Central assumptions are on `PPP_Currency = "#"` — unchanged.
+3. HCDT Gas now excludes the gas flare penalty (fines and levies are excluded by the agreed principle).
+4. Stale `#` inputs stay for now (messy data is deliberate) — tracked as H1 in `housekeeping.md`.
+5. Claude applies the change in SAC after the merge to `main` (see README workflow).
 
 ## Data clean-up (Trello #19 item 2) — separate, after the scripts
 
@@ -75,7 +75,7 @@ it on the next run. Run it **after** the script change, then re-run Upstream (Ca
 
 ## How to apply (manual, in SAC)
 
-1. Copy each data action first (`Save As` → `<name>_bkp_20261109`) so the current version is recoverable.
+1. Pre-check: the three data actions in SAC must match `sac-export/` on `main`.
 2. For each file in the sub-folders, open the step named in the file and replace its script with the file
    content. Steps not listed are unchanged.
 3. Validate each data action (warnings about decimal places between measures are accepted).
@@ -95,4 +95,4 @@ it on the next run. Run it **after** the script change, then re-run Upstream (Ca
 
 ## Rollback
 
-Restore from the `_bkp_20261109` copies, or paste the "SAC now" side of [DIFF.md](DIFF.md).
+Apply the "SAC now" side of [DIFF.md](DIFF.md) (= `sac-export/` before the merge).
