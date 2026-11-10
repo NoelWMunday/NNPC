@@ -2,7 +2,7 @@
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7 (QA root causes 10:55; Noel 11:18 "remaining items with dev")
 - **Builds on:** Noel's direct edits 11:02–11:14 (Tax step 1 no longer deletes `CST05`; tax rates entered in Admin)
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 11:26 SAST (commit `9e8e855`) — see `DEPLOYMENTS.md`. Awaiting retest and decisions 1–5.
 - **Scripts:** [DIFF.md](DIFF.md) · [manifest.json](manifest.json) · one file per step. 10 steps of `PPP_Upstream_Tax`, 16
   lines, line counts unchanged (tracepoints unaffected).
 

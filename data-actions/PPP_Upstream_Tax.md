@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T09:02:19.661Z by NMUNDAY |
+| Last changed | 2026-11-10T09:26:50.166Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -184,8 +184,8 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="AMT_220", [d/PPP_Currency]="USD")
-DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="AMT_200", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="CST05_05")
+DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="CST05_15")
 
 DATA([d/WPLn]="TAX025_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -218,12 +218,12 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD")
-DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="AMT_210", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="CST05_10")
+DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="CST05_20")
 
 DATA([d/WPLn]="TAX030_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
-DATA([d/WPLn]="TAX030_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX025_10") * (
+DATA([d/WPLn]="TAX030_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX030_10") * (
 	RESULTLOOKUP([d/WPLn]="TAX030_15_05") +														   
 	RESULTLOOKUP([d/WPLn]="TAX030_15_10")
 ),0) / 100
@@ -252,7 +252,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="AMT_220", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="CST05_05")
 
 DATA([d/WPLn]="TAX015_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -284,7 +284,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="CST05_10")
 
 DATA([d/WPLn]="TAX020_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -320,7 +320,7 @@ MEMBERSET [d/PPP_Currency] = "#"
 DATA([d/WPLn]="TAX005_15_05") = RESULTLOOKUP([d/WPLn]="REV_10")
 DATA([d/WPLn]="TAX005_15_10") = 0-RESULTLOOKUP([d/WPLn]="RC15_05") 
 DATA([d/WPLn]="TAX005_15_15") = 0-RESULTLOOKUP([d/WPLn]="RC20_10") 
-DATA([d/WPLn]="TAX005_15_20") = 0-RESULTLOOKUP([d/WPLn]="RC30_10") 
+DATA([d/WPLn]="TAX005_15_20") = 0-RESULTLOOKUP([d/WPLn]="RC30_05") 
 DATA([d/WPLn]="TAX005_15_25") = 0-RESULTLOOKUP([d/WPLn]="RC35_10") 
 DATA([d/WPLn]="TAX005_15_30") = 0-RESULTLOOKUP([d/WPLn]="CST05_05") 
 DATA([d/WPLn]="TAX005_15_35") = 0-RESULTLOOKUP([d/WPLn]="TAX015_05") 
@@ -369,7 +369,7 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn]="TAX010_15_05") = RESULTLOOKUP([d/WPLn]="REV_20")
 DATA([d/WPLn]="TAX010_15_10") = 0-RESULTLOOKUP([d/WPLn]="RC25_20")
-DATA([d/WPLn]="TAX010_15_15") = 0-RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD") 
+DATA([d/WPLn]="TAX010_15_15") = 0-RESULTLOOKUP([d/WPLn]="CST05_10") 
 DATA([d/WPLn]="TAX010_15_20") = 0-RESULTLOOKUP([d/WPLn]="RC40_20") 
 DATA([d/WPLn]="TAX010_15_25") = 0-RESULTLOOKUP([d/WPLn]="TAX030_05") 
 DATA([d/WPLn]="TAX010_15_30") = 0-RESULTLOOKUP([d/WPLn]="TAX020_05") 
@@ -662,8 +662,8 @@ DATA([d/WPLn]=#ASSESSABLE) =
 	RESULTLOOKUP([d/WPLn]="TAX050_20_30") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_35")
 
-DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="202612")
-DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="202612")
+DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
 // Investment Capital Allowance
 DATA([d/WPLn]="TAX050_10") = 
@@ -904,7 +904,7 @@ VARIABLEMEMBER #PARAM2 OF [d/WPLn]
 
 DATA([d/WPLn] = "TAX070_05") = RESULTLOOKUP([d/WPLn]="TA15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn] = "TAX070_55") = RESULTLOOKUP([d/WPLn]="TL15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000")
 DATA([d/WPLn] = "TAX070_30") = RESULTLOOKUP([d/WPLn]="CST05_05")
 
 DATA([d/WPLn] = "TAX070_40") = 
@@ -1057,7 +1057,7 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
-DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05") / 100
+DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05",[d/Date]="000000") / 100
 
 IF RESULTLOOKUP([d/WPLn]="TAX085_20") < 0 THEN
 	DATA([d/WPLn] = "TAX085_20") = 0
@@ -1090,12 +1090,12 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10")
+DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000")
 
-DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
+DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_15") < 0 THEN DATA([d/WPLn] = "TAX090_15") = 0 ENDIF
 
-DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
+DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_20") < 0 THEN DATA([d/WPLn] = "TAX090_20") = 0 ENDIF
 
 DATA([d/WPLn] = "TAX090_25") = RESULTLOOKUP([d/WPLn]="TAX090_15") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
