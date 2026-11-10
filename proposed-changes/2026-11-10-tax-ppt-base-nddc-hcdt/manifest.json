@@ -1,0 +1,29 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 12,
+  "stepId": "40470562-0436-4009-3401-739628352912",
+  "name": "Tax - Capital allowance for PPT",
+  "file": "proposed-changes/2026-11-10-tax-ppt-base-nddc-hcdt/PPP_Upstream_Tax/step12_Tax_Capital_allowance_for_PPT.advformula",
+  "beforeSha256": "539f8592e33fe68462f29a56003f2f996498ac92c9e5ce149303e68abda2b307",
+  "afterSha256": "3996286eb46b26eac0f82b24ac349e112729bac36da095b640e85985845aa0ba"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 13,
+  "stepId": "36467450-8638-4514-3298-598364816533",
+  "name": "Tax - CA Limit Rolling Balance (Oil)",
+  "file": "proposed-changes/2026-11-10-tax-ppt-base-nddc-hcdt/PPP_Upstream_Tax/step13_Tax_CA_Limit_Rolling_Balance_Oil.advformula",
+  "beforeSha256": "161c8f05cde54e7db886d8f9ca8140dbcc2b8acd2e911ea7d0d51d120eb76025",
+  "afterSha256": "eea6bc646b9df89936385ced676a51001192b00f0ea4a7b4fef07ccfb610c07e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 15,
+  "stepId": "35177768-1315-4865-3505-137378489693",
+  "name": "Tax - Chargeable Profit for PPT",
+  "file": "proposed-changes/2026-11-10-tax-ppt-base-nddc-hcdt/PPP_Upstream_Tax/step15_Tax_Chargeable_Profit_for_PPT.advformula",
+  "beforeSha256": "155e0176b97b2c89f581c61916343a4795b969f4261ef99a91f8deb837008fcb",
+  "afterSha256": "fa86658d7049d69f78f20ae9632ba3a32221e0908e20e7cea1445921ce249ef8"
+ }
+]
