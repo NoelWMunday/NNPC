@@ -1,0 +1,76 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "AMT_210")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
+
+VARIABLEMEMBER #TAX010_15 OF [d/WPLn]
+VARIABLEMEMBER #PARAM1 OF [d/WPLn]
+VARIABLEMEMBER #PARAM2 OF [d/WPLn]
+
+/*
+TAX060	CA Limit Balance – Gas
+TAX060_05	Opening Balance CA Limit – Gas
+TAX060_10	In-year addition – Gas
+TAX060_15	Allowable deduction – Gas
+TAX060_20	Closing Balance CA Limit – Gas
+TAX060_25	Deductible Amortised Gas Capex
+TAX060_30	Deductible Amortised Other Gas Capex
+*/
+
+DATA([d/WPLn]="TAX060_30") = RESULTLOOKUP([d/WPLn]="TAX045_05_25")
+
+DATA([d/WPLn]="TAX060_10") = RESULTLOOKUP([d/WPLn]="TAX045_05_20") + RESULTLOOKUP([d/WPLn]="TAX045_05_25")
+
+DATA([d/WPLn]=#TAX010_15) =
+	RESULTLOOKUP([d/WPLn]="TAX010_15_05") +
+	RESULTLOOKUP([d/WPLn]="TAX010_15_10") +
+	RESULTLOOKUP([d/WPLn]="TAX010_15_15") +
+	RESULTLOOKUP([d/WPLn]="TAX010_15_20") +
+	RESULTLOOKUP([d/WPLn]="TAX010_15_25") +
+	RESULTLOOKUP([d/WPLn]="TAX010_15_30")
+
+
+// Rolling balance: years are processed in date order, so each opening is the prior year's closing from
+// this run (Initialise clears TAX* first). Re-running gives the same result.
+FOREACH [d/Date]
+
+	DATA([d/WPLn]="TAX060_05") = RESULTLOOKUP([d/WPLn] = "TAX060_20",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))
+
+	IF RESULTLOOKUP([d/WPLn]=#TAX010_15) < 0 THEN
+		DATA([d/WPLn]="TAX060_15") = 0
+	ELSE
+		DATA([d/WPLn]=#PARAM1) = RESULTLOOKUP([d/WPLn]="TAX060_05") + RESULTLOOKUP([d/WPLn]="TAX060_10")
+		DATA([d/WPLn]=#PARAM2) = ROUND (RESULTLOOKUP([d/WPLn]="TAX055_05") * RESULTLOOKUP([d/WPLn]= #TAX010_15) / 100, 0)
+	
+		IF RESULTLOOKUP([d/WPLn] = #PARAM1) < RESULTLOOKUP([d/WPLn] = #PARAM2) THEN
+			DATA([d/WPLn]="TAX060_15") = RESULTLOOKUP([d/WPLn] = #PARAM1)
+		ELSE
+			DATA([d/WPLn]="TAX060_15") = RESULTLOOKUP([d/WPLn] = #PARAM2)
+		ENDIF
+	ENDIF
+
+	DATA([d/WPLn]="TAX060_20") = 
+		RESULTLOOKUP([d/WPLn] = "TAX060_05") +
+		RESULTLOOKUP([d/WPLn] = "TAX060_10") -
+		RESULTLOOKUP([d/WPLn] = "TAX060_15")
+
+	DATA([d/WPLn]="TAX060_25") = 
+		RESULTLOOKUP([d/WPLn] = "TAX060_15") -
+		RESULTLOOKUP([d/WPLn] = "TAX060_30")
+
+ENDFOR
+
+	
