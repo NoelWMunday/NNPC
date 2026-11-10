@@ -2,8 +2,8 @@
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
 - **Decision (Noel, 10 Nov 15:28):** "Yes add the members so we can fix C."
-- **Status:** APPROVED — applying
-- **Model:** `PPP_BUSPREMISE` › WPLn — added 10 Nov 15:45 (Claude), parent `TAX050_20` (Default hierarchy), Calculated? = Y:
+- **Status:** APPLIED 10 Nov 2026 15:42 SAST (`d70d240`, Tax v16)
+- **Model:** `PPP_BUSPREMISE` › WPLn — added 10 Nov 15:38 (Claude), parent `TAX050_20` (Default hierarchy), Calculated? = Y:
   - `TAX050_20_40` "Less: NDDC Levy Payable (Oil)" — source `TAX025_05`, written by `PPP_Upstream_Tax` › 3 "Tax - NDDC Levy Payable (Oil)" › line 24
   - `TAX050_20_45` "Less: Host Communities Development Trust (HCDT) Fund Payable - Oil" — source `TAX015_05`, written by › 5 "Tax - HCDT Fund Payable (Oil)" › line 24
   Descriptions follow the same deductions in the Dev Levy base (`TAX005_15_40` / `TAX005_15_35`, › 7 lines 26–27).

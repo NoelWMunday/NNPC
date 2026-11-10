@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T13:33:21.306Z by NMUNDAY |
+| Last changed | 2026-11-10T13:42:40.475Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -637,6 +637,8 @@ VARIABLEMEMBER #AMORT_CAPEX OF [d/WPLn]
 // TAX050_20_25	Less: PA Price based royalty – Oil
 // TAX050_20_30	Less: Total OPEX – Oil
 // TAX050_20_35	Less: Development Levy – Oil
+// TAX050_20_40	Less: NDDC Levy Payable (Oil)
+// TAX050_20_45	Less: HCDT Fund Payable - Oil
 
 // Amort capex
 DATA([d/WPLn]=#AMORT_CAPEX) = 
@@ -656,6 +658,8 @@ DATA([d/WPLn]="TAX050_20_20") = 0-RESULTLOOKUP([d/WPLn]="RC30_05")
 DATA([d/WPLn]="TAX050_20_25") = 0-RESULTLOOKUP([d/WPLn]="RC35_10")
 DATA([d/WPLn]="TAX050_20_30") = 0-RESULTLOOKUP([d/WPLn]="CST05_05")
 DATA([d/WPLn]="TAX050_20_35") = 0-RESULTLOOKUP([d/WPLn]="TAX005_05")
+DATA([d/WPLn]="TAX050_20_40") = 0-RESULTLOOKUP([d/WPLn]="TAX025_05")
+DATA([d/WPLn]="TAX050_20_45") = 0-RESULTLOOKUP([d/WPLn]="TAX015_05")
 
 DATA([d/WPLn]=#ASSESSABLE) = 
 	RESULTLOOKUP([d/WPLn]="TAX050_20_05") +
@@ -664,7 +668,9 @@ DATA([d/WPLn]=#ASSESSABLE) =
 	RESULTLOOKUP([d/WPLn]="TAX050_20_20") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_25") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_30") +
-	RESULTLOOKUP([d/WPLn]="TAX050_20_35")
+	RESULTLOOKUP([d/WPLn]="TAX050_20_35") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_40") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_45")
 
 DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
@@ -743,7 +749,9 @@ DATA([d/WPLn]=#TAX050_20) =
 	RESULTLOOKUP([d/WPLn]="TAX050_20_20") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_25") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_30") +
-	RESULTLOOKUP([d/WPLn]="TAX050_20_35")
+	RESULTLOOKUP([d/WPLn]="TAX050_20_35") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_40") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_45")
 
 // Rolling balance: years are processed in date order, so each opening is the prior year's closing from
 // this run (Initialise clears TAX* first). Re-running gives the same result.
@@ -889,7 +897,9 @@ DATA([d/WPLn] = #TAX050_20) =
 	RESULTLOOKUP([d/WPLn]="TAX050_20_20") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_25") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_30") +
-	RESULTLOOKUP([d/WPLn]="TAX050_20_35")
+	RESULTLOOKUP([d/WPLn]="TAX050_20_35") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_40") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_45")
 	
 DATA([d/WPLn]="TAX065_05") = 
 	RESULTLOOKUP([d/WPLn] = #TAX050_20) -
