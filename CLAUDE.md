@@ -54,5 +54,12 @@ leftovers and are defects. `PPP_Upstream` (old chain, unused) still has 64 of th
   line count drops them — re-add on the equivalent lines.
 - Snapshot keeps scripts, not SAC's compiled `runtimeContext`. Partial refresh: update files in
   `sac-export/`, then `python3 tools/generate_docs.py sac-export .`
+- Reading model data: from a story tab, capture one of the story's INA requests (`/sap/bc/ina/service/v2/GetResponse`),
+  clone it, replace the WPLn / Entity / Lock / Currency / Date filters, set `ReadMode = "Booked"` on WPLn and Date, and
+  POST it with the same headers. Read-only.
+- SAC Validate only refreshes on a real click (not a JS `.click()`); check the panel by screenshot.
+- Saving a data action from a designer opened before someone else's save overwrites their changes (v14 reverted
+  v11/v12 on 10 Nov). Reload the designer and check the live version before every apply.
+- `RESULTLOOKUP(x) = 0` is false when x has no value. Test `= 0 OR = NULL` where a flag may be unset.
 - Git tags can't be pushed from here; deployments are logged in `DEPLOYMENTS.md`.
 - Local working folder on Noel's Mac: `Unit testing/Claude`; source workbooks in `Unit testing/Source data`.
