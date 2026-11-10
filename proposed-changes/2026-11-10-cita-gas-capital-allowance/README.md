@@ -1,7 +1,7 @@
 # Change proposal — #20 E: CITA Gas allowable includes the gas capital allowance
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
-- **Status:** APPROVED (Noel, 10 Nov 15:42: "change the = 0 to include a check for null") — applying
+- **Status:** APPROVED (Noel, 10 Nov 15:42: "change the = 0 to include a check for null") — APPLIED 10 Nov 2026 15:44 SAST (`32ff23a`, Tax v17)
 - **Where:** `PPP_Upstream_Tax` › 18 "Tax - Allowable Costs & Chargeable Profit CITA (Gas)" › lines 21–25 — [DIFF.md](DIFF.md)
 
 ## Root cause (from the data, Budget 2026 (Reference), NU03_JV005, read 10 Nov 15:40)

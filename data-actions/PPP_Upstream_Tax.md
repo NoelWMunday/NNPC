@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T13:42:40.475Z by NMUNDAY |
+| Last changed | 2026-11-10T13:44:34.390Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -1050,7 +1050,8 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
 
-IF RESULTLOOKUP([d/WPLn]="TAX070_60") = 0 THEN
+// TAX070_60 (SET10_10) is null when the JV has no PIA flag - treat null as 0
+IF RESULTLOOKUP([d/WPLn]="TAX070_60") = 0 OR RESULTLOOKUP([d/WPLn]="TAX070_60") = NULL THEN
 	DATA([d/WPLn] = #PARAM1) = RESULTLOOKUP([d/WPLn]="TAX060_25")
 ELSE
 	DATA([d/WPLn] = #PARAM1) = 0

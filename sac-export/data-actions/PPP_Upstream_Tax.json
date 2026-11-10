@@ -4,7 +4,7 @@
  "description": "PPP Upstream - Taxation",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T13:42:40.475Z",
+ "modified": "2026-11-10T13:44:34.390Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -404,7 +404,7 @@
    "description": "Tax - Allowable Costs & Chargeable Profit CITA (Gas)",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\n// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , \"AMT_210\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nVARIABLEMEMBER #PARAM1 OF [d/WPLn]\n\nIF RESULTLOOKUP([d/WPLn]=\"TAX070_60\") = 0 THEN\n\tDATA([d/WPLn] = #PARAM1) = RESULTLOOKUP([d/WPLn]=\"TAX060_25\")\nELSE\n\tDATA([d/WPLn] = #PARAM1) = 0\nENDIF\n\nDATA([d/WPLn] = \"TAX080_05\") = \n\tRESULTLOOKUP([d/WPLn]=#PARAM1) +\n\tRESULTLOOKUP([d/WPLn]=\"RC25_20\") +\n\tRESULTLOOKUP([d/WPLn]=\"CST05_10\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX010_05\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX020_05\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX030_05\") + \n\tRESULTLOOKUP([d/WPLn]=\"RC40_20\")\n\nDATA([d/WPLn] = \"TAX080_10\") = \t\n\tRESULTLOOKUP([d/WPLn]=\"REV_20\") -\n\tRESULTLOOKUP([d/WPLn]=\"TAX080_05\")\n\t",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\n// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , \"AMT_210\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nVARIABLEMEMBER #PARAM1 OF [d/WPLn]\n\n// TAX070_60 (SET10_10) is null when the JV has no PIA flag - treat null as 0\nIF RESULTLOOKUP([d/WPLn]=\"TAX070_60\") = 0 OR RESULTLOOKUP([d/WPLn]=\"TAX070_60\") = NULL THEN\n\tDATA([d/WPLn] = #PARAM1) = RESULTLOOKUP([d/WPLn]=\"TAX060_25\")\nELSE\n\tDATA([d/WPLn] = #PARAM1) = 0\nENDIF\n\nDATA([d/WPLn] = \"TAX080_05\") = \n\tRESULTLOOKUP([d/WPLn]=#PARAM1) +\n\tRESULTLOOKUP([d/WPLn]=\"RC25_20\") +\n\tRESULTLOOKUP([d/WPLn]=\"CST05_10\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX010_05\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX020_05\") +\n\tRESULTLOOKUP([d/WPLn]=\"TAX030_05\") + \n\tRESULTLOOKUP([d/WPLn]=\"RC40_20\")\n\nDATA([d/WPLn] = \"TAX080_10\") = \t\n\tRESULTLOOKUP([d/WPLn]=\"REV_20\") -\n\tRESULTLOOKUP([d/WPLn]=\"TAX080_05\")\n\t",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
