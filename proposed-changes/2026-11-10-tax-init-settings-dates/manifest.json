@@ -1,0 +1,32 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 1,
+  "stepId": "37095357-1823-4414-3771-232611829621",
+  "name": "Initialise",
+  "file": "proposed-changes/2026-11-10-tax-init-settings-dates/PPP_Upstream_Tax/step01_Initialise.advformula",
+  "beforeSha256": "b4df52e6d00706d3eedba7bea3a44c65d65a8f91c74428f92d4bcc7d7b210f57",
+  "afterSha256": "2e9068428c6a643fabb2550c88ed0d520f8396e957ee68247d30088520b26a0d",
+  "lineCountChanged": true
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 3,
+  "stepId": "33359838-4041-4736-3379-620294774792",
+  "name": "Royalties - Tranch volumes",
+  "file": "proposed-changes/2026-11-10-tax-init-settings-dates/PPP_Upstream_Royalties/step03_Royalties_Tranch_volumes.advformula",
+  "beforeSha256": "c1b4482e24af9b966eb69fc0d6333114255883d3f49dd26b46de6b7cd1c0b83e",
+  "afterSha256": "f87ecda2b11f9b1bfa44bbada9dc536d85a1495c1fbfd5701a9e9a13b4740896",
+  "lineCountChanged": false
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 4,
+  "stepId": "37952139-8333-4223-3257-719128760945",
+  "name": "Royalties - Values (Oil)",
+  "file": "proposed-changes/2026-11-10-tax-init-settings-dates/PPP_Upstream_Royalties/step04_Royalties_Values_Oil.advformula",
+  "beforeSha256": "27a20aa8b130f13e77cbdc1e20c5136c0c1d83be32e64dd4b40044222d4a7a76",
+  "afterSha256": "bd76a5bb5374a729e634902bbc43f27a581ac58b88b18c16b457f87f71349196",
+  "lineCountChanged": false
+ }
+]
