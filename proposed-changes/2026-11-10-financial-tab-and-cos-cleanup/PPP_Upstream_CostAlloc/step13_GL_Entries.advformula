@@ -1,0 +1,43 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures] = ("Value_WPLn","GC_CR")
+// MEMBERSET [d/WPLn] = ("CST20", "SET10_05")
+MEMBERSET [d/GL] = ("#")
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = ("#")
+MEMBERSET [d/PPP_Currency] = "USD"
+
+
+// Apportioned Overheads
+DATA([d/Measures] = "GC_CR", [d/GL] = "5010036", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned Salaries
+DATA([d/Measures] = "GC_CR", [d/GL] = "5010001", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned General Depreciation
+DATA([d/Measures] = "GC_CR", [d/GL] = "4112001", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned Provision for Impairment
+DATA([d/Measures] = "GC_CR", [d/GL] = "5230006", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned Corporate Overhead
+DATA([d/Measures] = "GC_CR", [d/GL] = "5080044", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_25", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned Finance Cost
+DATA([d/Measures] = "GC_CR", [d/GL] = "FINEXP_005", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_30", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Apportioned Taxes
+DATA([d/Measures] = "GC_CR", [d/GL] = "5100005", [d/PPP_EntryNr] = "UP_0010") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_35", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Internal capex
+//DATA([d/Measures] = "GC_CR", [d/GL] = "4112002", [d/PPP_EntryNr] = "UP_0010") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_40", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
