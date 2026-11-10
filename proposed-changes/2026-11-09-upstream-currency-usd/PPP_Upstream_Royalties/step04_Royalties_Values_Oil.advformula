@@ -1,0 +1,83 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #RR_TRANCH1 OF [d/WPLn]
+VARIABLEMEMBER #RR_TRANCH2 OF [d/WPLn]
+VARIABLEMEMBER #RR_TRANCH3 OF [d/WPLn]
+VARIABLEMEMBER #RR_TRANCH4 OF [d/WPLn]
+VARIABLEMEMBER #OIL_PRICE OF [d/WPLn]
+
+// Find the tranch value and royalty rate % for tranch 1 by using the ASSET TERRAIN flag (which is set to 1) to expose it
+DATA([d/WPLn] = #RR_TRANCH1) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_005_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_010_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_015_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_020_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_025_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_030_01",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+
+DATA([d/WPLn] = #RR_TRANCH2) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_005_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_010_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_015_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_020_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_025_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_030_02",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+							
+DATA([d/WPLn] = #RR_TRANCH3) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_005_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_010_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_015_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_020_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_025_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_030_03",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))
+														
+DATA([d/WPLn] = #RR_TRANCH4) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_005_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_10",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_010_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_15",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_015_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_20",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_020_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_25",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_025_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central")) +
+							(RESULTLOOKUP([d/WPLn]="SET05_30",[d/Date]="202612", [d/PPP_Currency]="USD") * 
+							 RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR01_030_04",[d/PPP_Entity]="#",[d/Date]="000000",[d/Lock]="Central"))				
+
+// #OIL_PRICE
+DATA([d/WPLn]=#OIL_PRICE) = RESULTLOOKUP([d/WPLn]="GA_015",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = "RC10_05") = RESULTLOOKUP([d/WPLn]=#RR_TRANCH1) * RESULTLOOKUP([d/WPLn]="RC05_05") * RESULTLOOKUP([d/WPLn]=#OIL_PRICE) 
+DATA([d/WPLn] = "RC10_10") = RESULTLOOKUP([d/WPLn]=#RR_TRANCH2) * RESULTLOOKUP([d/WPLn]="RC05_10") * RESULTLOOKUP([d/WPLn]=#OIL_PRICE) 
+DATA([d/WPLn] = "RC10_15") = RESULTLOOKUP([d/WPLn]=#RR_TRANCH3) * RESULTLOOKUP([d/WPLn]="RC05_15") * RESULTLOOKUP([d/WPLn]=#OIL_PRICE) 
+DATA([d/WPLn] = "RC10_20") = RESULTLOOKUP([d/WPLn]=#RR_TRANCH4) * RESULTLOOKUP([d/WPLn]="RC05_20") * RESULTLOOKUP([d/WPLn]=#OIL_PRICE) 

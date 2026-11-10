@@ -1,0 +1,37 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "RC_TOT")
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+// Summary of royalty calcs
+DATA([d/WPLn] = "RC_TOT_05_05_01") = RESULTLOOKUP([d/WPLn] = "RC15_05")
+DATA([d/WPLn] = "RC_TOT_05_05_02") = RESULTLOOKUP([d/WPLn] = "RC20_10")
+DATA([d/WPLn] = "RC_TOT_05_05_03") = RESULTLOOKUP([d/WPLn] = "RC25_20")
+DATA([d/WPLn] = "RC_TOT_05_10_01") = RESULTLOOKUP([d/WPLn] = "RC30_05")
+DATA([d/WPLn] = "RC_TOT_05_10_02") = RESULTLOOKUP([d/WPLn] = "RC35_10")
+DATA([d/WPLn] = "RC_TOT_05_10_03") = RESULTLOOKUP([d/WPLn] = "RC40_20")
+
+// Equity portion (not split) - just the total
+DATA([d/WPLn] = "RC_TOT_10") = 
+	RESULTLOOKUP([d/WPLn] = "RC15_10") +
+	RESULTLOOKUP([d/WPLn] = "RC20_15") +	
+	RESULTLOOKUP([d/WPLn] = "RC25_25") +
+	RESULTLOOKUP([d/WPLn] = "RC30_10") +	
+	RESULTLOOKUP([d/WPLn] = "RC35_15") +
+	RESULTLOOKUP([d/WPLn] = "RC40_25")	
+
+	
+	

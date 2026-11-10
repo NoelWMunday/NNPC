@@ -23,17 +23,22 @@ Defects are logged on the Trello board: https://trello.com/b/a85I1Cfx/nnpc
 
 ## Change workflow
 
-SAC is never changed directly from this repository. Every change follows these steps:
+Agreed with Noel on 10 Nov 2026. Claude makes the SAC changes once they are on `main`.
 
-1. **Snapshot** – the current SAC configuration is exported into the relevant folder on `main`.
-2. **Propose** – a branch and pull request containing the before/after script and a change note
-   in `proposed-changes/` (what, why, Trello card, test to run, rollback).
-3. **Agree** – the PR is reviewed and approved.
-4. **Apply** – the change is applied manually in SAC by the agreed person.
-5. **Confirm** – the snapshot on `main` is updated to match SAC, the PR is merged and the Trello card
-   moves to *Ready for testing*.
+1. **Branch** – work on a branch (`fix/<trello#>-<topic>`, or keep reusing a WIP branch). The branch
+   holds the proposed scripts and a change note in `proposed-changes/` (what, why, Trello card, test,
+   rollback) next to the current SAC version in `sac-export/`, so both copies exist at the change point.
+2. **Merge** – merge the branch into `main`.
+3. **Pre-check** – re-read the affected objects from SAC. If they differ from `sac-export/` on `main`,
+   someone changed SAC directly: stop, snapshot, and rework the proposal.
+4. **Apply** – make the change in SAC and save. Tag `main` as `sac/<yyyy-mm-dd>-<trello#>`.
+5. **Confirm** – re-export, run `tools/generate_docs.py`, commit the new snapshot to `main`. The diff
+   must match the proposal's `DIFF.md`. Run the test in the change note and update the Trello card.
 
-If SAC is changed outside this process, re-snapshot it before proposing anything new.
+**Rollback:** the "SAC now" side of the change's `DIFF.md` (equally, `sac-export/` at the commit before
+the merge) is the previous version. Apply it to SAC the same way, then commit the snapshot.
+
+If SAC is changed outside this process, re-snapshot before proposing anything new.
 
 ## Data action documentation template
 

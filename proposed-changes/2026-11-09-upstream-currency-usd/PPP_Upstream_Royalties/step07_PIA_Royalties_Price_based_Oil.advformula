@@ -1,0 +1,57 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #OILPRICE OF [d/WPLn]
+VARIABLEMEMBER #OILPRICE_LT OF [d/WPLn]
+VARIABLEMEMBER #OILPRICE_EQ OF [d/WPLn]
+VARIABLEMEMBER #OILPRICE_GT OF [d/WPLn]
+VARIABLEMEMBER #RR_LT OF [d/WPLn]
+VARIABLEMEMBER #RR_EQ OF [d/WPLn]
+VARIABLEMEMBER #RR_GT OF [d/WPLn]
+
+DATA([d/WPLn] = #OILPRICE) = RESULTLOOKUP([d/WPLn]="GA_015",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #OILPRICE_LT) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_005",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #OILPRICE_EQ) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_010",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #OILPRICE_GT) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_015",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #RR_LT) = RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR03_005",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_EQ) = RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR03_010",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_GT) = RESULTLOOKUP([d/Measures]="Royalty_PIA",[d/WPLn]="RR03_015",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+
+
+IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #OILPRICE_LT)) THEN
+	DATA([d/WPLn]="RC20_05") = RESULTLOOKUP([d/WPLn] = #RR_LT)
+ELSE
+	IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #OILPRICE_EQ)) THEN
+		DATA([d/WPLn]="RC20_05") = (RESULTLOOKUP([d/WPLn] = #OILPRICE) - RESULTLOOKUP([d/WPLn] = #OILPRICE_LT)) /
+									RESULTLOOKUP([d/WPLn] = #OILPRICE_LT) * RESULTLOOKUP([d/WPLn] = #RR_EQ)
+	ELSE
+		IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #OILPRICE_GT)) THEN
+			DATA([d/WPLn]="RC20_05") = RESULTLOOKUP([d/WPLn] = #RR_EQ) + 
+										((RESULTLOOKUP([d/WPLn] = #OILPRICE) - RESULTLOOKUP([d/WPLn] = #OILPRICE_EQ)) / 
+										RESULTLOOKUP([d/WPLn] = #OILPRICE_LT) * RESULTLOOKUP([d/WPLn] = #RR_EQ))
+		ELSE
+			DATA([d/WPLn]="RC20_05") = RESULTLOOKUP([d/WPLn] = #RR_GT)
+		ENDIF
+	ENDIF
+ENDIF
+
+DATA([d/WPLn]="RC20_10") = RESULTLOOKUP([d/WPLn] = "REV_10") * 
+							RESULTLOOKUP([d/WPLn]="RC20_05") / 100 * 
+							RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000", [d/PPP_Currency]="USD")
+							
+DATA([d/WPLn]="RC20_15") = RESULTLOOKUP([d/WPLn]="RC20_10") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100

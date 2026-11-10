@@ -1,0 +1,28 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "REV3_05")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #ALLJVS OF [d/WPLn]
+// Read the total OPEX from the common entity into this entities total opex line per the properties
+// At this point don't know if it's JV or PSC or other but the correct WPLn will populate
+DATA([d/WPLn] = #ALLJVS) = RESULTLOOKUP([d/WPLn] = [d/PPP_Entity].[p/Ln_OPEX], [d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup])
+
+// This calculation works out the % share of JV, PSC and any other because not knowing if it's JV, PSC etc doesn't matter
+// The non-zero WPLn's will popluate and the zero WPLn just return zero
+IF RESULTLOOKUP([d/WPLn] = "REV3_05_05") > 0 THEN
+	DATA([d/WPLn]="REV3_10_05") = (RESULTLOOKUP([d/WPLn]="CST05_05") + RESULTLOOKUP([d/WPLn]="CST05_10")) / RESULTLOOKUP([d/WPLn] = #ALLJVS)
+	DATA([d/WPLn]="REV_34") = 0
+ENDIF

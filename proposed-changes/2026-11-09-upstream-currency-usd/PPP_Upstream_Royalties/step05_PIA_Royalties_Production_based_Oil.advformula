@@ -1,0 +1,23 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+DATA([d/WPLn]="RC15_05") = RESULTLOOKUP([d/WPLn]="AMT_97", [d/PPP_Currency]="USD") * 
+						(RESULTLOOKUP([d/WPLn]="RC10_05") + RESULTLOOKUP([d/WPLn]="RC10_10") +
+						 RESULTLOOKUP([d/WPLn]="RC10_15") + RESULTLOOKUP([d/WPLn]="RC10_20")) *
+						RESULTLOOKUP([d/WPLn]="UOM_65", [d/PPP_Currency]="USD") *
+						RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000", [d/PPP_Currency]="USD")

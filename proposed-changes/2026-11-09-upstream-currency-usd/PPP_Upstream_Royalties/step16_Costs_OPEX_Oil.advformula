@@ -1,0 +1,23 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+// This is only productive opex costs
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = ("#","USD")
+MEMBERSET [d/WPLn] = ("CST05_05","AMT_220")
+MEMBERSET [d/PPP_EntryNr] = ("#", BASEMEMBER([d/PPP_EntryNr] , "UAP_OPEX_CST"))
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
+	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_220")
+ENDIF

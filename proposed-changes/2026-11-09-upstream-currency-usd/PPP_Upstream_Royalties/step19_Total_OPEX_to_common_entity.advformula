@@ -1,0 +1,53 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+// Note the OPEX line item for dimension WPLn is determined by the entity property
+// so that it's dynamic and can be used for JV's and PSC's. For NU03 the JV's point to 
+// REV3_05_05 on the central node. This JV running will append it's opex to the node so 
+// the node aggregates all JV opex.
+
+// Then on the apportionment calc the JV will read the total back from the node to this id
+// so it can reflect the total it used in it's own books. Aggregating the JV's should = the node
+// but including the node as well should give x2 JV opex costs
+
+// Also note the JV's OPEX excludes non-production costs like gas flare penalty so the node UAP_OPEX_CST
+// excludes any non-production costs against both WPLn oil and gas
+
+// The JV has OPEX of it's own used to calculate it's % share of all JV OPEX and
+// the % is applied to the JV HO / node to apportion the nodes OPEX to the JV
+
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/WPLn] = ("REV3_05_05","CST05_05","CST05_10")
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+// If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) 
+// on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point
+// to NU03 as the common entity and accumulate the work group total revenue on WPLn = the property on NU03_WP01 i.e. a JV total
+
+// Note: There is no entity scope so the entity selection parameter is not limiting this function otherwise running it for a 
+// single JV will produce an incorrect result. However, the alternative (this approach), runs over all entities and simply
+// checks if they have an OPEX central entity node allocated WPLn and if so updates that node because on initialisation it would
+// have been reset to zero and now need updating. This then runs over all JV's, PSC's and other WP's of a central entity.
+// Every entity running this data action will recalculate the central entities total (all central entities)
+
+IF [d/PPP_Entity].[p/Ln_OPEX] != "#" THEN
+	// For central node
+	DATA.APPEND([d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup], [d/WPLn] = [d/PPP_Entity].[p/Ln_OPEX]) = 
+		RESULTLOOKUP([d/WPLn] = "CST05_05") + 
+		RESULTLOOKUP([d/WPLn] = "CST05_10")
+	
+	// For entity itself
+	DATA([d/WPLn] = [d/PPP_Entity].[p/Ln_OPEX]) = 
+		RESULTLOOKUP([d/WPLn] = "CST05_05") + 
+		RESULTLOOKUP([d/WPLn] = "CST05_10")	
+ENDIF
