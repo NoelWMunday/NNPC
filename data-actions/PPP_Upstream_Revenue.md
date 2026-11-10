@@ -7,7 +7,7 @@
 | SAC id | `E1751684BFC7BECB4638AFAF2DC6D009` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T06:10:49.630Z by NMUNDAY |
+| Last changed | 2026-11-10T07:18:30.211Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -84,20 +84,20 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 // Annual oil production
 // from kilo barrels per day to millions barrels per year means (x 365 / 1000) so result is in "mmbbl"
-DATA([d/WPLn]="REV_05") = (RESULTLOOKUP([d/WPLn]="AMT_80", [d/PPP_Currency]="USD") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")) / 1000
+DATA([d/WPLn]="REV_05") = (RESULTLOOKUP([d/WPLn]="AMT_80") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")) / 1000
 
 // Ave monthly oil production
-DATA([d/WPLn]="AMT_81") = RESULTLOOKUP([d/WPLn]="REV_05") / RESULTLOOKUP([d/WPLn]="UOM_65", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="AMT_81") = RESULTLOOKUP([d/WPLn]="REV_05") / RESULTLOOKUP([d/WPLn]="UOM_65")
 
 // Ave monthly oil production per field
-DATA([d/WPLn]="AMT_82") = RESULTLOOKUP([d/WPLn]="AMT_81") / RESULTLOOKUP([d/WPLn]="AMT_97", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="AMT_82") = RESULTLOOKUP([d/WPLn]="AMT_81") / RESULTLOOKUP([d/WPLn]="AMT_97")
 
 // Oil revenue
 // from mmbbl to price per barrel and revenue in single dollars means x 1 000 000 to convert to single units
 DATA([d/WPLn]="REV_10") = RESULTLOOKUP([d/WPLn]="REV_05") * RESULTLOOKUP([d/WPLn]="GA_015", [d/PPP_Entity] = "#", [d/Lock]="Central") * 1000000
 
 // Annual gas sales
-DATA([d/WPLn]="REV_15") = RESULTLOOKUP([d/WPLn]="AMT_85", [d/PPP_Currency]="USD") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")
+DATA([d/WPLn]="REV_15") = RESULTLOOKUP([d/WPLn]="AMT_85") * RESULTLOOKUP([d/WPLn]="GA_040", [d/PPP_Entity] = "#", [d/Lock]="Central")
 
 // Gas revenue
 // Price is already per mmscf so no conversion to single dollar units necessary
@@ -107,7 +107,7 @@ DATA([d/WPLn]="REV_20") = RESULTLOOKUP([d/WPLn]="REV_15") * RESULTLOOKUP([d/WPLn
 DATA([d/WPLn]="REV_25") = RESULTLOOKUP([d/WPLn]="REV_10") + RESULTLOOKUP([d/WPLn]="REV_20") 
 
 // NNPC Share of revenue
-DATA([d/WPLn]="REV_30") = RESULTLOOKUP([d/WPLn]="REV_25") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn]="REV_30") = RESULTLOOKUP([d/WPLn]="REV_25") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
 ```
 
 Parameters used: Entity

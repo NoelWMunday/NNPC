@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T06:19:43.750Z by NMUNDAY |
+| Last changed | 2026-11-10T07:14:37.231Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -127,7 +127,7 @@ DATA([d/WPLn] = #TAECO) =
 	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_124", [d/PPP_Currency]="USD")
 
 
-IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000", [d/PPP_Currency]="USD") = 1 THEN
+IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000") = 1 THEN
 	// PPT
 	DATA([d/WPLn] = #NUMERATOR) =
 		RESULTLOOKUP([d/WPLn] = #TAECO) + 
@@ -135,14 +135,14 @@ IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000", [d/PPP_Currency]="US
 		// Drilling
 		// "Devt Well, Completion and Workover" (e.g. 80% of full drilling)
 		(RESULTLOOKUP([d/WPLn] = #DRILLING) *
-		RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD") / 100) +
+		RESULTLOOKUP([d/WPLn] = "AMT_46") / 100) +
 		// plus 1/5 of the remaining (e.g. 20%) of drilling
 		(RESULTLOOKUP([d/WPLn] = #DRILLING_FIFTH) * 
-		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD")) / 100) +
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100) +
 		
 		// Facilities
 		(RESULTLOOKUP([d/WPLn] = #FACILITIES_FIFTH) * 
-		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD")) / 100)		
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100)		
 	
 ELSE
 	// PIA
@@ -905,7 +905,7 @@ VARIABLEMEMBER #PARAM2 OF [d/WPLn]
 
 DATA([d/WPLn] = "TAX070_05") = RESULTLOOKUP([d/WPLn]="TA15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn] = "TAX070_55") = RESULTLOOKUP([d/WPLn]="TL15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000", [d/PPP_Currency]="USD")
+DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn] = "TAX070_30") = RESULTLOOKUP([d/WPLn]="CST05_05")
 
 DATA([d/WPLn] = "TAX070_40") = 
@@ -944,7 +944,7 @@ ELSE
 	DATA([d/WPLn] = "TAX070_65") = 0
 ENDIF
 
-DATA([d/WPLn] = "TAX070_70") = RESULTLOOKUP([d/WPLn] = "TAX070_65") * RESULTLOOKUP([d/WPLn] = "AMT_90", [d/PPP_Currency]="USD")
+DATA([d/WPLn] = "TAX070_70") = RESULTLOOKUP([d/WPLn] = "TAX070_65") * RESULTLOOKUP([d/WPLn] = "AMT_90")
 ```
 
 Parameters used: Entity, PCycle
@@ -1058,13 +1058,13 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
-DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05") / 100
 
 IF RESULTLOOKUP([d/WPLn]="TAX085_20") < 0 THEN
 	DATA([d/WPLn] = "TAX085_20") = 0
 ENDIF
 
-DATA([d/WPLn] = "TAX085_25") = RESULTLOOKUP([d/WPLn]="TAX085_20") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX085_25") = RESULTLOOKUP([d/WPLn]="TAX085_20") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
 ```
 
 Parameters used: Entity, PCycle
@@ -1091,16 +1091,16 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD")
+DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10")
 
-DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_15") < 0 THEN DATA([d/WPLn] = "TAX090_15") = 0 ENDIF
 
-DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_20") < 0 THEN DATA([d/WPLn] = "TAX090_20") = 0 ENDIF
 
-DATA([d/WPLn] = "TAX090_25") = RESULTLOOKUP([d/WPLn]="TAX090_15") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
-DATA([d/WPLn] = "TAX090_30") = RESULTLOOKUP([d/WPLn]="TAX090_20") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX090_25") = RESULTLOOKUP([d/WPLn]="TAX090_15") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+DATA([d/WPLn] = "TAX090_30") = RESULTLOOKUP([d/WPLn]="TAX090_20") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
 ```
 
 Parameters used: Entity, PCycle

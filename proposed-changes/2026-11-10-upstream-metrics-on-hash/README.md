@@ -4,7 +4,7 @@
 - **Corrects:** [2026-11-09-upstream-currency-usd](../2026-11-09-upstream-currency-usd/README.md), live since
   10 Nov 08:20 (commit `c9d5952`)
 - **Approach:** fix forward (Noel, 10 Nov 09:10: "ready for implementation")
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 09:18 SAST (commit `c59bdfe`) — see `DEPLOYMENTS.md`. Awaiting retest.
 - **Scripts:** one file per changed step; [DIFF.md](DIFF.md) (left = live, right = proposed); [manifest.json](manifest.json)
 - **Generator:** `python3 tools/propose_currency_usd.py . 9a56a3f proposed-changes/2026-11-10-upstream-metrics-on-hash`
 
