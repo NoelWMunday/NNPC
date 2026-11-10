@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T09:26:50.166Z by NMUNDAY |
+| Last changed | 2026-11-10T09:57:26.342Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -56,7 +56,6 @@ MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
 MEMBERSET [d/PCycle] = %PCycle%
 MEMBERSET [d/Measures]="Value_WPLn"
 MEMBERSET [d/WPLn] = ("REV_32","REV_26","REV_40",
-					  BASEMEMBER([d/WPLn] ,"CST14"), 
 					  BASEMEMBER([d/WPLn] ,"REV3_05"))
 MEMBERSET [d/GL] = "#"
 MEMBERSET [d/Ln] = "#"

@@ -3,7 +3,7 @@
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
 - **Decisions (Noel, 10 Nov 11:53):** (2) remove `CST14` from the Tax initialise step. (5) Settings are centralised on Date
   `000000`. The hard-coded `202612` dates are left over from development.
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 11:59 SAST (commit `58435d4`) — see `DEPLOYMENTS.md`
 - **Scripts:** [DIFF.md](DIFF.md) · [manifest.json](manifest.json)
 
 | Data action › step | Change |

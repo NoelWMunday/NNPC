@@ -30,6 +30,17 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
 - Test data source: `2026 Upstream PPP.xlsm` (replaces `New NUIMS.xlsx`). Do not assume the workbook is
   right — trace formulas to inputs; NU03 overhead allocations and JV direct capex are mixed in places.
 
+## Referencing (Noel, 10 Nov)
+
+Always point to code as **data action › step number + step name › line number**, with a link to the repo file, e.g.
+`PPP_Upstream_Tax` › 20 "Tax - CITA (Oil & Gas)" › line 25
+([data-actions/PPP_Upstream_Tax.md](data-actions/PPP_Upstream_Tax.md)). Line numbers are those shown in the SAC script editor.
+
+## Settings and rates
+
+All settings (`SET*`) and central rates are on Date `000000`. Hard-coded period dates (e.g. `202612`) are development
+leftovers and are defects. `PPP_Upstream` (old chain, unused) still has 64 of them.
+
 ## Mechanics
 
 - Export: read-only `objectmgr` `readObject` calls from the logged-in SAC tab (Claude in Chrome);
