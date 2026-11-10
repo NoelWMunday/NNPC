@@ -27,6 +27,9 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
   task (`housekeeping.md`).
 - Data action parameter *Target Version* is empty by design (set at runtime). Validation warnings about
   decimal places between measures are accepted.
+- **Business rules come from what the Excel does** (Noel, 10 Nov) — e.g. exploration capex is amortised because the
+  sheet amortises it. Cell-reference bugs in the sheet are not rules (see `findings/`).
+- Not every `SET*` applies to every JV; null is a valid value. Scripts must treat a missing setting as 0/off.
 - Test data source: `2026 Upstream PPP.xlsm` (replaces `New NUIMS.xlsx`). Do not assume the workbook is
   right — trace formulas to inputs; NU03 overhead allocations and JV direct capex are mixed in places.
 
