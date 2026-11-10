@@ -1,0 +1,20 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 1,
+  "stepId": "37095357-1823-4414-3771-232611829621",
+  "name": "Initialise",
+  "file": "proposed-changes/2026-11-10-financial-tab-and-cos-cleanup/PPP_Upstream_Royalties/step01_Initialise.advformula",
+  "beforeSha256": "25e26a173548e5a7357778eab273f3a54804117149e8b1ae962add94ebc5d55d",
+  "afterSha256": "caa9baa241737386ed4dd9aa7b76ea56b26f8b1434473ba2642d2503f3cf3956"
+ },
+ {
+  "dataAction": "PPP_Upstream_CostAlloc",
+  "step": 13,
+  "stepId": "41113566-7269-4214-3873-966164539180",
+  "name": "GL Entries",
+  "file": "proposed-changes/2026-11-10-financial-tab-and-cos-cleanup/PPP_Upstream_CostAlloc/step13_GL_Entries.advformula",
+  "beforeSha256": "66e3a8b9c7673a0db1fe0e6de460b212e3595aaeadf44c621d773dd3fa48dd3d",
+  "afterSha256": "80c40dd9bb04a62ed8718f8edcf86e808c2ca6517efd3a7f0272f46d03aa5781"
+ }
+]
