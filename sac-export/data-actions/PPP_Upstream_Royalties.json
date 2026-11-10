@@ -4,7 +4,7 @@
  "description": "PPP Upstream - Royalties",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T07:34:56.438Z",
+ "modified": "2026-11-10T09:14:24.682Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -80,7 +80,7 @@
    "description": "Initialise",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (BASEMEMBER([d/WPLn] ,\"CST05\" ), \"AMT_200\", \"AMT_210\", \"AMT_220\", \"AMT_230\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nDELETE()\n\n// Capex/Opex inputs are captured on PPP_Currency = USD. The Financial tab uses the UOM measure and shows \"#\",\n// so copy each input leaf (same PPP_EntryNr) to \"#\". The gas flare penalty (AMT_230 x UAP_GFP) cleared above\n// is recalculated in step 13.\nDATA([d/WPLn]=\"AMT_200\") = RESULTLOOKUP([d/WPLn]=\"AMT_200\", [d/PPP_Currency]=\"USD\")\nDATA([d/WPLn]=\"AMT_210\") = RESULTLOOKUP([d/WPLn]=\"AMT_210\", [d/PPP_Currency]=\"USD\")\nDATA([d/WPLn]=\"AMT_220\") = RESULTLOOKUP([d/WPLn]=\"AMT_220\", [d/PPP_Currency]=\"USD\")\nDATA([d/WPLn]=\"AMT_230\") = RESULTLOOKUP([d/WPLn]=\"AMT_230\", [d/PPP_Currency]=\"USD\")\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (BASEMEMBER([d/WPLn] ,\"CST05\" ), \"AMT_200\", \"AMT_210\", \"AMT_220\", \"AMT_230\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nDELETE()\n\n// Capex/Opex inputs are captured on PPP_Currency = USD. The Financial tab uses the UOM measure and shows \"#\",\n// so copy each input leaf (same PPP_EntryNr) to \"#\". The gas flare penalty (AMT_230 x UAP_GFP) cleared above\n// is recalculated in step 13.\n//DATA([d/WPLn]=\"AMT_200\") = RESULTLOOKUP([d/WPLn]=\"AMT_200\", [d/PPP_Currency]=\"USD\")\n//DATA([d/WPLn]=\"AMT_210\") = RESULTLOOKUP([d/WPLn]=\"AMT_210\", [d/PPP_Currency]=\"USD\")\n//DATA([d/WPLn]=\"AMT_220\") = RESULTLOOKUP([d/WPLn]=\"AMT_220\", [d/PPP_Currency]=\"USD\")\n//DATA([d/WPLn]=\"AMT_230\") = RESULTLOOKUP([d/WPLn]=\"AMT_230\", [d/PPP_Currency]=\"USD\")\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
