@@ -1,0 +1,20 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 9,
+  "stepId": "22052734-7916-4416-3379-018500708146",
+  "name": "Tax - Production Allowance",
+  "file": "proposed-changes/2026-11-10-tax-open-items/PPP_Upstream_Tax/step09_Tax_Production_Allowance.advformula",
+  "beforeSha256": "0c449340f92427853245cf0feafb5bb73d298e4eff49e0de7d108d4d0b7b9027",
+  "afterSha256": "8a1817d1ceb6e9dcaeaade36e9d8d85358da61e829fed94c90b1691ece43573f"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 10,
+  "stepId": "13901270-3418-4068-3088-389950687611",
+  "name": "Tax - CAPEX Components",
+  "file": "proposed-changes/2026-11-10-tax-open-items/PPP_Upstream_Tax/step10_Tax_CAPEX_Components.advformula",
+  "beforeSha256": "9acb17d05a33399aad38bd35be78adc0c090120e6f5b6ad864b0f1e51095b55c",
+  "afterSha256": "02b5e056fcf0732288f6c6ca3f3f1040f0ef09b7daf03e45bd2821bd74b7c6a2"
+ }
+]
