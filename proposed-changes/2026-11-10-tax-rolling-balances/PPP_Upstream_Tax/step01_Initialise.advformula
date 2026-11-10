@@ -1,0 +1,20 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/WPLn] = ("REV_32","REV_26","REV_40",
+					  BASEMEMBER([d/WPLn] ,"REV3_05"),
+					  BASEMEMBER([d/WPLn] ,"TAX"))
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+// TAX* are cleared so the rolling balances (steps 13, 14, 16) restart from this run
+DELETE()
