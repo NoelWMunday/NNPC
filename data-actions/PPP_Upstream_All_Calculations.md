@@ -5,7 +5,7 @@
 | SAC id | `C056EE84BFC39D3C4C720972D2EC2980` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-09-25T12:02:28.772Z by NMUNDAY |
+| Last changed | 2026-11-10T12:58:09.617Z by NMUNDAY |
 | Called by | — |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -93,7 +93,10 @@
    },
    "useDefaultValue": false,
    "value": {
-    "paramRef": "PCycle"
+    "memberIds": [
+     "#"
+    ],
+    "hierarchyName": "H1"
    }
   }
  ]
@@ -134,7 +137,10 @@
    },
    "useDefaultValue": false,
    "value": {
-    "paramRef": "PCycle"
+    "memberIds": [
+     "#"
+    ],
+    "hierarchyName": "H1"
    }
   },
   {
@@ -143,7 +149,10 @@
    },
    "useDefaultValue": false,
    "value": {
-    "paramRef": "CAPEX_PCycle"
+    "memberIds": [
+     "#"
+    ],
+    "hierarchyName": "H1"
    }
   },
   {
@@ -202,7 +211,10 @@
    },
    "useDefaultValue": false,
    "value": {
-    "paramRef": "PCycle"
+    "memberIds": [
+     "#"
+    ],
+    "hierarchyName": "H1"
    }
   }
  ]

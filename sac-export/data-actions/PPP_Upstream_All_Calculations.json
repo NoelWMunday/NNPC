@@ -4,7 +4,7 @@
  "description": "PPP_Upstream_All_Calculations",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-09-25T12:02:28.772Z",
+ "modified": "2026-11-10T12:58:09.617Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -201,7 +201,10 @@
      },
      "useDefaultValue": false,
      "value": {
-      "paramRef": "PCycle"
+      "memberIds": [
+       "#"
+      ],
+      "hierarchyName": "H1"
      }
     }
    ]
@@ -239,7 +242,10 @@
      },
      "useDefaultValue": false,
      "value": {
-      "paramRef": "PCycle"
+      "memberIds": [
+       "#"
+      ],
+      "hierarchyName": "H1"
      }
     },
     {
@@ -248,7 +254,10 @@
      },
      "useDefaultValue": false,
      "value": {
-      "paramRef": "CAPEX_PCycle"
+      "memberIds": [
+       "#"
+      ],
+      "hierarchyName": "H1"
      }
     },
     {
@@ -304,7 +313,10 @@
      },
      "useDefaultValue": false,
      "value": {
-      "paramRef": "PCycle"
+      "memberIds": [
+       "#"
+      ],
+      "hierarchyName": "H1"
      }
     }
    ]
