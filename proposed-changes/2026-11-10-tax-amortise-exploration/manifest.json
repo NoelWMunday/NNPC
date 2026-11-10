@@ -1,0 +1,29 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 11,
+  "stepId": "33870112-4128-4433-3401-944187185240",
+  "name": "Tax - CAPEX Amortisation",
+  "file": "proposed-changes/2026-11-10-tax-amortise-exploration/PPP_Upstream_Tax/step11_Tax_CAPEX_Amortisation.advformula",
+  "beforeSha256": "a29013490394554dd6c2c11ef7ad92c61a1ad6d5ebc4f0a04671fd9e8d635ab4",
+  "afterSha256": "b122b21694844e31c0c660b797ffd60c2be026fb3e5557d847a1b46c6997c65e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 16,
+  "stepId": "36244057-6940-4028-3612-312528377653",
+  "name": "Tax - Hydrocarbon Tax (CPR Limit & HT Payable)",
+  "file": "proposed-changes/2026-11-10-tax-amortise-exploration/PPP_Upstream_Tax/step16_Tax_Hydrocarbon_Tax_CPR_Limit_HT_Payable.advformula",
+  "beforeSha256": "727b784ca5e3acd6b9c02e45bc4572a15a542f0967b6d4f1cad899782d2b05cc",
+  "afterSha256": "70e1645d3161902d1fba0e6eabe1342de1290c7c14b6b28bd701da274dd4d220"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 17,
+  "stepId": "28578909-4728-4110-3198-378435320915",
+  "name": "Tax - Allowable Costs & Chargeable Profit CITA (Oil)",
+  "file": "proposed-changes/2026-11-10-tax-amortise-exploration/PPP_Upstream_Tax/step17_Tax_Allowable_Costs_Chargeable_Profit_CITA_Oil.advformula",
+  "beforeSha256": "0742a208a12744cc22dbac45b8ef214034f4b47c60452e3831e08878c292b097",
+  "afterSha256": "39b84b938f7912c6d36b9246d96595d32588041388774b3c2fa7c1cfcbed9ad5"
+ }
+]
