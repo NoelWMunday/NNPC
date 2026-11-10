@@ -1,0 +1,85 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/WPLn] = ("CST20", "SET10_05")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+
+// Numerator
+VARIABLEMEMBER #NUMERATOR OF [d/WPLn]
+
+// Total Appraisal & Exploration Cost – Oil
+VARIABLEMEMBER #TAECO OF [d/WPLn]
+
+// 1/5 of "Devt Well, Completion and Workover"
+VARIABLEMEMBER #DRILLING OF [d/WPLn]
+VARIABLEMEMBER #DRILLING_FIFTH OF [d/WPLn]
+
+// 1/5 of "CAPEX Facilities Oil"
+VARIABLEMEMBER #FACILITIES OF [d/WPLn]
+VARIABLEMEMBER #FACILITIES_FIFTH OF [d/WPLn]
+
+// 1/5 of "Devt Well, Completion and Workover"
+DATA([d/WPLn] = #DRILLING) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130", [d/PPP_Currency]="USD")
+DATA([d/WPLn] = #DRILLING_FIFTH) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130", [d/PPP_Currency]="USD") / 5
+
+// 1/5 of "CAPEX Facilities Oil"
+DATA([d/WPLn] = #FACILITIES) = 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_132", [d/PPP_Currency]="USD") +
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_136", [d/PPP_Currency]="USD") +	
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_138", [d/PPP_Currency]="USD") +	
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_139", [d/PPP_Currency]="USD")	
+	
+DATA([d/WPLn] = #FACILITIES_FIFTH) = RESULTLOOKUP([d/WPLn] = #FACILITIES) / 5
+
+// Total Appraisal & Exploration Cost – Oil
+DATA([d/WPLn] = #TAECO) = 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_110", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_120", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_121", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_124", [d/PPP_Currency]="USD")
+
+
+IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000") = 1 THEN
+	// PPT
+	DATA([d/WPLn] = #NUMERATOR) =
+		RESULTLOOKUP([d/WPLn] = #TAECO) + 
+	
+		// Drilling
+		// "Devt Well, Completion and Workover" (e.g. 80% of full drilling)
+		(RESULTLOOKUP([d/WPLn] = #DRILLING) *
+		RESULTLOOKUP([d/WPLn] = "AMT_46") / 100) +
+		// plus 1/5 of the remaining (e.g. 20%) of drilling
+		(RESULTLOOKUP([d/WPLn] = #DRILLING_FIFTH) * 
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100) +
+		
+		// Facilities
+		(RESULTLOOKUP([d/WPLn] = #FACILITIES_FIFTH) * 
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100)		
+	
+ELSE
+	// PIA
+	DATA([d/WPLn] = #NUMERATOR) =
+		RESULTLOOKUP([d/WPLn] = #TAECO) + 
+	
+		// Drilling
+		// plus 1/5 of the remaining (e.g. 20%) of drilling
+		RESULTLOOKUP([d/WPLn] = #DRILLING_FIFTH) +
+		
+		// Facilities
+		RESULTLOOKUP([d/WPLn] = #FACILITIES_FIFTH)	
+ENDIF
+
+DATA([d/WPLn] = "CST20") =
+		RESULTLOOKUP([d/WPLn] = #NUMERATOR) /
+		RESULTLOOKUP([d/WPLn] = "REV_05")

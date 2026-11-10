@@ -2,6 +2,7 @@
 
 - **Trello:** #19 https://trello.com/c/VYeHuGjg — *DEFECT: Upstream data actions read PPP_Currency = # — must read USD*
 - **Decision (Noel, 9 Nov):** inputs stay on `PPP_Currency = USD`; the data actions change.
+- **Superseded in part** by [2026-11-10-upstream-metrics-on-hash](../2026-11-10-upstream-metrics-on-hash/README.md): only `AMT_200/210/220/230` are on USD; metrics and settings are on `#`, so decision 1 below was wrong for `AMT_46/80/85/90/97`, `UOM_*`, `SET*`.
 - **Status:** APPLIED 10 Nov 2026 08:20 SAST (commit `c9d5952`) — see `DEPLOYMENTS.md`. Awaiting test.
 - **Scripts:** one file per changed step in the sub-folders; full before/after in [DIFF.md](DIFF.md)
 - **Generator:** `tools/propose_currency_usd.py` (re-run against a fresh export if SAC changes first)

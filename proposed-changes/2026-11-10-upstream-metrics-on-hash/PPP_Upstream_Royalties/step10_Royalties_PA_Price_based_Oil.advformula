@@ -1,0 +1,68 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = "#"
+// MEMBERSET [d/WPLn] =
+// MEMBERSET [d/Date] =
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+
+VARIABLEMEMBER #OILPRICE OF [d/WPLn]
+VARIABLEMEMBER #PRICEBAND_1 OF [d/WPLn]
+VARIABLEMEMBER #PRICEBAND_2 OF [d/WPLn]
+VARIABLEMEMBER #PRICEBAND_3 OF [d/WPLn]
+VARIABLEMEMBER #PRICEBAND_4 OF [d/WPLn]
+VARIABLEMEMBER #PRICEBAND_5 OF [d/WPLn]
+VARIABLEMEMBER #RR_1 OF [d/WPLn]
+VARIABLEMEMBER #RR_2 OF [d/WPLn]
+VARIABLEMEMBER #RR_3 OF [d/WPLn]
+VARIABLEMEMBER #RR_4 OF [d/WPLn]
+VARIABLEMEMBER #RR_5 OF [d/WPLn]
+
+DATA([d/WPLn] = #OILPRICE) = RESULTLOOKUP([d/WPLn]="GA_015",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #PRICEBAND_1) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_020",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #PRICEBAND_2) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_025",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #PRICEBAND_3) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_030",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #PRICEBAND_4) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_035",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+DATA([d/WPLn] = #PRICEBAND_5) = RESULTLOOKUP([d/Measures]="Royalty_PriceBand",[d/WPLn]="RR03_040",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central")
+
+DATA([d/WPLn] = #RR_1) = RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR03_020",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_2) = RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR03_025",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_3) = RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR03_030",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_4) = RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR03_035",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+DATA([d/WPLn] = #RR_5) = RESULTLOOKUP([d/Measures]="Royalty_PA",[d/WPLn]="RR03_040",[d/Date]="000000",[d/PPP_Entity]="#",[d/Lock]="Central") * 100
+
+IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #PRICEBAND_1)) THEN
+	DATA([d/WPLn]="RC35_05") = RESULTLOOKUP([d/WPLn] = #RR_1)
+ELSE
+	IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #PRICEBAND_2)) THEN
+		DATA([d/WPLn]="RC35_05") = RESULTLOOKUP([d/WPLn] = #RR_2)
+	ELSE
+		IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #PRICEBAND_3)) THEN
+			DATA([d/WPLn]="RC35_05") = RESULTLOOKUP([d/WPLn] = #RR_3)
+		ELSE
+			IF (RESULTLOOKUP([d/WPLn] = #OILPRICE) < RESULTLOOKUP([d/WPLn] = #PRICEBAND_4)) THEN
+				DATA([d/WPLn]="RC35_05") = RESULTLOOKUP([d/WPLn] = #RR_4)
+			ELSE
+				DATA([d/WPLn]="RC35_05") = RESULTLOOKUP([d/WPLn] = #RR_5)
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+
+
+DATA([d/WPLn]="RC35_10") = RESULTLOOKUP([d/WPLn] = "REV_10") * 
+						RESULTLOOKUP([d/WPLn]="RC35_05") / 100 *
+						RESULTLOOKUP([d/WPLn]="SET10_05", [d/Date] = "000000")
+
+DATA([d/WPLn]="RC35_15") = RESULTLOOKUP([d/WPLn]="RC35_10") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+
