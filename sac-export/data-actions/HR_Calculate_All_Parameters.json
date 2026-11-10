@@ -550,10 +550,6 @@
    },
    "isConvertedOnce": false,
    "isTextScriptChanged": true,
-   "runtimeContext": {
-    "referenceCubes": [],
-    "measures": []
-   },
    "disabled": true
   }
  ]

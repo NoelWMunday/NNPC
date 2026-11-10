@@ -2,7 +2,7 @@
 
 - **Trello:** #19 https://trello.com/c/VYeHuGjg — *DEFECT: Upstream data actions read PPP_Currency = # — must read USD*
 - **Decision (Noel, 9 Nov):** inputs stay on `PPP_Currency = USD`; the data actions change.
-- **Status:** APPROVED 10 Nov — applying
+- **Status:** APPLIED 10 Nov 2026 08:20 SAST (commit `c9d5952`) — see `DEPLOYMENTS.md`. Awaiting test.
 - **Scripts:** one file per changed step in the sub-folders; full before/after in [DIFF.md](DIFF.md)
 - **Generator:** `tools/propose_currency_usd.py` (re-run against a fresh export if SAC changes first)
 
@@ -96,3 +96,14 @@ it on the next run. Run it **after** the script change, then re-run Upstream (Ca
 ## Rollback
 
 Apply the "SAC now" side of [DIFF.md](DIFF.md) (= `sac-export/` before the merge).
+
+## Apply notes (10 Nov)
+
+- Applied by Claude through the data action designer: each step's script was replaced only after its
+  current content matched `beforeSha256` in [manifest.json](manifest.json), and checked against
+  `afterSha256` before saving. After saving, all three data actions were re-read from SAC and their step
+  lists match `sac-export/` on `main` exactly.
+- **Tracepoints:** replacing a script whose line count changes drops the step's tracepoints. Royalties step
+  18 (Total CAPEX / OPEX Equity) had four; they were re-added on the shifted lines. On save SAC kept the
+  two on `DATA` statements (lines 28 and 32) and dropped the two that were not on a statement (old lines
+  13 and 33). GL Entries tracepoints (21, 25) were untouched.

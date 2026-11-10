@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-10-20T13:28:12.526Z by NMUNDAY |
+| Last changed | 2026-11-10T06:19:43.750Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -107,27 +107,27 @@ VARIABLEMEMBER #FACILITIES OF [d/WPLn]
 VARIABLEMEMBER #FACILITIES_FIFTH OF [d/WPLn]
 
 // 1/5 of "Devt Well, Completion and Workover"
-DATA([d/WPLn] = #DRILLING) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130")
-DATA([d/WPLn] = #DRILLING_FIFTH) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130") / 5
+DATA([d/WPLn] = #DRILLING) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130", [d/PPP_Currency]="USD")
+DATA([d/WPLn] = #DRILLING_FIFTH) = RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_130", [d/PPP_Currency]="USD") / 5
 
 // 1/5 of "CAPEX Facilities Oil"
 DATA([d/WPLn] = #FACILITIES) = 
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_132") +
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_136") +	
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_138") +	
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_139")	
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_132", [d/PPP_Currency]="USD") +
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_136", [d/PPP_Currency]="USD") +	
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_138", [d/PPP_Currency]="USD") +	
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_139", [d/PPP_Currency]="USD")	
 	
 DATA([d/WPLn] = #FACILITIES_FIFTH) = RESULTLOOKUP([d/WPLn] = #FACILITIES) / 5
 
 // Total Appraisal & Exploration Cost – Oil
 DATA([d/WPLn] = #TAECO) = 
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_110") + 
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_120") + 
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_121") + 
-	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_124")
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_110", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_120", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_121", [d/PPP_Currency]="USD") + 
+	RESULTLOOKUP([d/WPLn] = "AMT_200", [d/PPP_EntryNr] = "UAP_124", [d/PPP_Currency]="USD")
 
 
-IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000") = 1 THEN
+IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000", [d/PPP_Currency]="USD") = 1 THEN
 	// PPT
 	DATA([d/WPLn] = #NUMERATOR) =
 		RESULTLOOKUP([d/WPLn] = #TAECO) + 
@@ -135,14 +135,14 @@ IF RESULTLOOKUP([d/WPLn] = "SET10_05", [d/Date] = "000000") = 1 THEN
 		// Drilling
 		// "Devt Well, Completion and Workover" (e.g. 80% of full drilling)
 		(RESULTLOOKUP([d/WPLn] = #DRILLING) *
-		RESULTLOOKUP([d/WPLn] = "AMT_46") / 100) +
+		RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD") / 100) +
 		// plus 1/5 of the remaining (e.g. 20%) of drilling
 		(RESULTLOOKUP([d/WPLn] = #DRILLING_FIFTH) * 
-		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100) +
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD")) / 100) +
 		
 		// Facilities
 		(RESULTLOOKUP([d/WPLn] = #FACILITIES_FIFTH) * 
-		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46")) / 100)		
+		(100 - RESULTLOOKUP([d/WPLn] = "AMT_46", [d/PPP_Currency]="USD")) / 100)		
 	
 ELSE
 	// PIA
@@ -185,8 +185,8 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="AMT_220")
-DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="AMT_200")
+DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="AMT_220", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="AMT_200", [d/PPP_Currency]="USD")
 
 DATA([d/WPLn]="TAX025_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -219,8 +219,8 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="AMT_230")
-DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="AMT_210")
+DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="AMT_210", [d/PPP_Currency]="USD")
 
 DATA([d/WPLn]="TAX030_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -253,7 +253,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="AMT_220")
+DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="AMT_220", [d/PPP_Currency]="USD")
 
 DATA([d/WPLn]="TAX015_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -285,7 +285,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
-DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="AMT_230")
+DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD")
 
 DATA([d/WPLn]="TAX020_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -370,7 +370,7 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn]="TAX010_15_05") = RESULTLOOKUP([d/WPLn]="REV_20")
 DATA([d/WPLn]="TAX010_15_10") = 0-RESULTLOOKUP([d/WPLn]="RC25_20")
-DATA([d/WPLn]="TAX010_15_15") = 0-RESULTLOOKUP([d/WPLn]="AMT_230") 
+DATA([d/WPLn]="TAX010_15_15") = 0-RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD") 
 DATA([d/WPLn]="TAX010_15_20") = 0-RESULTLOOKUP([d/WPLn]="RC40_20") 
 DATA([d/WPLn]="TAX010_15_25") = 0-RESULTLOOKUP([d/WPLn]="TAX030_05") 
 DATA([d/WPLn]="TAX010_15_30") = 0-RESULTLOOKUP([d/WPLn]="TAX020_05") 
@@ -453,40 +453,40 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
 // Oil
-DATA([d/WPLn]="TAX040_05_05_05") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_110")
-DATA([d/WPLn]="TAX040_05_05_10") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_120")
-DATA([d/WPLn]="TAX040_05_05_15") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_121") + RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_124")
+DATA([d/WPLn]="TAX040_05_05_05") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_110", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX040_05_05_10") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_120", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX040_05_05_15") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_121", [d/PPP_Currency]="USD") + RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_124", [d/PPP_Currency]="USD")
 
-DATA([d/WPLn]="TAX040_05_10") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_130")
+DATA([d/WPLn]="TAX040_05_10") = RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_130", [d/PPP_Currency]="USD")
 DATA([d/WPLn]="TAX040_05_15") = 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_132") + 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_136") +
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_138") + 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_139")
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_132", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_136", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_138", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_139", [d/PPP_Currency]="USD")
 DATA([d/WPLn]="TAX040_05_20") = 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_101") + 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_102") +
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_134") + 
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_140") +
-		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_141")
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_101", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_102", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_134", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_140", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_141", [d/PPP_Currency]="USD")
 		
 // Gas
-DATA([d/WPLn]="TAX040_10_05_05") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_110")
-DATA([d/WPLn]="TAX040_10_05_10") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_120")
-DATA([d/WPLn]="TAX040_10_05_15") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_121") + RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_124")
+DATA([d/WPLn]="TAX040_10_05_05") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_110", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX040_10_05_10") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_120", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="TAX040_10_05_15") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_121", [d/PPP_Currency]="USD") + RESULTLOOKUP([d/WPLn]="AMT_200",[d/PPP_EntryNr]="UAP_124", [d/PPP_Currency]="USD")
 
-DATA([d/WPLn]="TAX040_10_10") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_130")
+DATA([d/WPLn]="TAX040_10_10") = RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_130", [d/PPP_Currency]="USD")
 DATA([d/WPLn]="TAX040_10_15") = 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_132") + 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_136") +
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_138") + 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_139")
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_132", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_136", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_138", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_139", [d/PPP_Currency]="USD")
 DATA([d/WPLn]="TAX040_10_20") = 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_101") + 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_102") +
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_134") + 
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_140") +
-		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_141")
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_101", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_102", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_134", [d/PPP_Currency]="USD") + 
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_140", [d/PPP_Currency]="USD") +
+		RESULTLOOKUP([d/WPLn]="AMT_210",[d/PPP_EntryNr]="UAP_141", [d/PPP_Currency]="USD")
 ```
 
 Parameters used: Entity, PCycle
@@ -905,7 +905,7 @@ VARIABLEMEMBER #PARAM2 OF [d/WPLn]
 
 DATA([d/WPLn] = "TAX070_05") = RESULTLOOKUP([d/WPLn]="TA15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn] = "TAX070_55") = RESULTLOOKUP([d/WPLn]="TL15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000", [d/PPP_Currency]="USD")
 DATA([d/WPLn] = "TAX070_30") = RESULTLOOKUP([d/WPLn]="CST05_05")
 
 DATA([d/WPLn] = "TAX070_40") = 
@@ -944,7 +944,7 @@ ELSE
 	DATA([d/WPLn] = "TAX070_65") = 0
 ENDIF
 
-DATA([d/WPLn] = "TAX070_70") = RESULTLOOKUP([d/WPLn] = "TAX070_65") * RESULTLOOKUP([d/WPLn] = "AMT_90")
+DATA([d/WPLn] = "TAX070_70") = RESULTLOOKUP([d/WPLn] = "TAX070_65") * RESULTLOOKUP([d/WPLn] = "AMT_90", [d/PPP_Currency]="USD")
 ```
 
 Parameters used: Entity, PCycle
@@ -1058,13 +1058,13 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
-DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05") / 100
+DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05", [d/PPP_Currency]="USD") / 100
 
 IF RESULTLOOKUP([d/WPLn]="TAX085_20") < 0 THEN
 	DATA([d/WPLn] = "TAX085_20") = 0
 ENDIF
 
-DATA([d/WPLn] = "TAX085_25") = RESULTLOOKUP([d/WPLn]="TAX085_20") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+DATA([d/WPLn] = "TAX085_25") = RESULTLOOKUP([d/WPLn]="TAX085_20") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
 ```
 
 Parameters used: Entity, PCycle
@@ -1091,16 +1091,16 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
 DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10")
+DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD")
 
-DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
+DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_15") < 0 THEN DATA([d/WPLn] = "TAX090_15") = 0 ENDIF
 
-DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10") / 100
+DATA([d/WPLn] = "TAX090_20") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX080_10") * RESULTLOOKUP([d/WPLn]="SET10_10", [d/PPP_Currency]="USD") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_20") < 0 THEN DATA([d/WPLn] = "TAX090_20") = 0 ENDIF
 
-DATA([d/WPLn] = "TAX090_25") = RESULTLOOKUP([d/WPLn]="TAX090_15") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
-DATA([d/WPLn] = "TAX090_30") = RESULTLOOKUP([d/WPLn]="TAX090_20") * RESULTLOOKUP([d/WPLn]="AMT_90") / 100
+DATA([d/WPLn] = "TAX090_25") = RESULTLOOKUP([d/WPLn]="TAX090_15") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+DATA([d/WPLn] = "TAX090_30") = RESULTLOOKUP([d/WPLn]="TAX090_20") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
 ```
 
 Parameters used: Entity, PCycle
@@ -1159,12 +1159,12 @@ DATA([d/Measures] = "GC_CR", [d/GL] = "4112001", [d/PPP_EntryNr] = "UP_0005") =
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // COS Depreciation
 DATA([d/Measures] = "GC_CR", [d/GL] = "4202026", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency] = "#") +
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency] = "#")
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency]="USD") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency]="USD")
 // Depletion
 DATA([d/Measures] = "GC_CR", [d/GL] = "5230003", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency] = "#") +
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency] = "#")
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency]="USD") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency]="USD")
 // Apportioned Provision for Impairment
 DATA([d/Measures] = "GC_CR", [d/GL] = "5230006", [d/PPP_EntryNr] = "UP_0005") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")

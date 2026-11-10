@@ -1,6 +1,10 @@
 """Generate repository documentation from a SAC folder export.
 
-Usage: python3 tools/generate_docs.py <export.json> <repo-root>
+Usage: python3 tools/generate_docs.py <export.json | sac-export-dir> <repo-root>
+
+Pass an export bundle after a fresh export, or the repo's own `sac-export` folder to rebuild the docs
+after updating individual files there. SCRIPT steps are stored without `runtimeContext` (SAC's compiled
+form of the script, ~10 KB per step, rewritten on every save); the script itself is the source.
 
 The export is produced read-only from the SAC browser session (see README).
 Writes:
@@ -54,8 +58,38 @@ def param_line(p):
             f"| {dim} | {p.get('cardinality', '')} | `{json.dumps(val) if val is not None else ''}` |")
 
 
+def load_dir(d):
+    """Rebuild an export bundle from a sac-export folder."""
+    import glob
+    b = json.load(open(f"{d}/inventory.json", encoding="utf-8"))
+    b["dataActions"] = {}
+    for f in sorted(glob.glob(f"{d}/data-actions/*.json")):
+        x = json.load(open(f, encoding="utf-8"))
+        b["dataActions"][x["name"]] = x
+    b["models"] = {}
+    for f in sorted(glob.glob(f"{d}/models/*.json")):
+        x = json.load(open(f, encoding="utf-8"))
+        b["models"][x["metadata"]["id"]["name"]] = x
+    b["stories"] = {}
+    for f in sorted(glob.glob(f"{d}/stories/*.json")):
+        x = json.load(open(f, encoding="utf-8"))
+        sid = x["metadata"]["id"]["name"]
+        b["stories"][next((i["name"] for i in b["inventory"] if i["id"] == sid), sid)] = x
+    b["currencyTable"] = json.load(open(f"{d}/currency/CURRENCY.json", encoding="utf-8"))
+    return b
+
+
+def strip_derived(d):
+    for st in d["steps"]:
+        if st.get("stepType") == "SCRIPT":
+            st.pop("runtimeContext", None)
+    return d
+
+
 def main(src, root):
-    b = json.load(open(src, encoding="utf-8"))
+    b = load_dir(src) if os.path.isdir(src) else json.load(open(src, encoding="utf-8"))
+    for d in b["dataActions"].values():
+        strip_derived(d)
     das = b["dataActions"]
     models = b["models"]
     model_name = {cid: (m["data"].get("description") or cid) for cid, m in models.items()}
@@ -179,7 +213,7 @@ def main(src, root):
 
     # ---- models -----------------------------------------------------------
     ML = ["# Models", "", "| Model | Id | Dimensions |", "|---|---|---|"]
-    for cid, m in models.items():
+    for cid, m in sorted(models.items(), key=lambda x: model_name[x[0]].lower()):
         md = m["data"]
         nm = model_name[cid]
         ML.append(f"| [{nm}]({safe(nm)}.md) | `{cid}` | {len(md.get('dimensions', []))} |")

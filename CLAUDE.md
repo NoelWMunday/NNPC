@@ -27,4 +27,14 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
 
 - Export: read-only `objectmgr` `readObject` calls from the logged-in SAC tab (Claude in Chrome);
   members via `fpa/member` `query`. Then `python3 tools/generate_docs.py <export.json> .`
+- Apply: open the data action in the designer, select steps by dispatching pointer events on the flow
+  tile (`span[class*="planningSequenceSt"]`), set the CodeMirror 5 editor (`.CodeMirror`.CodeMirror),
+  check before/after hashes from the change's `manifest.json`, save via the save menu. Changing the URL
+  `?step=` reloads the designer and loses unsaved edits. Scripts can be fetched in the page from
+  `raw.githubusercontent.com` pinned to a commit.
+- Tracepoints are designer state, not part of the saved definition. Replacing a script with a different
+  line count drops them — re-add on the equivalent lines.
+- Snapshot keeps scripts, not SAC's compiled `runtimeContext`. Partial refresh: update files in
+  `sac-export/`, then `python3 tools/generate_docs.py sac-export .`
+- Git tags can't be pushed from here; deployments are logged in `DEPLOYMENTS.md`.
 - Local working folder on Noel's Mac: `Unit testing/Claude`; source workbooks in `Unit testing/Source data`.
