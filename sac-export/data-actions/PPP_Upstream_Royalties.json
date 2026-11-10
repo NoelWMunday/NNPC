@@ -4,7 +4,7 @@
  "description": "PPP Upstream - Royalties",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T09:59:11.189Z",
+ "modified": "2026-11-10T11:13:02.596Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -326,7 +326,7 @@
    "description": "Costs - CAPEX Oil",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_15\",\"AMT_200\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_15\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") = RESULTLOOKUP([d/WPLn] = \"AMT_200\")\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_15\",\"AMT_200\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_15\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = LAST()) = \n\t\tRESULTLOOKUP([d/WPLn] = \"AMT_200\")\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -345,7 +345,7 @@
    "description": "Costs - CAPEX Gas",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_20\",\"AMT_210\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_CST\"), BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_OTH\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_20\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") = RESULTLOOKUP([d/WPLn] = \"AMT_210\")\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_20\",\"AMT_210\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_CST\"), BASEMEMBER([d/PPP_EntryNr] , \"UAP_CAPEX_OTH\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_20\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = LAST()) = \n\t\tRESULTLOOKUP([d/WPLn] = \"AMT_210\")\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -364,7 +364,7 @@
    "description": "Costs - OPEX Oil",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// This is only productive opex costs\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_05\",\"AMT_220\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_OPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_05\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") = RESULTLOOKUP([d/WPLn] = \"AMT_220\")\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// This is only productive opex costs\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_05\",\"AMT_220\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_OPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_05\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = LAST()) = \n\t\tRESULTLOOKUP([d/WPLn] = \"AMT_220\")\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -383,7 +383,7 @@
    "description": "Costs - OPEX Gas",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// This is only productive opex costs\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_10\",\"AMT_230\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_OPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_10\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") = RESULTLOOKUP([d/WPLn] = \"AMT_230\")\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// This is only productive opex costs\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\nMEMBERSET [d/WPLn] = (\"CST05_10\",\"AMT_230\")\nMEMBERSET [d/PPP_EntryNr] = (\"#\", BASEMEMBER([d/PPP_EntryNr] , \"UAP_OPEX_CST\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\n\nIF [d/PPP_EntryNr] != \"#\" AND [d/PPP_Currency] = \"USD\" THEN\n\tDATA.APPEND([d/WPLn] = \"CST05_10\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\", [d/Date] = LAST()) = \n\t\tRESULTLOOKUP([d/WPLn] = \"AMT_230\")\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {

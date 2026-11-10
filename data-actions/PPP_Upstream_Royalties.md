@@ -7,7 +7,7 @@
 | SAC id | `F4851684BFC29D7E2AE8285F175632F1` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T09:59:11.189Z by NMUNDAY |
+| Last changed | 2026-11-10T11:13:02.596Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -730,7 +730,8 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
-	DATA.APPEND([d/WPLn] = "CST05_15", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_200")
+	DATA.APPEND([d/WPLn] = "CST05_15", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Date] = LAST()) = 
+		RESULTLOOKUP([d/WPLn] = "AMT_200")
 ENDIF
 ```
 
@@ -758,7 +759,8 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
-	DATA.APPEND([d/WPLn] = "CST05_20", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_210")
+	DATA.APPEND([d/WPLn] = "CST05_20", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Date] = LAST()) = 
+		RESULTLOOKUP([d/WPLn] = "AMT_210")
 ENDIF
 ```
 
@@ -788,7 +790,8 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
-	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_220")
+	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Date] = LAST()) = 
+		RESULTLOOKUP([d/WPLn] = "AMT_220")
 ENDIF
 ```
 
@@ -818,7 +821,8 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
-	DATA.APPEND([d/WPLn] = "CST05_10", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") = RESULTLOOKUP([d/WPLn] = "AMT_230")
+	DATA.APPEND([d/WPLn] = "CST05_10", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Date] = LAST()) = 
+		RESULTLOOKUP([d/WPLn] = "AMT_230")
 ENDIF
 ```
 
