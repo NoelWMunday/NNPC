@@ -18,3 +18,4 @@ MEMBERSET [d/Lock] = "#"
 
 DATA([d/WPLn]="RC15_10") = 	RESULTLOOKUP([d/WPLn]="RC15_05") *
 							RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+

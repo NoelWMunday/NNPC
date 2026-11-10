@@ -21,3 +21,4 @@ DATA([d/WPLn]="RC15_05") = RESULTLOOKUP([d/WPLn]="AMT_97", [d/PPP_Currency]="USD
 						 RESULTLOOKUP([d/WPLn]="RC10_15") + RESULTLOOKUP([d/WPLn]="RC10_20")) *
 						RESULTLOOKUP([d/WPLn]="UOM_65", [d/PPP_Currency]="USD") *
 						RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000", [d/PPP_Currency]="USD")
+

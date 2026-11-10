@@ -55,3 +55,4 @@ DATA([d/WPLn]="RC20_10") = RESULTLOOKUP([d/WPLn] = "REV_10") *
 							RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000", [d/PPP_Currency]="USD")
 							
 DATA([d/WPLn]="RC20_15") = RESULTLOOKUP([d/WPLn]="RC20_10") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+

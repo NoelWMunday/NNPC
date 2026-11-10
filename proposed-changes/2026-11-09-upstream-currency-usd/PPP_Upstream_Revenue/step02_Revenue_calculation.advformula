@@ -46,3 +46,4 @@ DATA([d/WPLn]="REV_25") = RESULTLOOKUP([d/WPLn]="REV_10") + RESULTLOOKUP([d/WPLn
 
 // NNPC Share of revenue
 DATA([d/WPLn]="REV_30") = RESULTLOOKUP([d/WPLn]="REV_25") * RESULTLOOKUP([d/WPLn]="AMT_90", [d/PPP_Currency]="USD") / 100
+
