@@ -5,7 +5,7 @@
 | SAC id | `398D1684BFC6147FBA0CF82732D452F6` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-08-26T09:59:21.304Z by NMUNDAY |
+| Last changed | 2026-11-10T07:36:21.926Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -550,14 +550,6 @@ DATA([d/Measures] = "GC_CR", [d/GL] = "5010001", [d/PPP_EntryNr] = "UP_0010") =
 // Apportioned General Depreciation
 DATA([d/Measures] = "GC_CR", [d/GL] = "4112001", [d/PPP_EntryNr] = "UP_0010") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
-// COS Depreciation
-//DATA([d/Measures] = "GC_CR", [d/GL] = "4202026", [d/PPP_EntryNr] = "UP_0010") = 
-//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency] = "#") +
-//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency] = "#")
-// Depletion
-//DATA([d/Measures] = "GC_CR", [d/GL] = "5230003", [d/PPP_EntryNr] = "UP_0010") = 
-//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency] = "#") +
-//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency] = "#")
 // Apportioned Provision for Impairment
 DATA([d/Measures] = "GC_CR", [d/GL] = "5230006", [d/PPP_EntryNr] = "UP_0010") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")

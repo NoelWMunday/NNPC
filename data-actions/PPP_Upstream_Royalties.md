@@ -7,7 +7,7 @@
 | SAC id | `F4851684BFC29D7E2AE8285F175632F1` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T07:16:53.891Z by NMUNDAY |
+| Last changed | 2026-11-10T07:34:56.438Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -56,7 +56,7 @@ CONFIG.GENERATE_UNBOOKED_DATA = ON
 MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
 MEMBERSET [d/PCycle] = %PCycle%
 MEMBERSET [d/Measures]="Value_WPLn"
-MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] ,"CST05" )
+MEMBERSET [d/WPLn] = (BASEMEMBER([d/WPLn] ,"CST05" ), "AMT_200", "AMT_210", "AMT_220", "AMT_230")
 MEMBERSET [d/GL] = "#"
 MEMBERSET [d/Ln] = "#"
 MEMBERSET [d/Objectives] = "#"
@@ -64,8 +64,17 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
 
 DELETE()
+
+// Capex/Opex inputs are captured on PPP_Currency = USD. The Financial tab uses the UOM measure and shows "#",
+// so copy each input leaf (same PPP_EntryNr) to "#". The gas flare penalty (AMT_230 x UAP_GFP) cleared above
+// is recalculated in step 13.
+DATA([d/WPLn]="AMT_200") = RESULTLOOKUP([d/WPLn]="AMT_200", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="AMT_210") = RESULTLOOKUP([d/WPLn]="AMT_210", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="AMT_220") = RESULTLOOKUP([d/WPLn]="AMT_220", [d/PPP_Currency]="USD")
+DATA([d/WPLn]="AMT_230") = RESULTLOOKUP([d/WPLn]="AMT_230", [d/PPP_Currency]="USD")
 ```
 
 Parameters used: Entity, PCycle

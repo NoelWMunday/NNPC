@@ -7,7 +7,7 @@
   2. The Financial tab shows `PPP_Currency = "#"` by design. It uses the UOM measure `Value_WPLn` to show mixed
      units (%, $, kbopd …) in one table, so it can't filter on a currency. Real currency (USD) only appears once
      the GL entries are posted and shown on the GL Entries tab.
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 09:36 SAST (commit `14dae49`) — see `DEPLOYMENTS.md`. Awaiting retest.
 - **Scripts:** one file per step; [DIFF.md](DIFF.md) (left = live, right = proposed); [manifest.json](manifest.json)
 
 ## Why
