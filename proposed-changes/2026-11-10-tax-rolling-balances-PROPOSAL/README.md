@@ -1,7 +1,7 @@
 # PROPOSAL (not applied) — Tax rolling balances and prior-year HCDT
 
 - **Trello:** #20 decisions 3 and 4 (Noel 10 Nov 11:53: "propose the changes for the rolling balances"; "HCDT prior year as per Excel")
-- **Status:** PROPOSAL — for review. Nothing is applied until agreed. The script syntax still needs SAC's Validate before it goes on a branch.
+- **Status:** SUPERSEDED by [2026-11-10-tax-rolling-balances](../2026-11-10-tax-rolling-balances/README.md) (applied). Nothing is applied until agreed. The script syntax still needs SAC's Validate before it goes on a branch.
 
 ## How dates are stored (this decides the design)
 

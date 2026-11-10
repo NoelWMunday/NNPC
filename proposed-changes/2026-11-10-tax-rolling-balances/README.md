@@ -6,7 +6,7 @@
   month (e.g. `202508`), and later periods hold the rest. Users manage this. (Q2) No generic opening balances. (Q3) Tax runs for
   planning periods CY+1 onward.
 - **Replaces:** [2026-11-10-tax-rolling-balances-PROPOSAL](../2026-11-10-tax-rolling-balances-PROPOSAL/README.md)
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 13:33 SAST (commit `bcff8cf`) — see `DEPLOYMENTS.md`. Awaiting retest.
 - **Scripts:** [DIFF.md](DIFF.md) · [manifest.json](manifest.json)
 
 ## Changes
