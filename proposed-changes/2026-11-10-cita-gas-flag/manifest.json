@@ -1,0 +1,11 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 20,
+  "stepId": "24593923-5417-4771-3686-524684309252",
+  "name": "Tax - CITA (Oil & Gas)",
+  "file": "proposed-changes/2026-11-10-cita-gas-flag/PPP_Upstream_Tax/step20_Tax_CITA_Oil_Gas.advformula",
+  "beforeSha256": "71321837cc155361e9c9e61d325565ee1cd00587254b14fb12349907c5384572",
+  "afterSha256": "1e139ef72ee2988643da0898ac4a4e351e1033442096d29d0591a76ad019d172"
+ }
+]
