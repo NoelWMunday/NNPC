@@ -1,0 +1,290 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Revenue",
+  "step": 2,
+  "stepId": "39554489-8334-4493-3947-341918977611",
+  "name": "Revenue calculation",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Revenue/step02_Revenue_calculation.advformula",
+  "beforeSha256": "9e084ff81b9496be78c8a91e7791b1b537c455be74fe7a4d0041635da67282a5",
+  "afterSha256": "9fdc3b453efe37ba06baac1ef9389f8e0145fa03331cb563a342308727dc85a0"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 2,
+  "stepId": "36369478-2621-4943-3545-629650519017",
+  "name": "Initialise common entity totals",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step02_Initialise_common_entity_totals.advformula",
+  "beforeSha256": "d3665257d429ab54d668ef5623fc2667daec0352500068c125358dcde058a913",
+  "afterSha256": "50849997b9050b76e4b4baa7ea7ee512301ee1b49cd443c66cc19a0c19f41a23"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 3,
+  "stepId": "33359838-4041-4736-3379-620294774792",
+  "name": "Royalties - Tranch volumes",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step03_Royalties_Tranch_volumes.advformula",
+  "beforeSha256": "60b703d4d28828ae74b6f0aa4f3c7b2932b0e4eb9b351045422fdc4a2483ec33",
+  "afterSha256": "18ef172ad7fbfd865609f691c3d713ac0df82bab5e21af9cfaca0c1bd9aeb266"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 4,
+  "stepId": "37952139-8333-4223-3257-719128760945",
+  "name": "Royalties - Values (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step04_Royalties_Values_Oil.advformula",
+  "beforeSha256": "f2e42406c215131e95b58434ba292585b3575cc9db9e313db7dea45666f9e46a",
+  "afterSha256": "3643aa259585e08c8c24fc98579ce5d0efcda15a66c09b73752183270f6a41c0"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 5,
+  "stepId": "37226163-3438-4818-3915-211233354993",
+  "name": "PIA Royalties - Production based (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step05_PIA_Royalties_Production_based_Oil.advformula",
+  "beforeSha256": "e32dcc40b13bfd1b68abc7d989bdad98c135875432503354f9fbcb6de028373d",
+  "afterSha256": "9e9ec5e392b5c6819f8d2bf7c644950ffbccc0c875400d08b52651bed84ae383"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 6,
+  "stepId": "10149801-2386-4964-3450-286721252209",
+  "name": "PIA Royalties - Equity production based (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step06_PIA_Royalties_Equity_production_based_Oil.advformula",
+  "beforeSha256": "70b4c8f5ac752a72692475d21a24160c78274bdc76a69ab906330dc165a1dafa",
+  "afterSha256": "0be59182e678c15659b5a114b5cd3572119b9c58e86307de500dc1736c942680"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 7,
+  "stepId": "41732951-1649-4612-3015-129643642689",
+  "name": "PIA Royalties - Price based (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step07_PIA_Royalties_Price_based_Oil.advformula",
+  "beforeSha256": "45a3ea3758d113dda07b0381efe834463b68c15d03c580ac7c75dfea6522f834",
+  "afterSha256": "f702bdcab0bef29130208e50926f742d51fb14558f0d81cd8ca345b0b875f36c"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 8,
+  "stepId": "17980592-1173-4500-3328-336337879922",
+  "name": "PIA Royalties - Gas",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step08_PIA_Royalties_Gas.advformula",
+  "beforeSha256": "464a603a9d6a16b94156c0448cfc6b71c6a47d512866f09eefc76bed82952953",
+  "afterSha256": "bf4a740d739ea553170b0c950ef3c80e10722a4c863709a6daad402a964c43ea"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 9,
+  "stepId": "31560633-7229-4952-3731-716931590851",
+  "name": "Royalties - PA Production based (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step09_Royalties_PA_Production_based_Oil.advformula",
+  "beforeSha256": "d2e55d96feb404f4f01329ae3e1f7199b67b6799557dfafc0a73b31ebc3ff841",
+  "afterSha256": "62fc6817f33fa0def707bf68f1a0cee99034bf4b0172a703865f2ebe55f393c6"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 10,
+  "stepId": "42186099-4241-4681-3833-196641809618",
+  "name": "Royalties - PA Price based (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step10_Royalties_PA_Price_based_Oil.advformula",
+  "beforeSha256": "37e95900348acf08a1fe98f6d428b91987e9c31f62fd86c5a32d2c46d7a11173",
+  "afterSha256": "cdbef10b583534f393ed7186258dcf0ec2fe7bd57be2a48cc2df52521e644aae"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 11,
+  "stepId": "20988865-8825-4221-3513-838973361811",
+  "name": "Royalties - PA Gas",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step11_Royalties_PA_Gas.advformula",
+  "beforeSha256": "06983abfbe86e47e3a9378f4689e93e47f08d8420dc8a55b2f25428113311aa6",
+  "afterSha256": "68f54263cb318392762c8cb309d4a128822aaaf2bcde088a0a0408708437de3f"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 12,
+  "stepId": "30210860-5141-4837-3066-093729110871",
+  "name": "Royalties - Summary total",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step12_Royalties_Summary_total.advformula",
+  "beforeSha256": "6f38fef72420d5fa1c82f96862a314520d1c400fb2109484fe6107a89f0ca44a",
+  "afterSha256": "7a29018c7f9c6af9322f1542b8f6a6f8d23172fb241591b65879306630db255e"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 13,
+  "stepId": "17045155-9036-4356-3336-225589503441",
+  "name": "Gas flare penalty",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step13_Gas_flare_penalty.advformula",
+  "beforeSha256": "946638c4eaec068c6ed95c1bdf3281b7bdafb90310c25d3d53efb8805221cdbc",
+  "afterSha256": "b25cc6b9de8817603d186bf2f32bdcde90ae4e7bfcb8cc9bc901532da277fe1a"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 14,
+  "stepId": "40426270-9108-4707-3407-229997827416",
+  "name": "Costs - CAPEX Oil",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step14_Costs_CAPEX_Oil.advformula",
+  "beforeSha256": "0b40e5502ed8a81f6ca09428647c9dfb64292bd6d993934b4029c02cb9ecd4d2",
+  "afterSha256": "bb41533d6f394ac0afc2203c60823b1accb21bf654a07fe486150b360d5d993a"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 15,
+  "stepId": "32184939-4338-4042-3369-214363226071",
+  "name": "Costs - CAPEX Gas",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step15_Costs_CAPEX_Gas.advformula",
+  "beforeSha256": "12d853e8b87db54cec0a0277d5af1aa9aa1fdc52900cf3f9107f41461ff50fc5",
+  "afterSha256": "a518253afea57ffef9745473e32b1883dcefd34ffb7fc35a051e53756a726561"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 16,
+  "stepId": "29964584-0636-4749-3361-115986232720",
+  "name": "Costs - OPEX Oil",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step16_Costs_OPEX_Oil.advformula",
+  "beforeSha256": "204a0b851de78b348170899d6b6b3ea19b6505baadfc36654a392ca603aeed8d",
+  "afterSha256": "7035db37551e9e711902c020e6efbaa3e9f611391b042d6f360b71e71525bbcf"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 17,
+  "stepId": "20205214-9413-4429-3400-281987348620",
+  "name": "Costs - OPEX Gas",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step17_Costs_OPEX_Gas.advformula",
+  "beforeSha256": "af648f96754986fa2662fa6ced6f10740172b4670866f951e426a0efa9fe32cc",
+  "afterSha256": "0f0d42528ea8728a7f8b786d957cf743328970e55d4588df44cdc406b1196170"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 18,
+  "stepId": "49110097-4714-4537-8673-883877670407",
+  "name": "Total CAPEX / OPEX Equity",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step18_Total_CAPEX_OPEX_Equity.advformula",
+  "beforeSha256": "7d0cc20a060cd2090e48457b012ad5777d7e2514b42341668694093c94073f46",
+  "afterSha256": "47a57d919f24100a1fc9694d109dc560698d79dc41298760f866a502796d8b24"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 19,
+  "stepId": "20276165-6299-4788-3921-856700443108",
+  "name": "Total OPEX to common entity",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step19_Total_OPEX_to_common_entity.advformula",
+  "beforeSha256": "d0aa9836b0f35e2d777ffac93ab9d565a98dac41dfecf92f0b3302504a902901",
+  "afterSha256": "88e3e03154f3fb8a1a3df0853217abe19983ca921cfa193befb33175710609f7"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 20,
+  "stepId": "37791232-3438-4742-3865-399319706324",
+  "name": "Entities share in OPEX",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step20_Entities_share_in_OPEX.advformula",
+  "beforeSha256": "926a23fa2fc82d1340c8de54dd112a82559c53d39b866d40f20dfe595ebc1df5",
+  "afterSha256": "69d966a555e387aa3ec5c229e60ec696a06d54906ec4573b85e365cb02abeeca"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 21,
+  "stepId": "38725138-6166-4445-3414-241368257437",
+  "name": "Development cost",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Royalties/step21_Development_cost.advformula",
+  "beforeSha256": "d212a467821e3f20769280153a00fd8606cfc083303be29a43d877158c3095ec",
+  "afterSha256": "e0596f13a98fd80b6b8f22cb5b21f93adde64b5b477b21fd78feb637d7dcc844"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 2,
+  "stepId": "38725138-6166-4445-3414-241368257437",
+  "name": "Development cost",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step02_Development_cost.advformula",
+  "beforeSha256": "d212a467821e3f20769280153a00fd8606cfc083303be29a43d877158c3095ec",
+  "afterSha256": "97051da00013366f9ef9667ac54da88ace21e52827631f92518e79326d0c0f6f"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 3,
+  "stepId": "30612877-1596-4882-3579-282715056529",
+  "name": "Tax - NDDC Levy Payable (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step03_Tax_NDDC_Levy_Payable_Oil.advformula",
+  "beforeSha256": "3b55b3162a50f8ce110a5221d0c3294f575a06beffbc8249f71d1f5bdb1ea03b",
+  "afterSha256": "16c54a25b82779a11085ac1f986e443b8c82a8bb705374789fdba9fda4dba42a"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 4,
+  "stepId": "73131350-2873-4955-3565-230029431336",
+  "name": "Tax - NDDC Levy Payable (Gas)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step04_Tax_NDDC_Levy_Payable_Gas.advformula",
+  "beforeSha256": "af6f45ca3da7dc8d01f030a6218ccf44086eff56ffe8b1385ee2f9ca439bf6f0",
+  "afterSha256": "ba0fc6b36176e2f93fff2a53642eb59b816fd2ee869937f541bd6d6458f3ad06"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 5,
+  "stepId": "42742315-7627-4543-3044-935506986269",
+  "name": "Tax - HCDT Fund Payable (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step05_Tax_HCDT_Fund_Payable_Oil.advformula",
+  "beforeSha256": "794e83e177e4b44a450e8e8c56b526d9a6a5855ac94ac7377deef28f54ede463",
+  "afterSha256": "5306f8d0cc2fe6eeb581b5a53dc9bfd9ee4d1a6b81f3d6977b1d5fea247695c9"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 6,
+  "stepId": "11797287-4640-4417-8389-319464744338",
+  "name": "Tax - HCDT Fund Payable (Gas)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step06_Tax_HCDT_Fund_Payable_Gas.advformula",
+  "beforeSha256": "aaae86de05d5f3768a366f6784d403540ae98b9de8f8e73c5c30386cd451912a",
+  "afterSha256": "0f0620e22ba21b2d9aa1ab2341c312161d7f4e2fc3ea8b0f1f17d9f243a09995"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 8,
+  "stepId": "16030386-4914-4231-3232-427622113526",
+  "name": "Tax - Development levy (Gas)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step08_Tax_Development_levy_Gas.advformula",
+  "beforeSha256": "94e37de13f769f07aa1214a317c34937ea280e10fcfe67d8fe5cfb9c5332c0a1",
+  "afterSha256": "31a68af3d7a306fe4ed33c77a0c1705b0aebf8f0fdacc4d25b0a2e82e29c88ff"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 10,
+  "stepId": "13901270-3418-4068-3088-389950687611",
+  "name": "Tax - CAPEX Components",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step10_Tax_CAPEX_Components.advformula",
+  "beforeSha256": "d0ad4d917f0b165732589deb67ffa99695c1d99e7d8dce6dbbbaaa7326d6787a",
+  "afterSha256": "9acb17d05a33399aad38bd35be78adc0c090120e6f5b6ad864b0f1e51095b55c"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 16,
+  "stepId": "36244057-6940-4028-3612-312528377653",
+  "name": "Tax - Hydrocarbon Tax (CPR Limit & HT Payable)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step16_Tax_Hydrocarbon_Tax_CPR_Limit_HT_Payable.advformula",
+  "beforeSha256": "6ca054fc764e62ba7985d923bfd90a895139654d3bff3fcecbc3e66a71fda86d",
+  "afterSha256": "37f0ba23f3b030c38188da158cc8cb9153961ae1bbbd8fa207220556bd121b79"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 19,
+  "stepId": "63935334-7079-4055-3760-822667742926",
+  "name": "Tax - PPT Tax (Oil)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step19_Tax_PPT_Tax_Oil.advformula",
+  "beforeSha256": "a7f58c502aa56f2e8c9624fac23461f7e04f08493bfc0af9b99947b61e2c0f3e",
+  "afterSha256": "fa60f8c05ae9da8df0313f22211f807ef893ccbc2e3625a0ee65b28de8f521e4"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 20,
+  "stepId": "24593923-5417-4771-3686-524684309252",
+  "name": "Tax - CITA (Oil & Gas)",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step20_Tax_CITA_Oil_Gas.advformula",
+  "beforeSha256": "8cc4610a3e6530e8bdbffcc76f7f1b2fad6477da44e6308f801995867a58a620",
+  "afterSha256": "3f955ff5503633de7154fab38a9671d0383919400f7b0687b5afa4a5b5bcf1dd"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 21,
+  "stepId": "68111212-8382-4328-3176-337055414273",
+  "name": "GL Entries",
+  "file": "proposed-changes/2026-11-09-upstream-currency-usd/PPP_Upstream_Tax/step21_GL_Entries.advformula",
+  "beforeSha256": "f26231b16b881d005052ebc2c59783641376ce03a8f1e2ae68edf99f34fe4443",
+  "afterSha256": "f7f602527248fca43fcef57374172b5c5e8abeadf5f69b93f97d12f46488fa88"
+ }
+]
