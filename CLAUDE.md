@@ -15,6 +15,10 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
   are on `PPP_Currency = "#"`. (Corrected 10 Nov — #19 first assumed all inputs were USD.)
 - **Calculated lines** are on `PPP_Currency = "#"`. Scripts read Capex/Opex inputs with
   `[d/PPP_Currency]="USD"` and write to `"#"` (the `PPP_Upstream_CostAlloc` pattern).
+- **Story display:** tabs built on the UOM measure (e.g. Financial) show mixed units, so they read `#`. Any
+  input shown there must be copied to `#` by a data action (Royalties step 1 copies `AMT_200/210/220/230`).
+  Real USD appears once GL entries are posted (GL Entries tab).
+- COS Depreciation / Depletion GL entries are owned by `PPP_Upstream_Tax` step 21.
 - Before changing a lookup's currency, confirm which story table captures that line and what it writes.
 - **Central assumptions** (`GA_*`, `RR*`, `TL*`, `TA*`) are on `PPP_Entity="#"`, `Lock="Central"`,
   `PPP_Currency="#"`.
