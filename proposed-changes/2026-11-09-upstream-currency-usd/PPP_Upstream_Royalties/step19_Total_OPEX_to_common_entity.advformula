@@ -51,3 +51,5 @@ IF [d/PPP_Entity].[p/Ln_OPEX] != "#" THEN
 		RESULTLOOKUP([d/WPLn] = "CST05_05") + 
 		RESULTLOOKUP([d/WPLn] = "CST05_10")	
 ENDIF
+
+

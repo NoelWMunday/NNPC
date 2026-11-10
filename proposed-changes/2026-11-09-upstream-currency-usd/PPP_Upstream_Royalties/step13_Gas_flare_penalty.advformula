@@ -25,3 +25,4 @@ DATA([d/WPLn]="AMT_230",[d/PPP_EntryNr]="UAP_GFP") =
 		RESULTLOOKUP([d/WPLn]="AMT_95") * 1000 *
 		RESULTLOOKUP([d/WPLn]="GA_040",[d/PPP_Entity]="#",[d/Lock]="Central") *
 		RESULTLOOKUP([d/WPLn]="GA_030",[d/PPP_Entity]="#",[d/Lock]="Central")
+

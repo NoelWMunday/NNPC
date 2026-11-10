@@ -61,3 +61,5 @@ ELSE
 ENDIF
 
 DATA([d/WPLn] = "TAX070_70") = RESULTLOOKUP([d/WPLn] = "TAX070_65") * RESULTLOOKUP([d/WPLn] = "AMT_90", [d/PPP_Currency]="USD")
+
+

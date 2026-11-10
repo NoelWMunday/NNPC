@@ -38,7 +38,7 @@ def fix_lookup(m):
 
 def transform(da, idx, script):
     out = []
-    for line in script.splitlines():
+    for line in script.split("\n"):
         if line.lstrip().startswith("//"):
             out.append(line)
             continue
@@ -71,13 +71,13 @@ def main(root):
             if not before:
                 continue
             after = transform(da, i, before)
-            if after.splitlines() == before.splitlines():
+            if after == before:
                 continue
             name = re.sub(r"[^A-Za-z0-9]+", "_", st["name"]).strip("_")
             folder = f"{base}/{da}"
             os.makedirs(folder, exist_ok=True)
             with open(f"{folder}/step{i:02d}_{name}.advformula", "w", encoding="utf-8") as f:
-                f.write(after.rstrip("\n") + "\n")
+                f.write(after)
             diff = list(difflib.unified_diff(before.splitlines(), after.splitlines(),
                                              f"{da} step {i} (SAC now)", f"{da} step {i} (proposed)",
                                              lineterm="", n=1))
