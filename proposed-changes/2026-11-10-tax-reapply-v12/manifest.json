@@ -1,0 +1,65 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 1,
+  "stepId": "37095357-1823-4414-3771-232611829621",
+  "name": "Initialise",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step01_Initialise.advformula",
+  "beforeSha256": "2e9068428c6a643fabb2550c88ed0d520f8396e957ee68247d30088520b26a0d",
+  "afterSha256": "63ae078a0abb873d044994a68ea76bc0d8513bde4a6c15d11063950b9f8c225b"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 5,
+  "stepId": "42742315-7627-4543-3044-935506986269",
+  "name": "Tax - HCDT Fund Payable (Oil)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step05_Tax_HCDT_Fund_Payable_Oil.advformula",
+  "beforeSha256": "6cf3d136fce7811ec87b494e089c14c75669b5f922ce879563bf9e381efb86c8",
+  "afterSha256": "a868339dfabb733acdd830b2887acc0a5e71a2099729bdb7b6c049324b6c5fd9"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 6,
+  "stepId": "11797287-4640-4417-8389-319464744338",
+  "name": "Tax - HCDT Fund Payable (Gas)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step06_Tax_HCDT_Fund_Payable_Gas.advformula",
+  "beforeSha256": "b708b42b600918b6911bf3cb410d8ae3f9311f8679fb53b04209b5527e8e728b",
+  "afterSha256": "0bc6c90d11f44f6b79e44c219bd3c58e9589d880d6703df47ca7a652ec0c77f4"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 13,
+  "stepId": "36467450-8638-4514-3298-598364816533",
+  "name": "Tax - CA Limit Rolling Balance (Oil)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step13_Tax_CA_Limit_Rolling_Balance_Oil.advformula",
+  "beforeSha256": "3f4e438e9a205066bc66244b51cceef47410d13c7cd494da344c9be4247903a3",
+  "afterSha256": "161c8f05cde54e7db886d8f9ca8140dbcc2b8acd2e911ea7d0d51d120eb76025"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 14,
+  "stepId": "24888320-0526-4212-3670-944542280540",
+  "name": "Tax - CA Limit Rolling Balance (Gas)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step14_Tax_CA_Limit_Rolling_Balance_Gas.advformula",
+  "beforeSha256": "c150b5f1da47ff86a3f971a9ff4da0654ecbcf8a0496d012391ff8adab729bb5",
+  "afterSha256": "ceb4bd44e16fed0bc49581ecc32294378123cbb0d42a54dc7076aeabcd2e8d5d"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 16,
+  "stepId": "36244057-6940-4028-3612-312528377653",
+  "name": "Tax - Hydrocarbon Tax (CPR Limit & HT Payable)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step16_Tax_Hydrocarbon_Tax_CPR_Limit_HT_Payable.advformula",
+  "beforeSha256": "f652a59d6d20c7e46db34e1fc4a1ac82ebc4f18059aeda3b97d41249f3566bcc",
+  "afterSha256": "727b784ca5e3acd6b9c02e45bc4572a15a542f0967b6d4f1cad899782d2b05cc"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 20,
+  "stepId": "24593923-5417-4771-3686-524684309252",
+  "name": "Tax - CITA (Oil & Gas)",
+  "file": "proposed-changes/2026-11-10-tax-reapply-v12/PPP_Upstream_Tax/step20_Tax_CITA_Oil_Gas.advformula",
+  "beforeSha256": "71321837cc155361e9c9e61d325565ee1cd00587254b14fb12349907c5384572",
+  "afterSha256": "1e139ef72ee2988643da0898ac4a4e351e1033442096d29d0591a76ad019d172"
+ }
+]
