@@ -1,7 +1,7 @@
 # Change proposal — #20 open items after the 14:10 retest
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7 (QA retest 10 Nov ~14:10; Noel 14:45 "remaining open with dev")
-- **Status:** A and B APPROVED (Noel, 10 Nov 15:28) — applying. C approved (members to add); D with Noel; E needs data
+- **Status:** A and B APPLIED 10 Nov 15:33 SAST (`de0839c`, Tax v15). C approved (members to add); D with Noel; E needs data
 - **Scripts:** [DIFF.md](DIFF.md) (left = live Tax v12, right = proposed); [manifest.json](manifest.json)
 - **Workbook:** `2026 Upstream PPP.xlsm` › NUIMS, RENAISSANCE block rows 2195–2436 (X = 2026, U = 2025 YEO,
   S/T = 2025 Jan–Aug / Sep–Dec, P/Q/R = 2022–2024)
