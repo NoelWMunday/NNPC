@@ -2,7 +2,7 @@
 
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
 - **Decision (Noel, 10 Nov 15:54):** "The Hist_Open you can fix."
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 15:57 SAST (`f9f93a5`, Tax v18)
 - **Where:** `PPP_Upstream_Tax` › 10 "Tax - CAPEX Components" (whole step) — [DIFF.md](DIFF.md), [manifest.json](manifest.json)
 
 ## Why
