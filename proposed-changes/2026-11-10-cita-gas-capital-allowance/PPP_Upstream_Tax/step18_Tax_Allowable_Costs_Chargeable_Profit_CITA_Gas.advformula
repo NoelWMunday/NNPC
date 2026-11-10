@@ -18,9 +18,12 @@ MEMBERSET [d/PPP_Currency] = "#"
 
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
 
-// Gas capital allowance is a CITA deduction under both regimes (PPT covers oil only).
-// Was gated on TAX070_60 = 0, which fails when SET10_10 has no value (null) - e.g. RENAISSANCE.
-DATA([d/WPLn] = #PARAM1) = RESULTLOOKUP([d/WPLn]="TAX060_25")
+// TAX070_60 (SET10_10) is null when the JV has no PIA flag - treat null as 0
+IF RESULTLOOKUP([d/WPLn]="TAX070_60") = 0 OR RESULTLOOKUP([d/WPLn]="TAX070_60") = NULL THEN
+	DATA([d/WPLn] = #PARAM1) = RESULTLOOKUP([d/WPLn]="TAX060_25")
+ELSE
+	DATA([d/WPLn] = #PARAM1) = 0
+ENDIF
 
 DATA([d/WPLn] = "TAX080_05") = 
 	RESULTLOOKUP([d/WPLn]=#PARAM1) +
