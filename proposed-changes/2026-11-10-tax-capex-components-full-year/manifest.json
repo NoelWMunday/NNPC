@@ -1,0 +1,11 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 10,
+  "stepId": "13901270-3418-4068-3088-389950687611",
+  "name": "Tax - CAPEX Components",
+  "file": "proposed-changes/2026-11-10-tax-capex-components-full-year/PPP_Upstream_Tax/step10_Tax_CAPEX_Components.advformula",
+  "beforeSha256": "02b5e056fcf0732288f6c6ca3f3f1040f0ef09b7daf03e45bd2821bd74b7c6a2",
+  "afterSha256": "c427f31026e58c8073c3350d3d115d7c52e25eb2b26525c0645459462cbf5d1b"
+ }
+]
