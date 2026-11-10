@@ -1,0 +1,99 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+// MEMBERSET [d/WPLn] = BASEMEMBER([d/WPLn] , "AMT_210")
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/PPP_Currency] = "#"
+
+VARIABLEMEMBER #ASSESSABLE OF [d/WPLn]
+VARIABLEMEMBER #LIMIT_PARAM OF [d/WPLn]
+VARIABLEMEMBER #AMORT_CAPEX OF [d/WPLn]
+
+// TAX050_05	Capital Allowance for PPT (result)
+// TAX050_10	Investment Capital Allowance
+// TAX050_10_05	In-year Investment CA Rate (%)
+// TAX050_10_10	Total CAPEX – Oil
+// TAX050_10_15	Total CAPEX – Gas
+// TAX050_15	Capital Allowance Limit
+// TAX050_15_05	Restriction on Assessible Profit (%)
+// TAX050_15_10	Mark-up on In-year Investment Allowance (%)
+// TAX050_20	Assessable Profit – PPT base
+// TAX050_20_05	Oil Revenue
+// TAX050_20_10	Less: PIA Production based royalty – Oil
+// TAX050_20_15	Less: PIA Price based royalty – Oil
+// TAX050_20_20	Less: PA Production based royalty – Oil
+// TAX050_20_25	Less: PA Price based royalty – Oil
+// TAX050_20_30	Less: Total OPEX – Oil
+// TAX050_20_35	Less: Development Levy – Oil
+// TAX050_20_40	Less: NDDC Levy Payable (Oil)
+// TAX050_20_45	Less: HCDT Fund Payable - Oil
+
+// Amort capex
+DATA([d/WPLn]=#AMORT_CAPEX) = 
+	RESULTLOOKUP([d/WPLn]="TAX045_05_10") + RESULTLOOKUP([d/WPLn]="TAX045_05_15") +
+	RESULTLOOKUP([d/WPLn]="TAX045_05_20") + RESULTLOOKUP([d/WPLn]="TAX045_05_25")
+	
+// TAX050_10	Investment Capital Allowance
+DATA([d/WPLn]="TAX050_10_05") = RESULTLOOKUP([d/WPLn]="TA30_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn]="TAX050_10_10") = RESULTLOOKUP([d/WPLn]="CST05_15")
+DATA([d/WPLn]="TAX050_10_15") = RESULTLOOKUP([d/WPLn]="CST05_20")
+
+// TAX050_20	Assessable Profit – PPT base
+DATA([d/WPLn]="TAX050_20_05") = RESULTLOOKUP([d/WPLn]="REV_10")
+DATA([d/WPLn]="TAX050_20_10") = 0-RESULTLOOKUP([d/WPLn]="RC15_05")
+DATA([d/WPLn]="TAX050_20_15") = 0-RESULTLOOKUP([d/WPLn]="RC20_10")
+DATA([d/WPLn]="TAX050_20_20") = 0-RESULTLOOKUP([d/WPLn]="RC30_05")
+DATA([d/WPLn]="TAX050_20_25") = 0-RESULTLOOKUP([d/WPLn]="RC35_10")
+DATA([d/WPLn]="TAX050_20_30") = 0-RESULTLOOKUP([d/WPLn]="CST05_05")
+DATA([d/WPLn]="TAX050_20_35") = 0-RESULTLOOKUP([d/WPLn]="TAX005_05")
+DATA([d/WPLn]="TAX050_20_40") = 0-RESULTLOOKUP([d/WPLn]="TAX025_05")
+DATA([d/WPLn]="TAX050_20_45") = 0-RESULTLOOKUP([d/WPLn]="TAX015_05")
+
+DATA([d/WPLn]=#ASSESSABLE) = 
+	RESULTLOOKUP([d/WPLn]="TAX050_20_05") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_10") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_15") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_20") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_25") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_30") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_35") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_40") +
+	RESULTLOOKUP([d/WPLn]="TAX050_20_45")
+
+DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+
+// Investment Capital Allowance
+DATA([d/WPLn]="TAX050_10") = 
+	ROUND (RESULTLOOKUP([d/WPLn]="TAX050_10_05") * 
+	(RESULTLOOKUP([d/WPLn]="TAX050_10_10") + RESULTLOOKUP([d/WPLn]="TAX050_10_15")),0) / 100
+
+// Capital allowance limit
+DATA([d/WPLn]=#LIMIT_PARAM) = 
+	((RESULTLOOKUP([d/WPLn]="TAX050_15_05") * RESULTLOOKUP([d/WPLn]=#ASSESSABLE)) / 100) -
+	((RESULTLOOKUP([d/WPLn]="TAX050_15_10") * RESULTLOOKUP([d/WPLn]="TAX050_10")) / 100)
+	
+IF RESULTLOOKUP([d/WPLn]=#LIMIT_PARAM) > 0 THEN
+	DATA([d/WPLn]="TAX050_15") = RESULTLOOKUP([d/WPLn]=#LIMIT_PARAM)
+ELSE
+	DATA([d/WPLn]="TAX050_15") = 0
+ENDIF
+
+IF RESULTLOOKUP([d/WPLn]=#AMORT_CAPEX) < RESULTLOOKUP([d/WPLn]=#LIMIT_PARAM)  THEN
+	DATA([d/WPLn]="TAX050_05") = RESULTLOOKUP([d/WPLn]=#AMORT_CAPEX)
+ELSE
+	DATA([d/WPLn]="TAX050_05") = RESULTLOOKUP([d/WPLn]=#LIMIT_PARAM)
+ENDIF
+
+

@@ -1,0 +1,11 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 18,
+  "stepId": "19498598-2054-4736-3300-340146549539",
+  "name": "Tax - Allowable Costs & Chargeable Profit CITA (Gas)",
+  "file": "proposed-changes/2026-11-10-cita-gas-capital-allowance/PPP_Upstream_Tax/step18_Tax_Allowable_Costs_Chargeable_Profit_CITA_Gas.advformula",
+  "beforeSha256": "3eac97d90e6f759a5ac4ac9dd650f7e24219eab0b4c4a5b68f892189a060ce5c",
+  "afterSha256": "92d6fbb4a7854a0f53c9cde2a9807aa84269536b28e07bdf1f4d6745b46e9026"
+ }
+]
