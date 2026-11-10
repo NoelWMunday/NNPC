@@ -3,7 +3,7 @@
 - **Trello:** #20 https://trello.com/c/3zpHY6z7
 - **Decision (Noel, 10 Nov 16:01):** "Our business rules come from what excel does." Users capture annual exploration
   spend (`AMT_200` at UAP_110/120/121/124); the sheet amortises it.
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 10 Nov 2026 16:04 SAST (`72aea87`, Tax v19)
 - **Scripts:** [DIFF.md](DIFF.md), [manifest.json](manifest.json)
 
 ## What the sheet does

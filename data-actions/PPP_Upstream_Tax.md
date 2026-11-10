@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T13:57:11.433Z by NMUNDAY |
+| Last changed | 2026-11-10T14:04:05.548Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -531,27 +531,27 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 
 // Amortised costs
-// TAX045_05_10	Amortised Oil Capex (Facilities+Drilling)
+// TAX045_05_10	Amortised Oil Capex (Exploration+Drilling+Facilities)
 // TAX045_05_15	Amortised Other Oil Capex
-// TAX045_05_20	Amortised Gas Capex (Facilities+Drilling)
+// TAX045_05_20	Amortised Gas Capex (Exploration+Drilling+Facilities)
 // TAX045_05_25	Amortised Other Gas Capex
 
-// Oil - facilities & drilling
+// Oil - exploration, drilling & facilities (NUIMS row 2338 = rows 2279-2287, same 5-year rates)
 DATA([d/WPLn]="TAX045_05_10") = 
 	// Current year 1st year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_05_10") + RESULTLOOKUP([d/WPLn]="TAX040_05_15")) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_05_05_05") + RESULTLOOKUP([d/WPLn]="TAX040_05_05_10") + RESULTLOOKUP([d/WPLn]="TAX040_05_05_15") + RESULTLOOKUP([d/WPLn]="TAX040_05_10") + RESULTLOOKUP([d/WPLn]="TAX040_05_15")) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +
 	// Prior year 2nd year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_05_05_05",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +
 	// Year-3 using 3rd year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_05_05_05",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +		
 	// Year-4 using 4th year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_05_05_05",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_20",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +	
 	// Year-5 using 5th year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_05_05_05",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_05_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_05_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_25",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100)
 	
 // Oil - other
@@ -572,22 +572,22 @@ DATA([d/WPLn]="TAX045_05_15") =
 	(RESULTLOOKUP([d/WPLn]="TAX040_05_20",[d/Date]=PREVIOUS(4,"YEAR",[d/Date]))  * 
 	 RESULTLOOKUP([d/WPLn]="TA05_25",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100)
 
-// Gas - facilities & drilling
+// Gas - exploration, drilling & facilities
 DATA([d/WPLn]="TAX045_05_20") = 
 	// Current year 1st year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_10_10") + RESULTLOOKUP([d/WPLn]="TAX040_10_15")) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_10_05_05") + RESULTLOOKUP([d/WPLn]="TAX040_10_05_10") + RESULTLOOKUP([d/WPLn]="TAX040_10_05_15") + RESULTLOOKUP([d/WPLn]="TAX040_10_10") + RESULTLOOKUP([d/WPLn]="TAX040_10_15")) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +
 	// Prior year 2nd year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_10_05_05",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +
 	// Year-3 using 3rd year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_10_05_05",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(2,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(2,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +		
 	// Year-4 using 4th year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_10_05_05",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(3,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(3,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_20",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100) +	
 	// Year-5 using 5th year write off %
-	((RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date]))) * 
+	((RESULTLOOKUP([d/WPLn]="TAX040_10_05_05",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_05_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_10",[d/Date]=PREVIOUS(4,"YEAR",[d/Date])) + RESULTLOOKUP([d/WPLn]="TAX040_10_15",[d/Date]=PREVIOUS(4,"YEAR",[d/Date]))) * 
 	 RESULTLOOKUP([d/WPLn]="TA05_25",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") / 100)
 
 // Gas - other
@@ -955,7 +955,6 @@ DATA([d/WPLn] = "TAX070_30") = RESULTLOOKUP([d/WPLn]="CST05_05")
 DATA([d/WPLn] = "TAX070_40") = 
 	RESULTLOOKUP([d/WPLn]="RC15_05") +
 	RESULTLOOKUP([d/WPLn]="RC20_10") +
-	RESULTLOOKUP([d/WPLn]="TAX040_05_05") +
 	RESULTLOOKUP([d/WPLn]="TAX055_30") +
 	RESULTLOOKUP([d/WPLn]="RC30_05") +
 	RESULTLOOKUP([d/WPLn]="RC35_10")
@@ -1029,7 +1028,6 @@ DATA([d/WPLn] = "TAX075_05") =
 	RESULTLOOKUP([d/WPLn]="TAX005_05") +
 	RESULTLOOKUP([d/WPLn]="TAX015_05") +
 	RESULTLOOKUP([d/WPLn]="TAX025_05") +
-	RESULTLOOKUP([d/WPLn]="TAX040_05_05") + 
 	RESULTLOOKUP([d/WPLn]="TAX055_30") + 
 	RESULTLOOKUP([d/WPLn]="TAX055_35") + 
 	RESULTLOOKUP([d/WPLn]="RC30_05") + 
