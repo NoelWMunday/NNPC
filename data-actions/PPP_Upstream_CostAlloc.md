@@ -5,7 +5,7 @@
 | SAC id | `398D1684BFC6147FBA0CF82732D452F6` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T07:36:21.926Z by NMUNDAY |
+| Last changed | 2026-11-11T11:36:58.684Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -85,7 +85,7 @@ MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_05",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle
@@ -112,7 +112,7 @@ MEMBERSET [d/PPP_EntryNr] = ("#","HR_0005")
 
 IF [d/PPP_EntryNr] = "HR_0005" AND [d/GL] != "#" THEN
 	DATA.APPEND([d/Measures]="Value_WPLn", [d/WPLn]="CST14_10", [d/GL]="#", [d/PPP_Currency]="#", [d/PPP_EntryNr]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO", [d/WPLn]="#", [d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup], [d/PPP_Currency]="USD", [d/PPP_EntryNr]="HR_0005")
+		RESULTLOOKUP([d/Measures]="GC_CR", [d/WPLn]="#", [d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup], [d/PPP_Currency]="USD", [d/PPP_EntryNr]="HR_0005")
 ENDIF
 ```
 
@@ -139,7 +139,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_15",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle
@@ -165,7 +165,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_20",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle
@@ -191,7 +191,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_25",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle
@@ -218,7 +218,7 @@ MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_30",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle
@@ -244,7 +244,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_35",[d/GL]="#",[d/PPP_Currency]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CLO",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
+		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
 ```
 
 Parameters used: Entity, PCycle

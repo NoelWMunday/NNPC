@@ -120,7 +120,7 @@ flowchart LR
 | [PPP_Refineries](PPP_Refineries.md) | PPP_Refineries | Business premise | 8×script, 1×nested_sequence | — | PPP_ProdServices_bkup, PPP_Refinerie | 2026-08-26 |
 | [PPP_Upstream](PPP_Upstream.md) | PPP Upstream | Business premise | 54×script, 1×crossmodelcopy | — | PPP_BusPremise_bkup | 2026-08-01 |
 | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) | PPP_Upstream_All_Calculations | Business premise | 4×nested_sequence | — | PPP_UStream | 2026-11-10 |
-| [PPP_Upstream_CostAlloc](PPP_Upstream_CostAlloc.md) | PPP_Upstream_CostAlloc | Business premise | 12×script, 1×crossmodelcopy | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-10 |
+| [PPP_Upstream_CostAlloc](PPP_Upstream_CostAlloc.md) | PPP_Upstream_CostAlloc | Business premise | 12×script, 1×crossmodelcopy | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-11 |
 | [PPP_Upstream_old](PPP_Upstream_old.md) | PPP Upstream (old) | Business premise | 2×script | — | — | 2026-08-01 |
 | [PPP_Upstream_Revenue](PPP_Upstream_Revenue.md) | PPP Upstream_Revenue | Business premise | 8×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-10 |
 | [PPP_Upstream_Royalties](PPP_Upstream_Royalties.md) | PPP Upstream - Royalties | Business premise | 22×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-10 |
