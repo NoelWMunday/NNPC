@@ -5,7 +5,7 @@
 | SAC id | `398D1684BFC6147FBA0CF82732D452F6` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-11T11:36:58.684Z by NMUNDAY |
+| Last changed | 2026-11-11T11:48:47.621Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -112,7 +112,7 @@ MEMBERSET [d/PPP_EntryNr] = ("#","HR_0005")
 
 IF [d/PPP_EntryNr] = "HR_0005" AND [d/GL] != "#" THEN
 	DATA.APPEND([d/Measures]="Value_WPLn", [d/WPLn]="CST14_10", [d/GL]="#", [d/PPP_Currency]="#", [d/PPP_EntryNr]="#") = 
-		RESULTLOOKUP([d/Measures]="GC_CR", [d/WPLn]="#", [d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup], [d/PPP_Currency]="USD", [d/PPP_EntryNr]="HR_0005")
+		RESULTLOOKUP([d/Measures]="GC_CLO", [d/WPLn]="#", [d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup], [d/PPP_Currency]="USD", [d/PPP_EntryNr]="HR_0005")
 ENDIF
 ```
 
