@@ -2,7 +2,7 @@
 
 - **Trello:** #24 https://trello.com/c/ycGHaDR6 (QA retest 11 Nov 16:15, items 1–6)
 - **Decision (Noel, 11 Nov 16:13):** "Yes please fix and work with QA."
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 11 Nov 2026 16:20 SAST (`61a51cc`, Tax v24)
 - **Where:** `PPP_Upstream_Tax` › 21 "GL Entries" — [DIFF.md](DIFF.md), [manifest.json](manifest.json)
 
 | QA item | Change (line numbers in the new script) |
