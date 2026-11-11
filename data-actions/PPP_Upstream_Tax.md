@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T14:04:05.548Z by NMUNDAY |
+| Last changed | 2026-11-11T13:57:07.096Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -1201,14 +1201,14 @@ DATA([d/Measures] = "GC_CR", [d/GL] = "4101006", [d/PPP_EntryNr] = "UP_0005") =
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_GFP", [d/PPP_Currency] = "#")
 // Apportioned Overheads
-DATA([d/Measures] = "GC_CR", [d/GL] = "5010036", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+//DATA([d/Measures] = "GC_CR", [d/GL] = "5010036", [d/PPP_EntryNr] = "UP_0005") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // Apportioned Salaries
-DATA([d/Measures] = "GC_CR", [d/GL] = "5010001", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+//DATA([d/Measures] = "GC_CR", [d/GL] = "5010001", [d/PPP_EntryNr] = "UP_0005") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // Apportioned General Depreciation
-DATA([d/Measures] = "GC_CR", [d/GL] = "4112001", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+//DATA([d/Measures] = "GC_CR", [d/GL] = "4112001", [d/PPP_EntryNr] = "UP_0005") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // COS Depreciation
 DATA([d/Measures] = "GC_CR", [d/GL] = "4202026", [d/PPP_EntryNr] = "UP_0005") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_15", [d/PPP_Currency]="USD") +
@@ -1218,8 +1218,8 @@ DATA([d/Measures] = "GC_CR", [d/GL] = "5230003", [d/PPP_EntryNr] = "UP_0005") =
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_220", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency]="USD") +
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "AMT_230", [d/GL] = "#", [d/PPP_EntryNr] = "UAP_5800_16", [d/PPP_Currency]="USD")
 // Apportioned Provision for Impairment
-DATA([d/Measures] = "GC_CR", [d/GL] = "5230006", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+//DATA([d/Measures] = "GC_CR", [d/GL] = "5230006", [d/PPP_EntryNr] = "UP_0005") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // Apportioned Corporate Overhead
 DATA([d/Measures] = "GC_CR", [d/GL] = "5080044", [d/PPP_EntryNr] = "UP_0005") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_25", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
@@ -1227,8 +1227,46 @@ DATA([d/Measures] = "GC_CR", [d/GL] = "5080044", [d/PPP_EntryNr] = "UP_0005") =
 DATA([d/Measures] = "GC_CR", [d/GL] = "FINEXP_005", [d/PPP_EntryNr] = "UP_0005") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_30", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 // Apportioned Taxes
-DATA([d/Measures] = "GC_CR", [d/GL] = "5100005", [d/PPP_EntryNr] = "UP_0005") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_35", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+//DATA([d/Measures] = "GC_CR", [d/GL] = "5100005", [d/PPP_EntryNr] = "UP_0005") = 
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_35", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Costs - Entities own costs, NNPC's share of
+// Note - the Capex portion is amortised so CST10_15 AND CST10_20 are excluded here and the amort portion is included
+DATA([d/Measures] = "GC_CR", [d/WPLn] = "#", [d/GL] = "4500006", [d/PPP_EntryNr] = "UP_0005", [d/PPP_Currency] = "USD") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX045_05_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX045_05_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX045_05_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX045_05_25", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")	
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+//	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// Development levy
+DATA([d/Measures] = "GC_CR", [d/GL] = "5110007", [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX010_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// HCDT - Oil (Account not correct)
+DATA([d/Measures] = "GC_CR", [d/GL] = "4109025" , [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX015_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// HCDT - Gas (Account not correct)
+DATA([d/Measures] = "GC_CR", [d/GL] = "4104007", [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX015_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// NDDC - Oil & Gas
+DATA([d/Measures] = "GC_CR", [d/GL] = "4111006" , [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX025_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX030_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// PPT Tax
+DATA([d/Measures] = "GC_CR", [d/GL] = "5100006" , [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX085_25", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
+// CITA Tax
+DATA([d/Measures] = "GC_CR", [d/GL] = "5100005" , [d/PPP_EntryNr] = "UP_0005") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX090_25", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")	+
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "TAX090_30", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+
 // Proposed Dividend 
 //DATA([d/Measures] = "GC_CR", [d/GL] = "5100005", [d/PPP_EntryNr] = "UP_0005") = 
 //	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST15_", [d/GL] = "#", [d/PPP_EntryNr] = "#")

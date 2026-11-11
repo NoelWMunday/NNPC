@@ -7,7 +7,7 @@
 | SAC id | `F4851684BFC29D7E2AE8285F175632F1` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T11:33:43.892Z by NMUNDAY |
+| Last changed | 2026-11-11T13:28:51.366Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -1087,12 +1087,9 @@ MEMBERSET [d/PPP_Currency] = ("#","USD")
 DATA([d/Measures] = "GC_CR", [d/WPLn] = "#", [d/GL] = "5100007", [d/PPP_EntryNr] = "UP_0005", [d/PPP_Currency] = "USD") = 
 	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "RC_TOT_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 
-// Costs - Entities own costs, NNPC's share of
-DATA([d/Measures] = "GC_CR", [d/WPLn] = "#", [d/GL] = "4500006", [d/PPP_EntryNr] = "UP_0005", [d/PPP_Currency] = "USD") = 
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_05", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_10", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_15", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#") +
-	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST10_20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
+// Development cost
+DATA([d/Measures] = "GC_CR", [d/WPLn] = "#", [d/GL] = "5090002", [d/PPP_EntryNr] = "UP_0005", [d/PPP_Currency] = "USD") = 
+	RESULTLOOKUP([d/Measures] = "Value_WPLn", [d/WPLn] = "CST20", [d/GL] = "#", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#")
 ```
 
 Parameters used: Entity, PCycle

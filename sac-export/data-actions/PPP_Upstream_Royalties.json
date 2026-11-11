@@ -4,7 +4,7 @@
  "description": "PPP Upstream - Royalties",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T11:33:43.892Z",
+ "modified": "2026-11-11T13:28:51.366Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -477,7 +477,7 @@
    "description": "GL Entries",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures] = (\"Value_WPLn\",\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"RC_TOT_10\", \"#\")\nMEMBERSET [d/GL] = (\"#\",\"5100007\",\"4500006\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"#\",\"UP_0005\")\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\n\n\n// Royalty\nDATA([d/Measures] = \"GC_CR\", [d/WPLn] = \"#\", [d/GL] = \"5100007\", [d/PPP_EntryNr] = \"UP_0005\", [d/PPP_Currency] = \"USD\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"RC_TOT_10\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n\n// Costs - Entities own costs, NNPC's share of\nDATA([d/Measures] = \"GC_CR\", [d/WPLn] = \"#\", [d/GL] = \"4500006\", [d/PPP_EntryNr] = \"UP_0005\", [d/PPP_Currency] = \"USD\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"CST10_05\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") +\n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"CST10_10\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") +\n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"CST10_15\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\") +\n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"CST10_20\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = %PCycle%\nMEMBERSET [d/Measures] = (\"Value_WPLn\",\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"RC_TOT_10\", \"#\")\nMEMBERSET [d/GL] = (\"#\",\"5100007\",\"4500006\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"#\",\"UP_0005\")\nMEMBERSET [d/PPP_Currency] = (\"#\",\"USD\")\n\n\n// Royalty\nDATA([d/Measures] = \"GC_CR\", [d/WPLn] = \"#\", [d/GL] = \"5100007\", [d/PPP_EntryNr] = \"UP_0005\", [d/PPP_Currency] = \"USD\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"RC_TOT_10\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n\n// Development cost\nDATA([d/Measures] = \"GC_CR\", [d/WPLn] = \"#\", [d/GL] = \"5090002\", [d/PPP_EntryNr] = \"UP_0005\", [d/PPP_Currency] = \"USD\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"CST20\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
