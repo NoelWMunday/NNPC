@@ -1,0 +1,21 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 21,
+  "stepId": "68111212-8382-4328-3176-337055414273",
+  "name": "GL Entries - Initialise",
+  "nameBefore": "GL Entries",
+  "file": "proposed-changes/2026-11-11-tax-gl-initialise/PPP_Upstream_Tax/step21_GL_Entries_Initialise.advformula",
+  "beforeSha256": "b99ee5c6d70b62207433a2876c4194e7f9eb7c1cf38842479400b40b3f1fb3b1",
+  "afterSha256": "1d057431b0901e451c784770d2af6cf54ef11b29d573780de871689cbbea2611"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 22,
+  "stepId": "(new)",
+  "name": "GL Entries",
+  "file": "proposed-changes/2026-11-11-tax-gl-initialise/PPP_Upstream_Tax/step22_GL_Entries.advformula",
+  "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "afterSha256": "b4d6d0a118b215ed02b091e99507ae23374d554726ad0d0552d406b01bffabd2"
+ }
+]
