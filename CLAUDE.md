@@ -13,6 +13,8 @@ https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findi
   tables) are on `PPP_Currency = USD` (2026 also has an NGN input column, CY+1 (N)).
 - **Metrics** `AMT_46/80/85/90/97`, `UOM_*` (Metrics table) and **settings** `SET*` (Settings table)
   are on `PPP_Currency = "#"`. (Corrected 10 Nov — #19 first assumed all inputs were USD.)
+  `Value_WPLn` is UOM-based, not currency-based, so metrics are always `#`; metrics found on USD are an input error
+  to fix in the data, not in the scripts (Noel, 11 Nov, #23).
 - **Calculated lines** are on `PPP_Currency = "#"`. Scripts read Capex/Opex inputs with
   `[d/PPP_Currency]="USD"` and write to `"#"` (the `PPP_Upstream_CostAlloc` pattern).
 - **Story display:** tabs built on the UOM measure (e.g. Financial) show mixed units, so they read `#`. Any
