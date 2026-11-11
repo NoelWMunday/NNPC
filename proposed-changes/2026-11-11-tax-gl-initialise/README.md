@@ -4,7 +4,7 @@
 - **Decisions (Noel, 11 Nov 17:29):**
   - "yes at the step — we have it in the other files and we need it here too" (clear all GC_CR on UP_0005).
   - Non-productive cost at the NNPC equity share; "for now just the one line" (gas flare penalty).
-- **Status:** APPROVED — applying
+- **Status:** APPLIED 11 Nov 2026 17:35 SAST (`0cabc34`, Tax v25)
 - **Scripts:** [DIFF.md](DIFF.md), [manifest.json](manifest.json)
 
 ## Structure
@@ -12,9 +12,9 @@
 | Step | Before (v24) | After |
 |---|---|---|
 | 21 | GL Entries | **GL Entries - Initialise** (same step id, new name and script) |
-| 22 | — | **GL Entries** (new step; the v24 GL script with the changes below) |
+| 22 | — | **GL Entries** (new step `38173194…`, duplicated from 21 in the designer; the v24 GL script with the changes below) |
 
-SAC adds a new step at the end, so the old step keeps its id and becomes the initialise step.
+A blank new step failed validation ("hierarchy name of the %Entity% parameter is not defined"); a duplicated step validates. So the old step keeps its id and becomes the initialise step, and the duplicate is GL Entries.
 
 ## Changes
 

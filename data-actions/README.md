@@ -124,7 +124,7 @@ flowchart LR
 | [PPP_Upstream_old](PPP_Upstream_old.md) | PPP Upstream (old) | Business premise | 2×script | — | — | 2026-08-01 |
 | [PPP_Upstream_Revenue](PPP_Upstream_Revenue.md) | PPP Upstream_Revenue | Business premise | 8×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-10 |
 | [PPP_Upstream_Royalties](PPP_Upstream_Royalties.md) | PPP Upstream - Royalties | Business premise | 22×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-11 |
-| [PPP_Upstream_Tax](PPP_Upstream_Tax.md) | PPP Upstream - Taxation | Business premise | 21×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-11 |
+| [PPP_Upstream_Tax](PPP_Upstream_Tax.md) | PPP Upstream - Taxation | Business premise | 22×script | PPP_Upstream_All_Calculations | PPP_UStream | 2026-11-11 |
 
 ## Not referenced
 
