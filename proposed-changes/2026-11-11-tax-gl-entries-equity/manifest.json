@@ -1,0 +1,11 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 21,
+  "stepId": "68111212-8382-4328-3176-337055414273",
+  "name": "GL Entries",
+  "file": "proposed-changes/2026-11-11-tax-gl-entries-equity/PPP_Upstream_Tax/step21_GL_Entries.advformula",
+  "beforeSha256": "46ab424305dae7a95fb74606a74f918c6ba04d3e6bed1a8dd976f8c15b80f315",
+  "afterSha256": "b99ee5c6d70b62207433a2876c4194e7f9eb7c1cf38842479400b40b3f1fb3b1"
+ }
+]
