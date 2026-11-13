@@ -7,7 +7,7 @@
 | SAC id | `F4851684BFC29D7E2AE8285F175632F1` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-11T13:28:51.366Z by NMUNDAY |
+| Last changed | 2026-11-13T10:11:43.800Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -18,6 +18,7 @@
 | `TargetVersion` | PROMPT | MEMBER | Version | SINGLE | `{"memberId": null, "hierarchyName": null}` |
 | `Entity` | PROMPT | MEMBER | PPP_Entity | MULTI | `["NB04"]` |
 | `PCycle` | PROMPT | MEMBER | PCycle | SINGLE | `"2026-2030/01"` |
+| `CY` | PROMPT | MEMBER | Date | SINGLE | `["(all)", "2025", "202512"]` |
 
 ## Steps
 
@@ -65,6 +66,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DELETE()
 
@@ -97,6 +99,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Clear the entity placeholder at the common entity level i.e. not the work program entity level
 // which is cleared in the initialisation step
@@ -135,6 +138,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #TRANCH1 OF [d/WPLn]
 VARIABLEMEMBER #TRANCH2 OF [d/WPLn]
@@ -243,6 +247,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #RR_TRANCH1 OF [d/WPLn]
 VARIABLEMEMBER #RR_TRANCH2 OF [d/WPLn]
@@ -333,6 +338,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="RC15_05") = RESULTLOOKUP([d/WPLn]="AMT_97") * 
 						(RESULTLOOKUP([d/WPLn]="RC10_05") + RESULTLOOKUP([d/WPLn]="RC10_10") +
@@ -363,6 +369,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="RC15_10") = 	RESULTLOOKUP([d/WPLn]="RC15_05") *
 							RESULTLOOKUP([d/WPLn]="AMT_90") / 100
@@ -390,6 +397,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #OILPRICE OF [d/WPLn]
 VARIABLEMEMBER #OILPRICE_LT OF [d/WPLn]
@@ -454,6 +462,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #RR_RATE OF [d/WPLn]
 DATA([d/WPLn] = #RR_RATE) =  (RESULTLOOKUP([d/WPLn]="SET20_05",[d/Date]="000000") * 
@@ -498,6 +507,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #RR_RATE OF [d/WPLn]
 DATA([d/WPLn] = #RR_RATE) =  (RESULTLOOKUP([d/WPLn]="SET05_05",[d/Date]="000000") * 
@@ -541,6 +551,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #OILPRICE OF [d/WPLn]
 VARIABLEMEMBER #PRICEBAND_1 OF [d/WPLn]
@@ -615,6 +626,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #RR_RATE OF [d/WPLn]
 DATA([d/WPLn] = #RR_RATE) =  (RESULTLOOKUP([d/WPLn]="SET20_20",[d/Date]="000000") * 
@@ -653,6 +665,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Summary of royalty calcs
 DATA([d/WPLn] = "RC_TOT_05_05_01") = RESULTLOOKUP([d/WPLn] = "RC15_05")
@@ -695,7 +708,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="AMT_95") = RESULTLOOKUP([d/WPLn]="AMT_85") * 
 							RESULTLOOKUP([d/WPLn]="GA_035",[d/PPP_Entity]="#",[d/Lock]="Central") / 100
@@ -729,6 +742,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_15", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -759,6 +773,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_20", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -791,6 +806,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -823,6 +839,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_10", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -852,7 +869,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="CST10_05") = 
 		RESULTLOOKUP([d/WPLn]="CST05_05")  * 
@@ -907,6 +924,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) 
 // on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point
@@ -952,6 +970,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #ALLJVS OF [d/WPLn]
 // Read the total OPEX from the common entity into this entities total opex line per the properties
@@ -988,6 +1007,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Numerator
 VARIABLEMEMBER #NUMERATOR OF [d/WPLn]
@@ -1081,7 +1101,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","UP_0005")
 MEMBERSET [d/PPP_Currency] = ("#","USD")
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Royalty
 DATA([d/Measures] = "GC_CR", [d/WPLn] = "#", [d/GL] = "5100007", [d/PPP_EntryNr] = "UP_0005", [d/PPP_Currency] = "USD") = 

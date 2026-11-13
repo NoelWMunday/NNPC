@@ -7,7 +7,7 @@
 | SAC id | `E1751684BFC7BECB4638AFAF2DC6D009` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T07:18:30.211Z by NMUNDAY |
+| Last changed | 2026-11-13T10:06:44.066Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -17,6 +17,7 @@
 |---|---|---|---|---|---|
 | `TargetVersion` | PROMPT | MEMBER | Version | SINGLE | `{"memberId": null, "hierarchyName": null}` |
 | `Entity` | PROMPT | MEMBER | PPP_Entity | MULTI | `["NB04"]` |
+| `CY` | PROMPT | MEMBER | Date | SINGLE | `["(all)", "2025", "202512"]` |
 
 ## Steps
 
@@ -51,6 +52,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DELETE()
 ```
@@ -76,6 +78,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // *** DEBUG AREA - CAN LEAVE THESE COMMENT LINES FOR USE WHEN DEBUGGING ***
 //DATA([d/WPLn]="REV_05") = 1
@@ -131,6 +134,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Clear the entity placeholder at the common entity level i.e. not the work program entity level
 // which is cleared in the initialisation step
@@ -158,6 +162,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) 
 // on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point
@@ -187,6 +192,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_Entity].[p/WPGroup] != "" THEN
 	DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="REV_40",[d/GL]="#",[d/PPP_Currency]="#") = 
@@ -218,6 +224,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="REV_32") = RESULTLOOKUP([d/WPLn]="REV_32",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup])
 
@@ -248,6 +255,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("UP_0005","UP_0015")
 MEMBERSET [d/PPP_Currency] = "USD"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DELETE()
 ```
@@ -274,6 +282,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#",BASEMEMBER([d/PPP_EntryNr] , "UP"))
 MEMBERSET [d/PPP_Currency] = "USD"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 
 // Revenue

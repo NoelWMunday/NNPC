@@ -5,7 +5,7 @@
 | SAC id | `398D1684BFC6147FBA0CF82732D452F6` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-11T11:48:47.621Z by NMUNDAY |
+| Last changed | 2026-11-13T10:15:13.569Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -19,6 +19,7 @@
 | `PCycle_CAPEX` | PROMPT | MEMBER | Plan_Cycle | SINGLE | `"2026-2030/01"` |
 | `Version_CAPEX` | PROMPT | MEMBER | Version | SINGLE | `"public.Budget"` |
 | `Entity_CAPEX` | PROMPT | MEMBER | PPP_Entity | MULTI | `{"memberIds": [], "hierarchyName": null}` |
+| `CY` | PROMPT | MEMBER | Date | SINGLE | `["(all)", "2025", "202512"]` |
 
 ## Steps
 
@@ -57,6 +58,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DELETE()
 ```
@@ -82,7 +84,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_05",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -109,6 +111,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","HR_0005")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] = "HR_0005" AND [d/GL] != "#" THEN
 	DATA.APPEND([d/Measures]="Value_WPLn", [d/WPLn]="CST14_10", [d/GL]="#", [d/PPP_Currency]="#", [d/PPP_EntryNr]="#") = 
@@ -137,6 +140,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_15",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -163,6 +167,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_20",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -189,6 +194,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_25",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -215,7 +221,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_30",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -242,6 +248,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#","BP002")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA.APPEND([d/Measures]="Value_WPLn",[d/WPLn]="CST14_35",[d/GL]="#",[d/PPP_Currency]="#") = 
 		RESULTLOOKUP([d/Measures]="GC_CR",[d/WPLn]="#",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]="USD",[d/PPP_EntryNr]="BP002")
@@ -444,7 +451,7 @@ CONFIG.GENERATE_UNBOOKED_DATA = ON
 // using the work program entity's property which points to the main entity
 
 MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
-MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/PCycle] = "#"
 MEMBERSET [d/Measures] = ("Value_WPLn")
 MEMBERSET [d/WPLn] = ("CST14_40")
 MEMBERSET [d/GL] = "#"
@@ -455,6 +462,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA() = RESULTLOOKUP([d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup])
 ```
@@ -480,6 +488,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="CST15_05") = RESULTLOOKUP([d/WPLn]="CST14_05") * RESULTLOOKUP([d/WPLn]="REV_33") / 100
 DATA([d/WPLn]="CST15_10") = RESULTLOOKUP([d/WPLn]="CST14_10") * RESULTLOOKUP([d/WPLn]="REV_33") / 100
@@ -513,6 +522,7 @@ MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = BASEMEMBER([d/PPP_EntryNr] ,"UP")
 MEMBERSET [d/PPP_Currency] = "USD"
 MEMBERSET [d/GL] = ("5010036","5010001","4112001","5230006","5080044","FINEXP_005","5100005")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA() = 0
 ```
@@ -539,7 +549,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#")
 MEMBERSET [d/PPP_Currency] = "USD"
-
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Apportioned Overheads
 DATA([d/Measures] = "GC_CR", [d/GL] = "5010036", [d/PPP_EntryNr] = "UP_0010") = 

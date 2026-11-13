@@ -5,7 +5,7 @@
 | SAC id | `C056EE84BFC39D3C4C720972D2EC2980` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-10T12:58:09.617Z by NMUNDAY |
+| Last changed | 2026-11-13T10:19:48.087Z by NMUNDAY |
 | Called by | — |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -19,6 +19,7 @@
 | `CAPEX_Version` | PROMPT | MEMBER | Version | SINGLE | `"public.Plan 2027-2031 iteration 01"` |
 | `CAPEX_PCycle` | PROMPT | MEMBER | Plan_Cycle | SINGLE | `"#"` |
 | `CAPEX_Entity` | PROMPT | MEMBER | PPP_Entity | MULTI | `["TOTAL"]` |
+| `CY` | PROMPT | MEMBER | Date | SINGLE | `["(all)", "2025", "202512"]` |
 
 ## Steps
 
@@ -53,6 +54,15 @@
    "useDefaultValue": false,
    "value": {
     "paramRef": "Entity"
+   }
+  },
+  {
+   "id": {
+    "displayKey": "CY"
+   },
+   "useDefaultValue": false,
+   "value": {
+    "paramRef": "CY"
    }
   }
  ]
@@ -97,6 +107,15 @@
      "#"
     ],
     "hierarchyName": "H1"
+   }
+  },
+  {
+   "id": {
+    "displayKey": "CY"
+   },
+   "useDefaultValue": false,
+   "value": {
+    "paramRef": "CY"
    }
   }
  ]
@@ -172,6 +191,15 @@
    "value": {
     "paramRef": "CAPEX_Entity"
    }
+  },
+  {
+   "id": {
+    "displayKey": "CY"
+   },
+   "useDefaultValue": false,
+   "value": {
+    "paramRef": "CY"
+   }
   }
  ]
 }
@@ -215,6 +243,15 @@
      "#"
     ],
     "hierarchyName": "H1"
+   }
+  },
+  {
+   "id": {
+    "displayKey": "CY"
+   },
+   "useDefaultValue": false,
+   "value": {
+    "paramRef": "CY"
    }
   }
  ]

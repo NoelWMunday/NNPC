@@ -4,7 +4,7 @@
  "description": "PPP Upstream_Revenue",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T07:18:30.211Z",
+ "modified": "2026-11-13T10:06:44.066Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -50,6 +50,31 @@
     "hierarchyName": "H1"
    },
    "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CY",
+   "displayName": "CY",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": null,
+   "cubeType": "DEFAULT",
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2025",
+     "202512"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
   }
  ],
  "steps": [
@@ -59,7 +84,7 @@
    "description": "Initialise",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_26\",\"REV_40\", BASEMEMBER([d/WPLn] ,\"REV3_05\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nDELETE()\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_26\",\"REV_40\", BASEMEMBER([d/WPLn] ,\"REV3_05\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\nDELETE()\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -77,7 +102,7 @@
    "description": "Revenue calculation",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\n// *** DEBUG AREA - CAN LEAVE THESE COMMENT LINES FOR USE WHEN DEBUGGING ***\n//DATA([d/WPLn]=\"REV_05\") = 1\n//DATA([d/WPLn]=\"REV_05\") = RESULTLOOKUP([d/WPLn]=\"AMT_80\")\n//DATA([d/WPLn]=\"REV_05\") = RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")\n\n// Annual oil production\n// from kilo barrels per day to millions barrels per year means (x 365 / 1000) so result is in \"mmbbl\"\nDATA([d/WPLn]=\"REV_05\") = (RESULTLOOKUP([d/WPLn]=\"AMT_80\") * RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")) / 1000\n\n// Ave monthly oil production\nDATA([d/WPLn]=\"AMT_81\") = RESULTLOOKUP([d/WPLn]=\"REV_05\") / RESULTLOOKUP([d/WPLn]=\"UOM_65\")\n\n// Ave monthly oil production per field\nDATA([d/WPLn]=\"AMT_82\") = RESULTLOOKUP([d/WPLn]=\"AMT_81\") / RESULTLOOKUP([d/WPLn]=\"AMT_97\")\n\n// Oil revenue\n// from mmbbl to price per barrel and revenue in single dollars means x 1 000 000 to convert to single units\nDATA([d/WPLn]=\"REV_10\") = RESULTLOOKUP([d/WPLn]=\"REV_05\") * RESULTLOOKUP([d/WPLn]=\"GA_015\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\") * 1000000\n\n// Annual gas sales\nDATA([d/WPLn]=\"REV_15\") = RESULTLOOKUP([d/WPLn]=\"AMT_85\") * RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")\n\n// Gas revenue\n// Price is already per mmscf so no conversion to single dollar units necessary\nDATA([d/WPLn]=\"REV_20\") = RESULTLOOKUP([d/WPLn]=\"REV_15\") * RESULTLOOKUP([d/WPLn]=\"GA_020\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\") * 1000\n\n// Total revenue\nDATA([d/WPLn]=\"REV_25\") = RESULTLOOKUP([d/WPLn]=\"REV_10\") + RESULTLOOKUP([d/WPLn]=\"REV_20\") \n\n// NNPC Share of revenue\nDATA([d/WPLn]=\"REV_30\") = RESULTLOOKUP([d/WPLn]=\"REV_25\") * RESULTLOOKUP([d/WPLn]=\"AMT_90\") / 100\n\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\n// *** DEBUG AREA - CAN LEAVE THESE COMMENT LINES FOR USE WHEN DEBUGGING ***\n//DATA([d/WPLn]=\"REV_05\") = 1\n//DATA([d/WPLn]=\"REV_05\") = RESULTLOOKUP([d/WPLn]=\"AMT_80\")\n//DATA([d/WPLn]=\"REV_05\") = RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")\n\n// Annual oil production\n// from kilo barrels per day to millions barrels per year means (x 365 / 1000) so result is in \"mmbbl\"\nDATA([d/WPLn]=\"REV_05\") = (RESULTLOOKUP([d/WPLn]=\"AMT_80\") * RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")) / 1000\n\n// Ave monthly oil production\nDATA([d/WPLn]=\"AMT_81\") = RESULTLOOKUP([d/WPLn]=\"REV_05\") / RESULTLOOKUP([d/WPLn]=\"UOM_65\")\n\n// Ave monthly oil production per field\nDATA([d/WPLn]=\"AMT_82\") = RESULTLOOKUP([d/WPLn]=\"AMT_81\") / RESULTLOOKUP([d/WPLn]=\"AMT_97\")\n\n// Oil revenue\n// from mmbbl to price per barrel and revenue in single dollars means x 1 000 000 to convert to single units\nDATA([d/WPLn]=\"REV_10\") = RESULTLOOKUP([d/WPLn]=\"REV_05\") * RESULTLOOKUP([d/WPLn]=\"GA_015\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\") * 1000000\n\n// Annual gas sales\nDATA([d/WPLn]=\"REV_15\") = RESULTLOOKUP([d/WPLn]=\"AMT_85\") * RESULTLOOKUP([d/WPLn]=\"GA_040\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\")\n\n// Gas revenue\n// Price is already per mmscf so no conversion to single dollar units necessary\nDATA([d/WPLn]=\"REV_20\") = RESULTLOOKUP([d/WPLn]=\"REV_15\") * RESULTLOOKUP([d/WPLn]=\"GA_020\", [d/PPP_Entity] = \"#\", [d/Lock]=\"Central\") * 1000\n\n// Total revenue\nDATA([d/WPLn]=\"REV_25\") = RESULTLOOKUP([d/WPLn]=\"REV_10\") + RESULTLOOKUP([d/WPLn]=\"REV_20\") \n\n// NNPC Share of revenue\nDATA([d/WPLn]=\"REV_30\") = RESULTLOOKUP([d/WPLn]=\"REV_25\") * RESULTLOOKUP([d/WPLn]=\"AMT_90\") / 100\n\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -95,7 +120,7 @@
    "description": "Initialise common entity totals",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_26\",BASEMEMBER([d/WPLn] , \"CST14\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\n// Clear the entity placeholder at the common entity level i.e. not the work program entity level\n// which is cleared in the initialisation step\n\nDATA([d/WPLn]=\"REV_32\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0\nDATA([d/WPLn]=\"REV_26\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0\n\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_26\",BASEMEMBER([d/WPLn] , \"CST14\"))\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\n// Clear the entity placeholder at the common entity level i.e. not the work program entity level\n// which is cleared in the initialisation step\n\nDATA([d/WPLn]=\"REV_32\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0\nDATA([d/WPLn]=\"REV_26\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = 0\n\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -111,7 +136,7 @@
    "description": "Total JV Revenue step 02",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_25\",\"REV_32\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\n// If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) \n// on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point\n// to NU03 as the common entity and accumulate the work group total revenue on WPLn = the property on NU03_WP01 i.e. a JV total\nIF [d/PPP_Entity].[p/WPGroup] != \"\" THEN\n\tDATA.APPEND([d/WPLn]=[d/PPP_Entity].[p/Ln],[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = RESULTLOOKUP([d/WPLn]=\"REV_25\")\nENDIF\n\n\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_25\",\"REV_32\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\n// If the entity belongs to a work group (i.e. non blank) then send it's revenue to the common entity (owning entity) \n// on the WPLn identified by the property e.g. NU03_WP01 is a JV belonging to NU03 so NU03_WP01 will point\n// to NU03 as the common entity and accumulate the work group total revenue on WPLn = the property on NU03_WP01 i.e. a JV total\nIF [d/PPP_Entity].[p/WPGroup] != \"\" THEN\n\tDATA.APPEND([d/WPLn]=[d/PPP_Entity].[p/Ln],[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup]) = RESULTLOOKUP([d/WPLn]=\"REV_25\")\nENDIF\n\n\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -127,7 +152,7 @@
    "description": "Total JV Revenue step 03",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]= (\"Value_WPLn\",\"GC_CLO\")\nMEMBERSET [d/WPLn] = (\"REV_40\",\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL], \"OTHER_INC\" ), \"#\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nIF [d/PPP_Entity].[p/WPGroup] != \"\" THEN\n\tDATA.APPEND([d/Measures]=\"Value_WPLn\",[d/WPLn]=\"REV_40\",[d/GL]=\"#\",[d/PPP_Currency]=\"#\") = \n\t\tRESULTLOOKUP([d/Measures]=\"GC_CLO\",[d/WPLn]=\"#\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]=\"USD\")\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]= (\"Value_WPLn\",\"GC_CLO\")\nMEMBERSET [d/WPLn] = (\"REV_40\",\"#\")\nMEMBERSET [d/GL] = (BASEMEMBER([d/GL], \"OTHER_INC\" ), \"#\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\nIF [d/PPP_Entity].[p/WPGroup] != \"\" THEN\n\tDATA.APPEND([d/Measures]=\"Value_WPLn\",[d/WPLn]=\"REV_40\",[d/GL]=\"#\",[d/PPP_Currency]=\"#\") = \n\t\tRESULTLOOKUP([d/Measures]=\"GC_CLO\",[d/WPLn]=\"#\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup],[d/PPP_Currency]=\"USD\")\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -145,7 +170,7 @@
    "description": "Total JV Revenue step 04",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// Apportionment % = REV_33 BY TOTAL REVENUE\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_33\",\"REV_25\",\"REV_35\",\"REV_40\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\n\nDATA([d/WPLn]=\"REV_32\") = RESULTLOOKUP([d/WPLn]=\"REV_32\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup])\n\nIF RESULTLOOKUP([d/WPLn]=\"REV_32\") > 0 THEN\n\tDATA([d/WPLn]=\"REV_33\") = RESULTLOOKUP([d/WPLn]=\"REV_25\") / RESULTLOOKUP([d/WPLn]=\"REV_32\") * 100\n\tDATA([d/WPLn]=\"REV_35\") = RESULTLOOKUP([d/WPLn]=\"REV_33\") * RESULTLOOKUP([d/WPLn]=\"REV_40\") / 100\nENDIF\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\n// Apportionment % = REV_33 BY TOTAL REVENUE\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures]=\"Value_WPLn\"\nMEMBERSET [d/WPLn] = (\"REV_32\",\"REV_33\",\"REV_25\",\"REV_35\",\"REV_40\")\nMEMBERSET [d/GL] = \"#\"\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = \"#\"\nMEMBERSET [d/PPP_Currency] = \"#\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\nDATA([d/WPLn]=\"REV_32\") = RESULTLOOKUP([d/WPLn]=\"REV_32\",[d/PPP_Entity]=[d/PPP_Entity].[p/WPGroup])\n\nIF RESULTLOOKUP([d/WPLn]=\"REV_32\") > 0 THEN\n\tDATA([d/WPLn]=\"REV_33\") = RESULTLOOKUP([d/WPLn]=\"REV_25\") / RESULTLOOKUP([d/WPLn]=\"REV_32\") * 100\n\tDATA([d/WPLn]=\"REV_35\") = RESULTLOOKUP([d/WPLn]=\"REV_33\") * RESULTLOOKUP([d/WPLn]=\"REV_40\") / 100\nENDIF\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -163,7 +188,7 @@
    "description": "GL Entries - initialise",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures] = (\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"#\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"UP_0005\",\"UP_0015\")\nMEMBERSET [d/PPP_Currency] = \"USD\"\n\nDELETE()\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures] = (\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"#\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"UP_0005\",\"UP_0015\")\nMEMBERSET [d/PPP_Currency] = \"USD\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\nDELETE()\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {
@@ -181,7 +206,7 @@
    "description": "GL Entries",
    "stepType": "SCRIPT",
    "panelType": "TEXTUAL",
-   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures] = (\"Value_WPLn\",\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"#\",\"REV_30\", \"REV_35\")\nMEMBERSET [d/GL] = (\"#\",\"6011008\",\"7019902\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"#\",BASEMEMBER([d/PPP_EntryNr] , \"UP\"))\nMEMBERSET [d/PPP_Currency] = \"USD\"\n\n\n// Revenue\nDATA([d/Measures] = \"GC_CR\", [d/GL] = \"6011008\", [d/PPP_EntryNr] = \"UP_0005\", [d/WPLn] = \"#\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/GL] = \"#\", [d/WPLn] = \"REV_30\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n\t\n// Other Income\nDATA([d/Measures] = \"GC_CR\", [d/GL] = \"7019902\", [d/PPP_EntryNr] = \"UP_0015\", [d/WPLn] = \"#\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"REV_35\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n",
+   "scriptContent": "CONFIG.TIME_HIERARCHY = CALENDARYEAR\nCONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF\nCONFIG.GENERATE_UNBOOKED_DATA = ON\n\nMEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)\nMEMBERSET [d/PCycle] = \"#\"\nMEMBERSET [d/Measures] = (\"Value_WPLn\",\"GC_CR\")\nMEMBERSET [d/WPLn] = (\"#\",\"REV_30\", \"REV_35\")\nMEMBERSET [d/GL] = (\"#\",\"6011008\",\"7019902\")\nMEMBERSET [d/Ln] = \"#\"\nMEMBERSET [d/Objectives] = \"#\"\nMEMBERSET [d/ProductServ] = \"#\"\nMEMBERSET [d/Strategy] = \"#\"\nMEMBERSET [d/WorkProgram] = \"#\"\nMEMBERSET [d/Lock] = \"#\"\nMEMBERSET [d/PPP_EntryNr] = (\"#\",BASEMEMBER([d/PPP_EntryNr] , \"UP\"))\nMEMBERSET [d/PPP_Currency] = \"USD\"\nMEMBERSET [d/Date] = NEXT(1,\"YEAR\",%CY%) to NEXT(5,\"YEAR\",%CY%)\n\n\n// Revenue\nDATA([d/Measures] = \"GC_CR\", [d/GL] = \"6011008\", [d/PPP_EntryNr] = \"UP_0005\", [d/WPLn] = \"#\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/GL] = \"#\", [d/WPLn] = \"REV_30\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n\t\n// Other Income\nDATA([d/Measures] = \"GC_CR\", [d/GL] = \"7019902\", [d/PPP_EntryNr] = \"UP_0015\", [d/WPLn] = \"#\") = \n\tRESULTLOOKUP([d/Measures] = \"Value_WPLn\", [d/WPLn] = \"REV_35\", [d/GL] = \"#\", [d/PPP_EntryNr] = \"#\", [d/PPP_Currency] = \"#\")\n",
    "memberFilter": {},
    "isVisualPanel": false,
    "scriptReferences": {

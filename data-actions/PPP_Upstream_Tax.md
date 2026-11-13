@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-11T15:35:59.073Z by NMUNDAY |
+| Last changed | 2026-11-13T10:18:29.499Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -18,6 +18,7 @@
 | `TargetVersion` | PROMPT | MEMBER | Version | SINGLE | `{"memberId": null, "hierarchyName": null}` |
 | `Entity` | PROMPT | MEMBER | PPP_Entity | MULTI | `["NB04"]` |
 | `PCycle` | PROMPT | MEMBER | PCycle | SINGLE | `"2026-2030/01"` |
+| `CY` | PROMPT | MEMBER | Date | SINGLE | `["(all)", "2025", "202512"]` |
 
 ## Steps
 
@@ -66,6 +67,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // TAX* are cleared so the rolling balances (steps 13, 14, 16) restart from this run
 DELETE()
@@ -185,6 +187,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="CST05_05")
 DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="CST05_15")
@@ -219,6 +222,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="CST05_10")
 DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="CST05_20")
@@ -253,6 +257,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // HCDT basis = prior year operating expenditure (PIA s.240); CST05 holds the full year on December (Royalties LAST() rollup)
 DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="CST05_05",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))
@@ -286,6 +291,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // HCDT basis = prior year operating expenditure (PIA s.240); CST05 holds the full year on December (Royalties LAST() rollup)
 DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="CST05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))
@@ -319,6 +325,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Development Levy (Oil)
 DATA([d/WPLn]="TAX005_15_05") = RESULTLOOKUP([d/WPLn]="REV_10")
@@ -370,6 +377,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="TAX010_15_05") = RESULTLOOKUP([d/WPLn]="REV_20")
 DATA([d/WPLn]="TAX010_15_10") = 0-RESULTLOOKUP([d/WPLn]="RC25_20")
@@ -416,6 +424,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="TAX035_25") = RESULTLOOKUP([d/WPLn]="REV_05")
 DATA([d/WPLn]="TAX035_10") = RESULTLOOKUP([d/WPLn]="TA20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
@@ -462,6 +471,8 @@ MEMBERSET [d/WPLn] = ("AMT_200","AMT_210",
 	"TAX040_05_10","TAX040_05_15","TAX040_05_20",
 	"TAX040_10_05_05","TAX040_10_05_10","TAX040_10_05_15",
 	"TAX040_10_10","TAX040_10_15","TAX040_10_20")
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+
 
 // Oil
 IF [d/PPP_Currency] = "USD" AND [d/WPLn] = "AMT_200" THEN
@@ -530,6 +541,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Amortised costs
 // TAX045_05_10	Amortised Oil Capex (Exploration+Drilling+Facilities)
@@ -632,6 +644,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #ASSESSABLE OF [d/WPLn]
 VARIABLEMEMBER #LIMIT_PARAM OF [d/WPLn]
@@ -736,6 +749,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #TAX050_20 OF [d/WPLn]
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
@@ -822,6 +836,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #TAX010_15 OF [d/WPLn]
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
@@ -903,6 +918,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #TAX050_20 OF [d/WPLn]
 
@@ -944,6 +960,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
 VARIABLEMEMBER #PARAM2 OF [d/WPLn]
@@ -1021,6 +1038,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn] = "TAX075_05") = 
 	RESULTLOOKUP([d/WPLn]="RC15_05") +
@@ -1061,6 +1079,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
 
@@ -1107,6 +1126,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 
@@ -1141,6 +1161,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
 DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000")
@@ -1180,6 +1201,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("UP_0005")
 MEMBERSET [d/PPP_Currency] = "USD"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DELETE()
 ```
@@ -1206,6 +1228,7 @@ MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_EntryNr] = ("#")
 MEMBERSET [d/PPP_Currency] = "USD"
+MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 // Old postings on UP_0005 are cleared by the previous step "GL Entries - Initialise"
 

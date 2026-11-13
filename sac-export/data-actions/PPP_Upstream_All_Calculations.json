@@ -4,7 +4,7 @@
  "description": "PPP_Upstream_All_Calculations",
  "createdBy": "NMUNDAY",
  "changedBy": "NMUNDAY",
- "modified": "2026-11-10T12:58:09.617Z",
+ "modified": "2026-11-13T10:19:48.087Z",
  "defaultCubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
  "parameters": [
   {
@@ -136,6 +136,31 @@
     "hierarchyName": "H1"
    },
    "isTargetVersionParameter": false
+  },
+  {
+   "displayKey": "CY",
+   "displayName": "CY",
+   "description": "",
+   "inputType": "PROMPT",
+   "cubeId": "Cuv5rh01bkl1726m85cg2id8u2c",
+   "cubeType": null,
+   "dimensionId": "Date",
+   "hierarchyName": "YM",
+   "hierarchyLevel": "LEAF",
+   "dataType": null,
+   "decimalPlaces": null,
+   "allowAllMember": false,
+   "type": "MEMBER",
+   "cardinality": "SINGLE",
+   "value": {
+    "memberId": [
+     "(all)",
+     "2025",
+     "202512"
+    ],
+    "hierarchyName": "YM"
+   },
+   "isTargetVersionParameter": false
   }
  ],
  "steps": [
@@ -164,6 +189,15 @@
      "useDefaultValue": false,
      "value": {
       "paramRef": "Entity"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
      }
     }
    ]
@@ -205,6 +239,15 @@
        "#"
       ],
       "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
      }
     }
    ]
@@ -277,6 +320,15 @@
      "value": {
       "paramRef": "CAPEX_Entity"
      }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
+     }
     }
    ]
   },
@@ -317,6 +369,15 @@
        "#"
       ],
       "hierarchyName": "H1"
+     }
+    },
+    {
+     "id": {
+      "displayKey": "CY"
+     },
+     "useDefaultValue": false,
+     "value": {
+      "paramRef": "CY"
      }
     }
    ]
