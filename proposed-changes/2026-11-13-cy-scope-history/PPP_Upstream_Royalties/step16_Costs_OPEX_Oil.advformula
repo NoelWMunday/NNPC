@@ -1,0 +1,27 @@
+CONFIG.TIME_HIERARCHY = CALENDARYEAR
+CONFIG.FLIPPING_SIGN_ACCORDING_ACCTYPE = OFF
+CONFIG.GENERATE_UNBOOKED_DATA = ON
+
+// This is only productive opex costs
+
+MEMBERSET [d/PPP_Entity] = BASEMEMBER([d/PPP_Entity] , %Entity%)
+MEMBERSET [d/PCycle] = %PCycle%
+MEMBERSET [d/Measures]="Value_WPLn"
+MEMBERSET [d/PPP_Currency] = ("#","USD")
+MEMBERSET [d/WPLn] = ("CST05_05","AMT_220")
+MEMBERSET [d/PPP_EntryNr] = ("#", BASEMEMBER([d/PPP_EntryNr] , "UAP_OPEX_CST"))
+MEMBERSET [d/GL] = "#"
+MEMBERSET [d/Ln] = "#"
+MEMBERSET [d/Objectives] = "#"
+MEMBERSET [d/ProductServ] = "#"
+MEMBERSET [d/Strategy] = "#"
+MEMBERSET [d/WorkProgram] = "#"
+// Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
+MEMBERSET [d/Lock] = ("#","Hist_Open")
+// CY and CY+1..CY+5: CY December holds the prior-year cost base (HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
+
+IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
+	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
+		RESULTLOOKUP([d/WPLn] = "AMT_220")
+ENDIF

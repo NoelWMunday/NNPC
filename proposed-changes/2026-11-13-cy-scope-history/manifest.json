@@ -1,0 +1,65 @@
+[
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 1,
+  "stepId": "37095357-1823-4414-3771-232611829621",
+  "name": "Initialise",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step01_Initialise.advformula",
+  "beforeSha256": "c7aa35991ce41a6af207533450c8e2df0df42cf83adb4b5967d3c6e020cc78e1",
+  "afterSha256": "a8eecf1ae7aada5d945a8cbde6cf498a33df58bad44ce699af4dce997c564c72"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 14,
+  "stepId": "40426270-9108-4707-3407-229997827416",
+  "name": "Costs - CAPEX Oil",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step14_Costs_CAPEX_Oil.advformula",
+  "beforeSha256": "4b0787990d44ac0bf5419e915e4a0b9e314ae030deed3844923c24527ba4f34f",
+  "afterSha256": "acac3d912fa55d1d43ce8e1e8a357a4ae9dab905c946c0b168c2965107b69ee1"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 15,
+  "stepId": "32184939-4338-4042-3369-214363226071",
+  "name": "Costs - CAPEX Gas",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step15_Costs_CAPEX_Gas.advformula",
+  "beforeSha256": "ae6e1f77da9413ceef004948cb004e226004ac2b9cac32a907287865a432439a",
+  "afterSha256": "691f5f7b759ba31e1511b3cde2c7385e76b48b151d786aa744f45217bc3acea4"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 16,
+  "stepId": "29964584-0636-4749-3361-115986232720",
+  "name": "Costs - OPEX Oil",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step16_Costs_OPEX_Oil.advformula",
+  "beforeSha256": "ed7ffba9e8180be00e4a566cfcbd54787457e27044465636f59df98cd47b02cb",
+  "afterSha256": "741638af2f191eaffec9054a552e700b6efcb4362839f10213dfd81e98681e86"
+ },
+ {
+  "dataAction": "PPP_Upstream_Royalties",
+  "step": 17,
+  "stepId": "20205214-9413-4429-3400-281987348620",
+  "name": "Costs - OPEX Gas",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step17_Costs_OPEX_Gas.advformula",
+  "beforeSha256": "1da7e34a47b33fcb7f82a0c1d979e83d062be1c693fc81da2dcfea89e498a6ee",
+  "afterSha256": "e8ee995e85b5895770599376329ef9044eb6c23cd1089739031278f5484d0b1f"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 1,
+  "stepId": "37095357-1823-4414-3771-232611829621",
+  "name": "Initialise",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step01_Initialise.advformula",
+  "beforeSha256": "64d8645a7a7db1c417b403931a4a08628c2ab9467a2b9b856285400fee4e7087",
+  "afterSha256": "bdcecac1ec4af27131ccaffe40a24396f7a300dbd3499ce5fb4af3965dc3cfac"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 10,
+  "stepId": "13901270-3418-4068-3088-389950687611",
+  "name": "Tax - CAPEX Components",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step10_Tax_CAPEX_Components.advformula",
+  "beforeSha256": "e333a0bf7c7380bc05fc285ed52b6cd76b39cf65cead20dd5695daffa7cdbb9b",
+  "afterSha256": "4f9e9caaf700ef3d0d4221e433548003aafb19cd47b731dfd3cbdabf733da080"
+ }
+]
