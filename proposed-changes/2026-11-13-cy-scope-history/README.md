@@ -2,7 +2,7 @@
 
 - **Trello:** #22 https://trello.com/c/j5RV7K5l, #27 https://trello.com/c/7eH24KWh
 - **Follows:** Noel's CY+1…CY+5 scope (13 Nov; Royalties v45, Tax v26 — see `DEPLOYMENTS.md`)
-- **Status:** PROPOSED
+- **Status:** APPROVED (Noel, 13 Nov 13:31) — applying. Clean-up (section 3): Noel will do it once the new results are checked; no housekeeping data action.
 - **Scripts:** [DIFF.md](DIFF.md), [manifest.json](manifest.json) — 19 steps
 
 ## 1. History the scope cuts off
