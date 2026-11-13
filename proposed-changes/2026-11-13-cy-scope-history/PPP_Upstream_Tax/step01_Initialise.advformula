@@ -15,7 +15,7 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
-// CY-3..CY+5: CAPEX components need the 4 prior years for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
+// CY-3 Jan .. CY+5 Dec: CAPEX history for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
 MEMBERSET [d/Date] = PREVIOUS(47,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 // TAX* are cleared so the rolling balances (steps 13, 14, 16) restart from this run

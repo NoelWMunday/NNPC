@@ -22,7 +22,7 @@ MEMBERSET [d/WPLn] = ("AMT_200","AMT_210",
 	"TAX040_05_10","TAX040_05_15","TAX040_05_20",
 	"TAX040_10_05_05","TAX040_10_05_10","TAX040_10_05_15",
 	"TAX040_10_10","TAX040_10_15","TAX040_10_20")
-// CY-3..CY+5: CAPEX components need the 4 prior years for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
+// CY-3 Jan .. CY+5 Dec: CAPEX history for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
 MEMBERSET [d/Date] = PREVIOUS(47,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 

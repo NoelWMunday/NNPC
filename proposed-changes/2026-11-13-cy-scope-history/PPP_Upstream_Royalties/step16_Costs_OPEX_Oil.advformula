@@ -18,7 +18,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
-// CY and CY+1..CY+5: CY December holds the prior-year cost base (HCDT reads PREVIOUS(1,"YEAR"))
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
 MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN

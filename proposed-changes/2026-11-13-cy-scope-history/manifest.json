@@ -6,7 +6,7 @@
   "name": "Initialise",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step01_Initialise.advformula",
   "beforeSha256": "c7aa35991ce41a6af207533450c8e2df0df42cf83adb4b5967d3c6e020cc78e1",
-  "afterSha256": "a8eecf1ae7aada5d945a8cbde6cf498a33df58bad44ce699af4dce997c564c72"
+  "afterSha256": "7159b0c3dababb644785d7a68ab8e3429f06ee3a1654b193efed22f637adb98d"
  },
  {
   "dataAction": "PPP_Upstream_Royalties",
@@ -15,7 +15,7 @@
   "name": "Costs - CAPEX Oil",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step14_Costs_CAPEX_Oil.advformula",
   "beforeSha256": "4b0787990d44ac0bf5419e915e4a0b9e314ae030deed3844923c24527ba4f34f",
-  "afterSha256": "acac3d912fa55d1d43ce8e1e8a357a4ae9dab905c946c0b168c2965107b69ee1"
+  "afterSha256": "9ebf1b717dbe678926597e05d58fa6cfe8ae8d0024ec051c4e50bb312bd144fd"
  },
  {
   "dataAction": "PPP_Upstream_Royalties",
@@ -24,7 +24,7 @@
   "name": "Costs - CAPEX Gas",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step15_Costs_CAPEX_Gas.advformula",
   "beforeSha256": "ae6e1f77da9413ceef004948cb004e226004ac2b9cac32a907287865a432439a",
-  "afterSha256": "691f5f7b759ba31e1511b3cde2c7385e76b48b151d786aa744f45217bc3acea4"
+  "afterSha256": "8b399637f7d45e86efeca70300375342b321d7a7a0a1a98715f9d8dbeede0b18"
  },
  {
   "dataAction": "PPP_Upstream_Royalties",
@@ -33,7 +33,7 @@
   "name": "Costs - OPEX Oil",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step16_Costs_OPEX_Oil.advformula",
   "beforeSha256": "ed7ffba9e8180be00e4a566cfcbd54787457e27044465636f59df98cd47b02cb",
-  "afterSha256": "741638af2f191eaffec9054a552e700b6efcb4362839f10213dfd81e98681e86"
+  "afterSha256": "693cbef4ef154efe6676ce0a5421ab56735104d086f145a9b3015885abeb8990"
  },
  {
   "dataAction": "PPP_Upstream_Royalties",
@@ -42,7 +42,7 @@
   "name": "Costs - OPEX Gas",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Royalties/step17_Costs_OPEX_Gas.advformula",
   "beforeSha256": "1da7e34a47b33fcb7f82a0c1d979e83d062be1c693fc81da2dcfea89e498a6ee",
-  "afterSha256": "e8ee995e85b5895770599376329ef9044eb6c23cd1089739031278f5484d0b1f"
+  "afterSha256": "5e44c02a4c51e64531f6c08ccf09792efd1b3fdd683cde89231695f1f8ee2606"
  },
  {
   "dataAction": "PPP_Upstream_Tax",
@@ -51,7 +51,70 @@
   "name": "Initialise",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step01_Initialise.advformula",
   "beforeSha256": "64d8645a7a7db1c417b403931a4a08628c2ab9467a2b9b856285400fee4e7087",
-  "afterSha256": "bdcecac1ec4af27131ccaffe40a24396f7a300dbd3499ce5fb4af3965dc3cfac"
+  "afterSha256": "a64109381a275bdfadbd4515703766d280ce96f4d4fd602c5bb46d916a434cb5"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 3,
+  "stepId": "30612877-1596-4882-3579-282715056529",
+  "name": "Tax - NDDC Levy Payable (Oil)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step03_Tax_NDDC_Levy_Payable_Oil.advformula",
+  "beforeSha256": "c10cd3655988f9ebdc33eb2ec2e92b6ad18f6d4753e45c0f7a8a3d514c59d1da",
+  "afterSha256": "1351d5abc44b81ce16c7558772ce524b1f9c277cdd17bc67996edf991c897bca"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 4,
+  "stepId": "73131350-2873-4955-3565-230029431336",
+  "name": "Tax - NDDC Levy Payable (Gas)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step04_Tax_NDDC_Levy_Payable_Gas.advformula",
+  "beforeSha256": "35eff0d0dd8deb96adb28e9bf378006d2a923606f634753785e0bcb070496a3e",
+  "afterSha256": "a7da0c9f6ad274b148b15bbee5fd17a7c24562184e23bd20b5c41043a80b4599"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 5,
+  "stepId": "42742315-7627-4543-3044-935506986269",
+  "name": "Tax - HCDT Fund Payable (Oil)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step05_Tax_HCDT_Fund_Payable_Oil.advformula",
+  "beforeSha256": "491eaea98028338ce13bf6be6315ab2d47f3e3a24ecd50a17dea7362f2ef08e4",
+  "afterSha256": "72c0b8476efca8fa05ee17041096bbd1109211f1281be783ab51cadeae50e5c1"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 6,
+  "stepId": "11797287-4640-4417-8389-319464744338",
+  "name": "Tax - HCDT Fund Payable (Gas)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step06_Tax_HCDT_Fund_Payable_Gas.advformula",
+  "beforeSha256": "1824dde222283e9735e2a10f571ebde6a62fc7968b4c30a5bb9ef63eb89df438",
+  "afterSha256": "9c2b4eb8729fcf1a42a5095590a0fdfc7d66e00ce434432cb203b7a2f7e6d8cd"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 7,
+  "stepId": "39147169-9960-4461-3213-221041255030",
+  "name": "Tax - Development Levy (Oil)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step07_Tax_Development_Levy_Oil.advformula",
+  "beforeSha256": "33df0b7504b6943c32f3e980bdc7e9304fea04a305278a7ab7f2191c06414a0e",
+  "afterSha256": "6c2a417b1c3d36ac543c3d6883f9a76654e9de1efe223e9f164411a63cf05d9b"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 8,
+  "stepId": "16030386-4914-4231-3232-427622113526",
+  "name": "Tax - Development levy (Gas)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step08_Tax_Development_levy_Gas.advformula",
+  "beforeSha256": "276fc716fc96083243cd3e018bfe51dcbc376ce60a864aa8e9cb8be3a491be71",
+  "afterSha256": "3e325cca8e66c60a6d5d2495193eba41a00359fc70a76c7228483b31896026ac"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 9,
+  "stepId": "22052734-7916-4416-3379-018500708146",
+  "name": "Tax - Production Allowance",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step09_Tax_Production_Allowance.advformula",
+  "beforeSha256": "c73269c99009e9d5d9632478abbf3ec92289bd4a4999e0e6a7ee61fb1d8b4a7a",
+  "afterSha256": "334fcfc9cbc1bad69a43841ab13fb8f3b18fc5e93cef5f42bf944952a312d9f4"
  },
  {
   "dataAction": "PPP_Upstream_Tax",
@@ -60,6 +123,51 @@
   "name": "Tax - CAPEX Components",
   "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step10_Tax_CAPEX_Components.advformula",
   "beforeSha256": "e333a0bf7c7380bc05fc285ed52b6cd76b39cf65cead20dd5695daffa7cdbb9b",
-  "afterSha256": "4f9e9caaf700ef3d0d4221e433548003aafb19cd47b731dfd3cbdabf733da080"
+  "afterSha256": "f9d913d63a0d443149115ba2ee3fb5f1a35b2c3eceb0e94a6b677e3098413f0d"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 12,
+  "stepId": "40470562-0436-4009-3401-739628352912",
+  "name": "Tax - Capital allowance for PPT",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step12_Tax_Capital_allowance_for_PPT.advformula",
+  "beforeSha256": "e8b4c38f27173245b48c3cdbd1b6dc436893d21af95df190b5f985b238ed1668",
+  "afterSha256": "d331c7a5267db708a23c8cfa4a07cbfce46cb7c95d64f85fd20a39e430818df3"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 13,
+  "stepId": "36467450-8638-4514-3298-598364816533",
+  "name": "Tax - CA Limit Rolling Balance (Oil)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step13_Tax_CA_Limit_Rolling_Balance_Oil.advformula",
+  "beforeSha256": "481b480ff464e90e9dd441b80c4731ff75f9b46cb5f2d650dd0ec631ed8c4c79",
+  "afterSha256": "122944def1d85eee964114a9344f8dfae31b00f5f1d22539d287715c02ed6984"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 16,
+  "stepId": "36244057-6940-4028-3612-312528377653",
+  "name": "Tax - Hydrocarbon Tax (CPR Limit & HT Payable)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step16_Tax_Hydrocarbon_Tax_CPR_Limit_HT_Payable.advformula",
+  "beforeSha256": "94d4e8bba415a6a5fea593a781cd3024625e5f9ea12c948c5f8c1d71a10eb7d2",
+  "afterSha256": "d42421230b98334db56e19da66f33b48ec7027166c1f6a2c100017c95ba58d15"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 19,
+  "stepId": "63935334-7079-4055-3760-822667742926",
+  "name": "Tax - PPT Tax (Oil)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step19_Tax_PPT_Tax_Oil.advformula",
+  "beforeSha256": "c6076812baafd9d9bfc8132d30fdd938db66460cc6daa00917bdbb0d7f4fc38f",
+  "afterSha256": "20c145559c76863ca652a43213a9ecf31545cb450551d932719fe36632c68e77"
+ },
+ {
+  "dataAction": "PPP_Upstream_Tax",
+  "step": 20,
+  "stepId": "24593923-5417-4771-3686-524684309252",
+  "name": "Tax - CITA (Oil & Gas)",
+  "file": "proposed-changes/2026-11-13-cy-scope-history/PPP_Upstream_Tax/step20_Tax_CITA_Oil_Gas.advformula",
+  "beforeSha256": "105e6a100e711ba981e69d36db15645dffb1e479cef2d0271e005b74217c0014",
+  "afterSha256": "a89fac3513d64c3920152704bf31a29022b1d3e01407b0000ab6dd83efc0895d"
  }
 ]

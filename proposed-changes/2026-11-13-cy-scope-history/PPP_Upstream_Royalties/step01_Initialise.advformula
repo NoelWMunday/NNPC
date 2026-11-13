@@ -14,7 +14,7 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
-// CY and CY+1..CY+5: CY December holds the prior-year cost base (HCDT reads PREVIOUS(1,"YEAR"))
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
 MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 DELETE()
