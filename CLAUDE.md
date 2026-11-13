@@ -1,8 +1,8 @@
 # Working notes for Claude
 
 Read `README.md` first — the change workflow there is binding (branch → merge to `main` → apply in SAC
-→ re-export and verify; rollback from `main` history). Defects come from the Trello board
-https://trello.com/b/a85I1Cfx/nnpc (raised by a separate QA project); post findings and status there.
+→ re-export and verify; rollback from `main` history). Trello is no longer used (Noel, 13 Nov); the board
+https://trello.com/b/a85I1Cfx/nnpc holds the history up to card #27. Report status in the conversation.
 
 ## SAC conventions (from Noel, 10 Nov 2026)
 
