@@ -7,7 +7,7 @@
 | SAC id | `F4851684BFC29D7E2AE8285F175632F1` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-13T10:11:43.800Z by NMUNDAY |
+| Last changed | 2026-11-13T11:53:14.528Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -66,7 +66,8 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 DELETE()
 
@@ -742,7 +743,8 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_15", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -773,7 +775,8 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_20", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -806,7 +809,8 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_05", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 
@@ -839,7 +843,8 @@ MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 // Closed periods (Lock Hist_Open) are included so December holds the full year; results go to Lock "#"
 MEMBERSET [d/Lock] = ("#","Hist_Open")
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY Jan .. CY+5 Dec: CY December holds the prior-year cost base (Tax HCDT reads PREVIOUS(1,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(11,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 IF [d/PPP_EntryNr] != "#" AND [d/PPP_Currency] = "USD" THEN
 	DATA.APPEND([d/WPLn] = "CST05_10", [d/PPP_EntryNr] = "#", [d/PPP_Currency] = "#", [d/Lock] = "#", [d/Date] = LAST()) = 

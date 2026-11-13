@@ -7,7 +7,7 @@
 | SAC id | `AC8D1684BFC501FD9340601FF47A5050` |
 | Default model | Business premise |
 | Created by | NMUNDAY |
-| Last changed | 2026-11-13T10:18:29.499Z by NMUNDAY |
+| Last changed | 2026-11-13T11:50:53.191Z by NMUNDAY |
 | Called by | [PPP_Upstream_All_Calculations](PPP_Upstream_All_Calculations.md) |
 | Used in stories | [PPP_UStream](../stories/PPP_UStream.md) |
 
@@ -67,7 +67,8 @@ MEMBERSET [d/ProductServ] = "#"
 MEMBERSET [d/Strategy] = "#"
 MEMBERSET [d/WorkProgram] = "#"
 MEMBERSET [d/Lock] = "#"
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY-3 Jan .. CY+5 Dec: CAPEX history for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(47,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 // TAX* are cleared so the rolling balances (steps 13, 14, 16) restart from this run
 DELETE()
@@ -192,7 +193,7 @@ MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 DATA([d/WPLn]="TAX025_15_05") = RESULTLOOKUP([d/WPLn]="CST05_05")
 DATA([d/WPLn]="TAX025_15_10") = RESULTLOOKUP([d/WPLn]="CST05_15")
 
-DATA([d/WPLn]="TAX025_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX025_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX025_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX025_10") * (
 	RESULTLOOKUP([d/WPLn]="TAX025_15_05") +														   
@@ -227,7 +228,7 @@ MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 DATA([d/WPLn]="TAX030_15_05") = RESULTLOOKUP([d/WPLn]="CST05_10")
 DATA([d/WPLn]="TAX030_15_10") = RESULTLOOKUP([d/WPLn]="CST05_20")
 
-DATA([d/WPLn]="TAX030_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX030_10") = RESULTLOOKUP([d/WPLn]="TL20_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX030_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX030_10") * (
 	RESULTLOOKUP([d/WPLn]="TAX030_15_05") +														   
@@ -262,7 +263,7 @@ MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 // HCDT basis = prior year operating expenditure (PIA s.240); CST05 holds the full year on December (Royalties LAST() rollup)
 DATA([d/WPLn]="TAX015_15") = RESULTLOOKUP([d/WPLn]="CST05_05",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))
 
-DATA([d/WPLn]="TAX015_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX015_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX015_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX015_15") * 
 	RESULTLOOKUP([d/WPLn]="TAX015_10"
@@ -296,7 +297,7 @@ MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 // HCDT basis = prior year operating expenditure (PIA s.240); CST05 holds the full year on December (Royalties LAST() rollup)
 DATA([d/WPLn]="TAX020_15") = RESULTLOOKUP([d/WPLn]="CST05_10",[d/Date]=PREVIOUS(1,"YEAR",[d/Date]))
 
-DATA([d/WPLn]="TAX020_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX020_10") = RESULTLOOKUP([d/WPLn]="TL20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX020_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX020_15") * 
 	RESULTLOOKUP([d/WPLn]="TAX020_10"
@@ -337,7 +338,7 @@ DATA([d/WPLn]="TAX005_15_30") = 0-RESULTLOOKUP([d/WPLn]="CST05_05")
 DATA([d/WPLn]="TAX005_15_35") = 0-RESULTLOOKUP([d/WPLn]="TAX015_05") 
 DATA([d/WPLn]="TAX005_15_40") = 0-RESULTLOOKUP([d/WPLn]="TAX025_05")
 
-DATA([d/WPLn]="TAX005_10") = RESULTLOOKUP([d/WPLn]="TL20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX005_10") = RESULTLOOKUP([d/WPLn]="TL20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX005_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX005_10") * (
 	RESULTLOOKUP([d/WPLn]="TAX005_15_05") +														   
@@ -386,7 +387,7 @@ DATA([d/WPLn]="TAX010_15_20") = 0-RESULTLOOKUP([d/WPLn]="RC40_20")
 DATA([d/WPLn]="TAX010_15_25") = 0-RESULTLOOKUP([d/WPLn]="TAX030_05") 
 DATA([d/WPLn]="TAX010_15_30") = 0-RESULTLOOKUP([d/WPLn]="TAX020_05") 
 
-DATA([d/WPLn]="TAX010_10") = RESULTLOOKUP([d/WPLn]="TL20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX010_10") = RESULTLOOKUP([d/WPLn]="TL20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX010_05") = ROUND( RESULTLOOKUP([d/WPLn]="TAX010_10") * (
 	RESULTLOOKUP([d/WPLn]="TAX010_15_05") +														   
@@ -427,8 +428,8 @@ MEMBERSET [d/PPP_Currency] = "#"
 MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
 DATA([d/WPLn]="TAX035_25") = RESULTLOOKUP([d/WPLn]="REV_05")
-DATA([d/WPLn]="TAX035_10") = RESULTLOOKUP([d/WPLn]="TA20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn]="TAX035_15") = RESULTLOOKUP([d/WPLn]="TA20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") 
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX035_10") = RESULTLOOKUP([d/WPLn]="TA20_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX035_15") = RESULTLOOKUP([d/WPLn]="TA20_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 // Oil price is a per-year central assumption (as in Revenue step 2 and Royalties) - no Date 000000
 DATA([d/WPLn]="TAX035_12") = RESULTLOOKUP([d/WPLn]="GA_015",[d/PPP_Entity]="#",[d/Lock]="Central")
 DATA([d/WPLn]="TAX035_17") = RESULTLOOKUP([d/WPLn]="TAX035_12") * RESULTLOOKUP([d/WPLn]="TAX035_15") / 100
@@ -471,7 +472,8 @@ MEMBERSET [d/WPLn] = ("AMT_200","AMT_210",
 	"TAX040_05_10","TAX040_05_15","TAX040_05_20",
 	"TAX040_10_05_05","TAX040_10_05_10","TAX040_10_05_15",
 	"TAX040_10_10","TAX040_10_15","TAX040_10_20")
-MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
+// CY-3 Jan .. CY+5 Dec: CAPEX history for amortisation (step 11 reads PREVIOUS(1..4,"YEAR"))
+MEMBERSET [d/Date] = PREVIOUS(47,"MONTH",%CY%) TO NEXT(5,"YEAR",%CY%)
 
 
 // Oil
@@ -675,7 +677,7 @@ DATA([d/WPLn]=#AMORT_CAPEX) =
 	RESULTLOOKUP([d/WPLn]="TAX045_05_20") + RESULTLOOKUP([d/WPLn]="TAX045_05_25")
 	
 // TAX050_10	Investment Capital Allowance
-DATA([d/WPLn]="TAX050_10_05") = RESULTLOOKUP([d/WPLn]="TA30_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX050_10_05") = RESULTLOOKUP([d/WPLn]="TA30_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 DATA([d/WPLn]="TAX050_10_10") = RESULTLOOKUP([d/WPLn]="CST05_15")
 DATA([d/WPLn]="TAX050_10_15") = RESULTLOOKUP([d/WPLn]="CST05_20")
 
@@ -701,8 +703,8 @@ DATA([d/WPLn]=#ASSESSABLE) =
 	RESULTLOOKUP([d/WPLn]="TAX050_20_40") +
 	RESULTLOOKUP([d/WPLn]="TAX050_20_45")
 
-DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX050_15_05") = RESULTLOOKUP([d/WPLn]="TA30_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX050_15_10") = RESULTLOOKUP([d/WPLn]="TA30_15",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 // Investment Capital Allowance
 DATA([d/WPLn]="TAX050_10") = 
@@ -766,7 +768,7 @@ TAX055_35	Deductible Amortised Other Oil Capex
 */
 
 
-DATA([d/WPLn]="TAX055_05") = RESULTLOOKUP([d/WPLn]="TA10_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn]="TAX055_05") = RESULTLOOKUP([d/WPLn]="TA10_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn]="TAX055_15") = RESULTLOOKUP([d/WPLn]="TAX045_05_10") + RESULTLOOKUP([d/WPLn]="TAX045_05_15")
 
@@ -965,9 +967,9 @@ MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 VARIABLEMEMBER #PARAM1 OF [d/WPLn]
 VARIABLEMEMBER #PARAM2 OF [d/WPLn]
 
-DATA([d/WPLn] = "TAX070_05") = RESULTLOOKUP([d/WPLn]="TA15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX070_55") = RESULTLOOKUP([d/WPLn]="TL15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX070_05") = RESULTLOOKUP([d/WPLn]="TA15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX070_55") = RESULTLOOKUP([d/WPLn]="TL15_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX070_60") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000") ENDIF
 DATA([d/WPLn] = "TAX070_30") = RESULTLOOKUP([d/WPLn]="CST05_05")
 
 DATA([d/WPLn] = "TAX070_40") = 
@@ -1128,7 +1130,7 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
-DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX085_10") = RESULTLOOKUP([d/WPLn]="TL05_05",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn] = "TAX085_20") = RESULTLOOKUP([d/WPLn]="TAX065_05") * RESULTLOOKUP([d/WPLn]="TAX085_10") * RESULTLOOKUP([d/WPLn]="SET10_05",[d/Date]="000000") / 100
 
@@ -1163,8 +1165,8 @@ MEMBERSET [d/PPP_EntryNr] = "#"
 MEMBERSET [d/PPP_Currency] = "#"
 MEMBERSET [d/Date] = NEXT(1,"YEAR",%CY%) to NEXT(5,"YEAR",%CY%)
 
-DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000")
-DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000")
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX090_05") = RESULTLOOKUP([d/WPLn]="TL05_10",[d/PPP_Entity]="#",[d/Lock]="Central",[d/Date]="000000") ENDIF
+IF [d/Date].[p/MONTHDESC] = "Dec" THEN DATA([d/WPLn] = "TAX090_10") = RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000") ENDIF
 
 DATA([d/WPLn] = "TAX090_15") = RESULTLOOKUP([d/WPLn]="TAX090_05") * RESULTLOOKUP([d/WPLn]="TAX075_10") * RESULTLOOKUP([d/WPLn]="SET10_10",[d/Date]="000000") / 100
 IF RESULTLOOKUP([d/WPLn]="TAX090_15") < 0 THEN DATA([d/WPLn] = "TAX090_15") = 0 ENDIF
